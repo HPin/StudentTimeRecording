@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E666D93A1FDDD00300560881 /* CoursesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666D9391FDDD00300560881 /* CoursesCustomCell.swift */; };
+		E666D93C1FDDD02B00560881 /* CoursesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666D93B1FDDD02B00560881 /* CoursesTableViewController.swift */; };
+		E666D93E1FDDD24800560881 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666D93D1FDDD24800560881 /* AddCourseViewController.swift */; };
 		E6F246531FDABFB2002FA853 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F246521FDABFB2002FA853 /* AppDelegate.swift */; };
-		E6F246551FDABFB2002FA853 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F246541FDABFB2002FA853 /* ViewController.swift */; };
 		E6F246581FDABFB2002FA853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F246561FDABFB2002FA853 /* Main.storyboard */; };
 		E6F2465B1FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6F246591FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld */; };
 		E6F2465D1FDABFB2002FA853 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6F2465C1FDABFB2002FA853 /* Assets.xcassets */; };
@@ -35,9 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E666D9391FDDD00300560881 /* CoursesCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCustomCell.swift; sourceTree = "<group>"; };
+		E666D93B1FDDD02B00560881 /* CoursesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableViewController.swift; sourceTree = "<group>"; };
+		E666D93D1FDDD24800560881 /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		E6F2464F1FDABFB2002FA853 /* StudentTimeRecording.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentTimeRecording.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F246521FDABFB2002FA853 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E6F246541FDABFB2002FA853 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E6F246571FDABFB2002FA853 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6F2465A1FDABFB2002FA853 /* StudentTimeRecording.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StudentTimeRecording.xcdatamodel; sourceTree = "<group>"; };
 		E6F2465C1FDABFB2002FA853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,7 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				E6F246521FDABFB2002FA853 /* AppDelegate.swift */,
-				E6F246541FDABFB2002FA853 /* ViewController.swift */,
+				E666D93B1FDDD02B00560881 /* CoursesTableViewController.swift */,
+				E666D9391FDDD00300560881 /* CoursesCustomCell.swift */,
+				E666D93D1FDDD24800560881 /* AddCourseViewController.swift */,
 				E6F246561FDABFB2002FA853 /* Main.storyboard */,
 				E6F2465C1FDABFB2002FA853 /* Assets.xcassets */,
 				E6F2465E1FDABFB2002FA853 /* LaunchScreen.storyboard */,
@@ -262,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E666D93C1FDDD02B00560881 /* CoursesTableViewController.swift in Sources */,
 				E6F2465B1FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld in Sources */,
-				E6F246551FDABFB2002FA853 /* ViewController.swift in Sources */,
+				E666D93E1FDDD24800560881 /* AddCourseViewController.swift in Sources */,
+				E666D93A1FDDD00300560881 /* CoursesCustomCell.swift in Sources */,
 				E6F246531FDABFB2002FA853 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
