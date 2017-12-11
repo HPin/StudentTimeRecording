@@ -9,14 +9,11 @@
 import UIKit
 import CoreData
 
-class CoursesTableViewController: UITableViewController ,  NSFetchedResultsControllerDelegate, UIBarPositioningDelegate {
+class CoursesTableViewController: UITableViewController ,  NSFetchedResultsControllerDelegate {
     //UITableViewDelegate, UITableViewDataSource maybe need to be included as well
     
     var courseClickedAtIndexPath: String!
     
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
-    }
     
     @IBOutlet weak var coursesTableView: UITableView!
     

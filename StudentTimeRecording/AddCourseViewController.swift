@@ -9,13 +9,10 @@
 import UIKit
 import CoreData
 
-class AddCourseViewController: UIViewController, UIBarPositioningDelegate {
+class AddCourseViewController: UIViewController {
 
     
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
-    }
-    
+   
     @IBOutlet weak var addCourseTextField: UITextField!
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
