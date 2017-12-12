@@ -12,6 +12,7 @@ class CoursesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var abbreveationLabel: UILabel!
     
+    @IBOutlet weak var coursesCVCellImageView: UIImageView!
     /*
     override var isHighlighted: Bool {
         didSet {

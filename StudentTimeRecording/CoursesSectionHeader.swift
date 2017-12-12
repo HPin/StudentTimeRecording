@@ -12,10 +12,4 @@ class CoursesSectionHeader: UICollectionReusableView {
     
     @IBOutlet weak var categoryTitleLabel: UILabel!
     
-    var categoryTitle: String! {
-        didSet {
-            categoryTitleLabel.text = categoryTitle
-        }
-    }
-    
 }

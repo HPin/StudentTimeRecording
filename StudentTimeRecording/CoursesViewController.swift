@@ -12,9 +12,9 @@ import UIKit
     
     @IBOutlet weak var CoursesCollectionView: UICollectionView!
     
-    let semesters:[[String]]
-    
-    let ws2017:[String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    let headerTitles:[String] = ["WS 2017/18", "SS 2017/18"]
+    let semesters:[[String]] = [["SEI", "FPS3", "MDT", "EMK", "PRO"], ["FPS2", "MDT", "PRO", "ABC"]]
+    let images:[String] = ["bg1", "bg2", "bg3", "bg4", "bg5", "bg6", "bg7", "bg8", "bg9", "bg10", "bg11", "bg12", "bg13", "bg14", "bg15", "bg16", "bg17", "bg18", "bg19", "bg20", "bg21", "bg22", "bg23"]
     
     
     override func viewDidLoad() {
@@ -25,6 +25,7 @@ import UIKit
         let customLayout = UICollectionViewFlowLayout()
         customLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)  // not really necessary
         customLayout.itemSize = CGSize(width: itemSize, height: itemSize)
+        customLayout.headerReferenceSize = CGSize(width: 0, height: 50)
         
         customLayout.minimumInteritemSpacing = 20
         customLayout.minimumLineSpacing = 20
@@ -33,7 +34,7 @@ import UIKit
     }
     
     override func viewDidLayoutSubviews() {
-        //CoursesImageView.layer.cornerRadius = CoursesImageView.frame.size.height / 2
+        //CoursesCollectionView.layer.cornerRadius = CoursesCollectionView.frame.size.height / 2
     }
     
    
@@ -43,15 +44,47 @@ import UIKit
     
     // number of views
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return array.count
+        return semesters[section].count
     }
     
     // populate views
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CoursesCollectionViewCell
-        cell.abbreveationLabel.text = array[indexPath.row]
+        
+        cell.layer.cornerRadius = cell.frame.size.height / 2
+        cell.coursesCVCellImageView.image = UIImage(named: "\(images[indexPath.row]).jpg")
+        //cell.coursesCVCellImageView.image = UIImage(named: "bg14.jpg")
+        let labelText = semesters[indexPath.section][indexPath.row]
+        
+        
+        let strokeTextAttributes = [
+            NSAttributedStringKey.strokeColor : UIColor.black,
+            NSAttributedStringKey.foregroundColor : UIColor.white,
+            NSAttributedStringKey.strokeWidth : -5.0,
+            NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 40)
+            ] as [NSAttributedStringKey : Any]
+        
+        cell.abbreveationLabel.attributedText = NSAttributedString(string: labelText, attributes: strokeTextAttributes)
+        
         return cell
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "coursesSectionHeader", for: indexPath) as! CoursesSectionHeader
+            
+            header.categoryTitleLabel.text = headerTitles[indexPath.section]
+            
+            return header
+        default:
+            assert(false, "Error...unexpected element kind encountered")
+        }
+        
     }
     
     /*
