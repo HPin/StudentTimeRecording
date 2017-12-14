@@ -213,7 +213,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vsp-7M-ofc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rxZ-lw-f1o"/>
+                    <navigationItem key="navigationItem" id="rxZ-lw-f1o">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pw4-rB-urt">
+                            <connections>
+                                <segue destination="t99-mJ-aEn" kind="presentation" id="hSA-2a-jAR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="CoursesCollectionView" destination="pXF-yt-PYe" id="Gig-DQ-O9b"/>
                     </connections>
@@ -232,6 +238,13 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TbH-EB-gIH">
                                 <rect key="frame" x="20" y="318.5" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Semester Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyz-MX-bwl">
+                                <rect key="frame" x="20" y="265" width="335" height="30"/>
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -263,28 +276,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course Abbreveation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bjp-TE-mCW">
+                                <rect key="frame" x="20" y="384" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Y4R-It-n7b" firstAttribute="trailing" secondItem="Xaa-su-3OH" secondAttribute="trailing" constant="20" id="3ZY-mm-A0p"/>
+                            <constraint firstItem="bjp-TE-mCW" firstAttribute="top" secondItem="TbH-EB-gIH" secondAttribute="bottom" constant="35.5" id="4co-9N-TPs"/>
                             <constraint firstItem="TbH-EB-gIH" firstAttribute="leading" secondItem="Y4R-It-n7b" secondAttribute="leading" constant="20" id="G5f-0V-yxb"/>
                             <constraint firstItem="GVU-Pg-qf8" firstAttribute="leading" secondItem="Y4R-It-n7b" secondAttribute="leading" id="Lwq-1i-y0r"/>
+                            <constraint firstItem="Y4R-It-n7b" firstAttribute="trailing" secondItem="hyz-MX-bwl" secondAttribute="trailing" constant="20" id="UVr-J2-A8A"/>
                             <constraint firstItem="TbH-EB-gIH" firstAttribute="centerY" secondItem="U7f-Ev-8yh" secondAttribute="centerY" id="XaV-Hc-wa1"/>
                             <constraint firstItem="TbH-EB-gIH" firstAttribute="top" secondItem="Xaa-su-3OH" secondAttribute="bottom" constant="70" id="b9I-mQ-Kdr"/>
                             <constraint firstItem="Xaa-su-3OH" firstAttribute="leading" secondItem="Y4R-It-n7b" secondAttribute="leading" constant="20" id="c6H-go-ZRG"/>
+                            <constraint firstItem="Y4R-It-n7b" firstAttribute="trailing" secondItem="bjp-TE-mCW" secondAttribute="trailing" constant="20" id="dFx-eZ-WE2"/>
                             <constraint firstItem="Y4R-It-n7b" firstAttribute="trailing" secondItem="TbH-EB-gIH" secondAttribute="trailing" constant="20" id="fkh-cw-aFj"/>
                             <constraint firstItem="GVU-Pg-qf8" firstAttribute="trailing" secondItem="Y4R-It-n7b" secondAttribute="trailing" id="iYv-L5-zKY"/>
+                            <constraint firstItem="hyz-MX-bwl" firstAttribute="leading" secondItem="Y4R-It-n7b" secondAttribute="leading" constant="20" id="l0A-XS-xc3"/>
+                            <constraint firstItem="hyz-MX-bwl" firstAttribute="top" secondItem="Xaa-su-3OH" secondAttribute="bottom" constant="16.5" id="naN-yi-F1m"/>
+                            <constraint firstItem="bjp-TE-mCW" firstAttribute="leading" secondItem="Y4R-It-n7b" secondAttribute="leading" constant="20" id="rcz-XJ-nRq"/>
                             <constraint firstItem="GVU-Pg-qf8" firstAttribute="top" secondItem="U7f-Ev-8yh" secondAttribute="top" constant="20" id="w0s-ie-ZpD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y4R-It-n7b"/>
                     </view>
                     <connections>
+                        <outlet property="abbreveationTextField" destination="bjp-TE-mCW" id="feU-NK-Csy"/>
                         <outlet property="addCourseTextField" destination="TbH-EB-gIH" id="cXp-ps-fXM"/>
+                        <outlet property="semesterTextField" destination="hyz-MX-bwl" id="efo-6A-pR4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFW-kE-xsh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2862" y="-1961"/>
+            <point key="canvasLocation" x="2862" y="-2120"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OOs-a0-ccK">
@@ -329,4 +357,7 @@
     <resources>
         <image name="backgroundDoodle" width="450" height="450"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rCT-9R-qwp"/>
+    </inferredMetricsTieBreakers>
 </document>

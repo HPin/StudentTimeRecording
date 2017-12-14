@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B1003" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Course" representedClassName="Course" syncable="YES" codeGenerationType="class">
+    <entity name="Course" representedClassName=".Course" syncable="YES">
         <attribute name="courseName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="semester" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Semester" inverseName="courses" inverseEntity="Semester" syncable="YES"/>
+    </entity>
+    <entity name="Semester" representedClassName=".Semester" syncable="YES">
+        <attribute name="semesterName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="semester" inverseEntity="Course" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Course" positionX="-36" positionY="9" width="128" height="75"/>
+        <element name="Course" positionX="331" positionY="369" width="128" height="88"/>
+        <element name="Semester" positionX="151" positionY="177" width="128" height="73"/>
     </elements>
 </model>

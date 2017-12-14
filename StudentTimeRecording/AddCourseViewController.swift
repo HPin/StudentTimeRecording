@@ -12,7 +12,10 @@ import CoreData
 class AddCourseViewController: UIViewController {
 
     
-   
+    @IBOutlet weak var semesterTextField: UITextField!
+    
+    @IBOutlet weak var abbreveationTextField: UITextField!
+    
     @IBOutlet weak var addCourseTextField: UITextField!
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
@@ -20,11 +23,17 @@ class AddCourseViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        if (addCourseTextField.text != "") {
+        
+        if (addCourseTextField.text != "" && semesterTextField.text != "") {
             
             let newCoursesListEntry = NSEntityDescription.insertNewObject(forEntityName: "Course", into: self.managedContext!) as! Course
-            newCoursesListEntry.date = Date()
-            newCoursesListEntry.courseName = addCourseTextField.text!
+            newCoursesListEntry.date = NSDate()
+            //newCoursesListEntry.courseName = addCourseTextField.text!
+            
+            //let course = NSEntityDescription.insertNewObject(forEntityName: "Course", into: managedContext!) as! Course
+            //course.courseName = addCourseTextField.text!
+            //course.semester = semester
+            //course.date = NSDate()
             save()
             
             // return to course list
@@ -33,12 +42,13 @@ class AddCourseViewController: UIViewController {
             
             addCourseTextField.text = "" // reset text field
         } else {
-            let alert = UIAlertController(title: "ERROR", message: "You have to enter a course name first", preferredStyle: .alert)
+            let alert = UIAlertController(title: "ERROR", message: "You have to enter all parameters", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
             }))
             self.present(alert, animated: true, completion: nil)
         }
+        
     }
     
     lazy var managedContext: NSManagedObjectContext? = {
