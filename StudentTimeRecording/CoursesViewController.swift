@@ -65,7 +65,8 @@ import CoreData
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CoursesCollectionViewCell
         
-        cell.layer.cornerRadius = cell.frame.size.height / 2
+        //cell.layer.cornerRadius = cell.frame.size.height / 2
+        cell.layer.cornerRadius = 20
         cell.coursesCVCellImageView.image = UIImage(named: "\(images[indexPath.row]).jpg")
         //cell.coursesCVCellImageView.image = UIImage(named: "bg14.jpg")
         //let labelText = semesters[indexPath.section][indexPath.row]

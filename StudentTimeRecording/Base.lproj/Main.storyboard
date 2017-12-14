@@ -138,9 +138,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <imageView key="backgroundView" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundDoodle" id="Ctw-iC-41U">
+                                <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Ctw-iC-41U">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </imageView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="FnF-rN-Flb" customClass="CoursesCollectionViewCell" customModule="StudentTimeRecording" customModuleProvider="target">
@@ -358,6 +359,6 @@
         <image name="backgroundDoodle" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rCT-9R-qwp"/>
+        <segue reference="hSA-2a-jAR"/>
     </inferredMetricsTieBreakers>
 </document>
