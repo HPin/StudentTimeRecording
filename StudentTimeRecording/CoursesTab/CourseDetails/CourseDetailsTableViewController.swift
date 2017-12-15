@@ -1,21 +1,19 @@
 //
-//  CoursesTableViewController.swift
+//  CourseDetailsTableViewController.swift
 //  StudentTimeRecording
 //
-//  Created by HP on 10.12.17.
+//  Created by HP on 15.12.17.
 //  Copyright © 2017 HPJS. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class CoursesTableViewController: UITableViewController ,  NSFetchedResultsControllerDelegate {
-    //UITableViewDelegate, UITableViewDataSource maybe need to be included as well
-    
+class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+
     var courseClickedAtIndexPath: String!
-    
-    
-    @IBOutlet weak var coursesTableView: UITableView!
+
+    @IBOutlet weak var courseDetailsTableView: UITableView!
     
     // -------------------- create context -------------------------------------------
     lazy var managedContext: NSManagedObjectContext? = {
@@ -48,16 +46,16 @@ class CoursesTableViewController: UITableViewController ,  NSFetchedResultsContr
     
     // -------------------- update view -------------------------------------------
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView.beginUpdates()
+        courseDetailsTableView.beginUpdates()
     }
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject:
         Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
-            self.tableView.insertRows(at: [newIndexPath!], with: .fade)
+            courseDetailsTableView.insertRows(at: [newIndexPath!], with: .fade)
             break
         case .delete:
-            self.tableView.deleteRows(at: [indexPath!], with: .fade)
+            courseDetailsTableView.deleteRows(at: [indexPath!], with: .fade)
             break
         case .update:
             break
@@ -66,7 +64,7 @@ class CoursesTableViewController: UITableViewController ,  NSFetchedResultsContr
         }
     }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView.endUpdates()
+        courseDetailsTableView.endUpdates()
     }
     
     
@@ -78,8 +76,11 @@ class CoursesTableViewController: UITableViewController ,  NSFetchedResultsContr
         return 0
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 118
+    }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
             return currentSection.numberOfObjects
@@ -87,24 +88,24 @@ class CoursesTableViewController: UITableViewController ,  NSFetchedResultsContr
         return 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.register(CoursesCustomCell.self, forCellReuseIdentifier: "coursesCell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "coursesCell", for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //courseDetailsTableView.register(CourseDetailsTableViewCell.self, forCellReuseIdentifier: "courseDetailsCell")
+        let cell = courseDetailsTableView.dequeueReusableCell(withIdentifier: "courseDetailsCell") as! CourseDetailsTableViewCell
         let coursesListEntry = self.fetchedResultsController.object(at: indexPath) as! Course
         
-        cell.textLabel?.text = coursesListEntry.courseName
-        cell.textLabel?.numberOfLines = 0               // make new lines when out of bounds
+        cell.coursesCellTextLabel.text = coursesListEntry.courseName
+        cell.coursesCellTextLabel.numberOfLines = 0               // make new lines when out of bounds
         cell.backgroundColor = UIColor(red: 146/255, green: 144/255, blue: 0/255, alpha: 1)
         
         return cell
     }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCell = coursesTableView.cellForRow(at: indexPath) as! CoursesCustomCell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath) as! CourseDetailsTableViewCell
         
         courseClickedAtIndexPath = currentCell.textLabel?.text
-            
+        
         print("-----------------------------")
         print(courseClickedAtIndexPath)
         
@@ -114,7 +115,7 @@ class CoursesTableViewController: UITableViewController ,  NSFetchedResultsContr
     
     
     // -------------------- adds swipe to delete functionality ---------------
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .default, title: "delete") { (action, indexPath) in
             // call closure function
             self.deleteElement(path: indexPath)
@@ -133,10 +134,7 @@ class CoursesTableViewController: UITableViewController ,  NSFetchedResultsContr
     }
     
     
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-    }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
