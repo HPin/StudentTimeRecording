@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,27 +28,39 @@
             </objects>
             <point key="canvasLocation" x="945" y="211"/>
         </scene>
-        <!--Item 1-->
+        <!--Charts View Controller-->
         <scene sceneID="m57-ht-SqU">
             <objects>
-                <viewController id="ARI-Fv-fJp" sceneMemberID="viewController">
+                <viewController id="ARI-Fv-fJp" customClass="ChartsViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EaT-iq-ajp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundDoodle" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-YE-uSh">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CF-Y3-9qM">
+                                <rect key="frame" x="0.0" y="419" width="375" height="199"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="6XD-9b-ewx" kind="embed" id="Acq-qE-VeB"/>
+                                </connections>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="UcW-8m-T63"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="F6A-nM-U58"/>
+                    <navigationItem key="navigationItem" id="NpG-JO-gT4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="U1I-zi-g15">
+                            <connections>
+                                <action selector="overLayBarButton:" destination="ARI-Fv-fJp" id="BFN-Sv-s3c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="overlaySubview" destination="8CF-Y3-9qM" id="AHb-Qg-a9M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK2-KJ-Sum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="-558"/>
+            <point key="canvasLocation" x="1809" y="-558"/>
         </scene>
         <!--My Courses-->
         <scene sceneID="d5A-6L-41t">
@@ -73,11 +86,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Courses" id="Cey-Mh-G2l">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="a3n-kt-XRT">
-                            <connections>
-                                <segue destination="t99-mJ-aEn" kind="presentation" id="rCT-9R-qwp"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="a3n-kt-XRT">
+                                <connections>
+                                    <segue destination="t99-mJ-aEn" kind="presentation" id="rCT-9R-qwp"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="fSo-Yc-gk4">
+                                <connections>
+                                    <action selector="overlayButton:" destination="kX5-XB-8FQ" id="EzQ-jm-Ff6"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="coursesTableView" destination="z8o-Gn-brb" id="GFD-ZN-kZ7"/>
@@ -223,11 +243,88 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CoursesCollectionView" destination="pXF-yt-PYe" id="Gig-DQ-O9b"/>
+                        <segue destination="TAt-Gt-QKI" kind="show" identifier="testsegue" id="ZUb-ql-dH4"/>
+                        <segue destination="f49-mY-Cmq" kind="show" identifier="courseDetailsSegue" id="Fa7-Df-QMb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GrN-WY-5wf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808.8" y="-2687.4062968515746"/>
+            <point key="canvasLocation" x="1983" y="-2687"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Vde-4V-zfS">
+            <objects>
+                <viewController id="TAt-Gt-QKI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z42-Pq-Lqf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="LgB-gW-Y8j"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ie6-2U-Tn4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2961" y="-3358"/>
+        </scene>
+        <!--Course Details Table View Controller-->
+        <scene sceneID="gDi-Ft-Bt7">
+            <objects>
+                <viewController id="f49-mY-Cmq" customClass="CourseDetailsTableViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1N6-ei-fHG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HEO-nz-Yw4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="courseDetailsCell" id="DtD-5b-s0W" customClass="CourseDetailsTableViewCell" customModule="StudentTimeRecording" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DtD-5b-s0W" id="pmf-v3-pL0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAx-QA-hrz">
+                                                    <rect key="frame" x="35" y="12" width="61.5" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BAx-QA-hrz" firstAttribute="bottom" secondItem="pmf-v3-pL0" secondAttribute="bottomMargin" constant="1" id="2JH-9M-7Yu"/>
+                                                <constraint firstItem="BAx-QA-hrz" firstAttribute="top" secondItem="pmf-v3-pL0" secondAttribute="topMargin" constant="1" id="R6s-bM-2XQ"/>
+                                                <constraint firstItem="BAx-QA-hrz" firstAttribute="leading" secondItem="pmf-v3-pL0" secondAttribute="leadingMargin" constant="20" id="cDs-Ff-84T"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="coursesCellTextLabel" destination="BAx-QA-hrz" id="u8H-gm-qzu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="f49-mY-Cmq" id="Jhq-t2-m4G"/>
+                                    <outlet property="delegate" destination="f49-mY-Cmq" id="eLV-yh-YCp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QiF-td-w1Z" firstAttribute="trailing" secondItem="HEO-nz-Yw4" secondAttribute="trailing" id="6KO-ec-Vao"/>
+                            <constraint firstItem="HEO-nz-Yw4" firstAttribute="leading" secondItem="QiF-td-w1Z" secondAttribute="leading" id="ACM-xp-a8l"/>
+                            <constraint firstItem="HEO-nz-Yw4" firstAttribute="top" secondItem="QiF-td-w1Z" secondAttribute="top" id="KVf-eq-TsH"/>
+                            <constraint firstItem="QiF-td-w1Z" firstAttribute="bottom" secondItem="HEO-nz-Yw4" secondAttribute="bottom" id="WKf-Gl-vLv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QiF-td-w1Z"/>
+                    </view>
+                    <connections>
+                        <outlet property="courseDetailsTableView" destination="HEO-nz-Yw4" id="2iz-qd-8Qi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6R2-gN-Kyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2961" y="-2687"/>
         </scene>
         <!--Add Course View Controller-->
         <scene sceneID="OjR-Mz-p3u">
@@ -330,7 +427,7 @@
                     <connections>
                         <segue destination="PW8-4q-Jta" kind="relationship" relationship="viewControllers" id="BlU-cU-BnF"/>
                         <segue destination="pfi-yJ-b7C" kind="relationship" relationship="viewControllers" id="XIY-lK-hIv"/>
-                        <segue destination="ARI-Fv-fJp" kind="relationship" relationship="viewControllers" id="UEH-4S-sUy"/>
+                        <segue destination="Ns2-Lg-RjC" kind="relationship" relationship="viewControllers" id="UEH-4S-sUy"/>
                         <segue destination="8xs-3i-fMO" kind="relationship" relationship="viewControllers" id="01j-Mg-f9A"/>
                     </connections>
                 </tabBarController>
@@ -357,10 +454,57 @@
             </objects>
             <point key="canvasLocation" x="944" y="-1246.776611694153"/>
         </scene>
+        <!--Charts Subview Controller-->
+        <scene sceneID="Qpq-77-l4T">
+            <objects>
+                <viewController id="6XD-9b-ewx" customClass="ChartsSubviewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wkD-HK-Ln0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ib4-di-7mU">
+                                <rect key="frame" x="127" y="85" width="121" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="typeSegmentedControl:" destination="6XD-9b-ewx" eventType="valueChanged" id="uUd-Jc-tQd"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fvr-xo-y6c"/>
+                    </view>
+                    <connections>
+                        <outlet property="typeSegmentedControl" destination="ib4-di-7mU" id="dzU-Ho-Ruz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGv-bD-vkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2591" y="-315"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="vjX-wX-eoP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ns2-Lg-RjC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 1" id="F6A-nM-U58"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MHS-BX-hMN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ARI-Fv-fJp" kind="relationship" relationship="rootViewController" id="mH3-Zu-mpi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Eg-By-REg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944" y="-558.62068965517244"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="backgroundDoodle" width="450" height="450"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hSA-2a-jAR"/>
     </inferredMetricsTieBreakers>

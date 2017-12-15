@@ -93,7 +93,7 @@ import CoreData
         case UICollectionElementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "coursesSectionHeader", for: indexPath) as! CoursesSectionHeader
             
-            //header.categoryTitleLabel.text = headerTitles[indexPath.section]
+            header.categoryTitleLabel.text = headerTitles[indexPath.section]
             
             return header
         default:
@@ -102,7 +102,9 @@ import CoreData
         
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "courseDetailsSegue", sender: self)
+    }
     
     // #######core data stuff:#########
     
