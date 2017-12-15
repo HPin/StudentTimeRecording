@@ -36,39 +36,14 @@ class CoursesTableViewController: UITableViewController,  NSFetchedResultsContro
     
     @IBOutlet weak var coursesTableView: UITableView!
     
-    // -------------------- create context -------------------------------------------
-    lazy var managedContext: NSManagedObjectContext? = {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
-        }
-        return appDelegate.persistentContainer.viewContext
-    }()
-    
-    // -------------------- query -------------------------------------------
-    lazy var fetchedResultsController: NSFetchedResultsController<NSManagedObject> = {
-        let request = NSFetchRequest<NSManagedObject>(entityName: "Course")
-        request.fetchBatchSize = 20
-        request.fetchLimit = 100
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true) // sort by date
-        request.sortDescriptors = [sortDescriptor]
-        let frc = NSFetchedResultsController<NSManagedObject>(fetchRequest: request, managedObjectContext:
-            self.managedContext!, sectionNameKeyPath: nil, cacheName: "Cache")
-        frc.delegate = self
-        // perform initial model fetch
-        do {
-            try frc.performFetch()
-        } catch let e as NSError {
-            print("Fetch error: \(e.localizedDescription)")
-            abort();
-        }
-        return frc
-    }()
-    
+   
     
     // -------------------- update view -------------------------------------------
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
     }
+    
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject:
         Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
@@ -109,8 +84,8 @@ class CoursesTableViewController: UITableViewController,  NSFetchedResultsContro
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(CoursesCustomCell.self, forCellReuseIdentifier: "coursesCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "coursesCell", for: indexPath)
-        let coursesListEntry = self.fetchedResultsController.object(at: indexPath) as! Course
-        
+        let controller = RealmController()
+       
         cell.textLabel?.text = coursesListEntry.courseName
         cell.textLabel?.numberOfLines = 0               // make new lines when out of bounds
         cell.backgroundColor = UIColor(red: 146/255, green: 144/255, blue: 0/255, alpha: 1)

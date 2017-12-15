@@ -7,18 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		360312C71FE4397700892F6E /* LectureAtHome+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312BB1FE4397700892F6E /* LectureAtHome+CoreDataClass.swift */; };
-		360312C81FE4397700892F6E /* LectureAtHome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312BC1FE4397700892F6E /* LectureAtHome+CoreDataProperties.swift */; };
-		360312C91FE4397700892F6E /* LectureAtUni+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312BD1FE4397700892F6E /* LectureAtUni+CoreDataClass.swift */; };
-		360312CA1FE4397700892F6E /* LectureAtUni+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312BE1FE4397700892F6E /* LectureAtUni+CoreDataProperties.swift */; };
-		360312CB1FE4397700892F6E /* Course+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312BF1FE4397700892F6E /* Course+CoreDataClass.swift */; };
-		360312CC1FE4397700892F6E /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312C01FE4397700892F6E /* Course+CoreDataProperties.swift */; };
-		360312CD1FE4397700892F6E /* ExerciseAtHome+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312C11FE4397700892F6E /* ExerciseAtHome+CoreDataClass.swift */; };
-		360312CE1FE4397700892F6E /* ExerciseAtHome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312C21FE4397700892F6E /* ExerciseAtHome+CoreDataProperties.swift */; };
-		360312CF1FE4397700892F6E /* ExerciseAtUni+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312C31FE4397700892F6E /* ExerciseAtUni+CoreDataClass.swift */; };
-		360312D01FE4397700892F6E /* ExerciseAtUni+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312C41FE4397700892F6E /* ExerciseAtUni+CoreDataProperties.swift */; };
-		360312D11FE4397700892F6E /* Semester+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312C51FE4397700892F6E /* Semester+CoreDataClass.swift */; };
-		360312D21FE4397700892F6E /* Semester+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312C61FE4397700892F6E /* Semester+CoreDataProperties.swift */; };
+		360312D41FE4690200892F6E /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312D31FE4690200892F6E /* RealmController.swift */; };
+		360312D61FE470DB00892F6E /* RealmClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312D51FE470DB00892F6E /* RealmClasses.swift */; };
+		82043205AD3A37AC4E41D638 /* Pods_StudentTimeRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6B08CB0FB7D32DB30FB291 /* Pods_StudentTimeRecording.framework */; };
 		E6041FD11FDEC5C1008ABB53 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6041FD01FDEC5C1008ABB53 /* CoursesViewController.swift */; };
 		E6041FD31FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6041FD21FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift */; };
 		E6041FD51FDF0B56008ABB53 /* CoursesSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6041FD41FDF0B56008ABB53 /* CoursesSectionHeader.swift */; };
@@ -30,7 +21,6 @@
 		E67A1D8D1FE3F447005551AE /* CourseDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A1D8C1FE3F447005551AE /* CourseDetailsTableViewController.swift */; };
 		E6894D0F1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6894D0E1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift */; };
 		E6C34DDE1FE3173F00787720 /* AddOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C34DDD1FE3173E00787720 /* AddOverlay.swift */; };
-		E6C34DE01FE3217E00787720 /* OverlayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C34DDF1FE3217E00787720 /* OverlayCell.swift */; };
 		E6C34DE21FE32C0600787720 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C34DE11FE32C0600787720 /* Extensions.swift */; };
 		E6F246531FDABFB2002FA853 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F246521FDABFB2002FA853 /* AppDelegate.swift */; };
 		E6F246581FDABFB2002FA853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F246561FDABFB2002FA853 /* Main.storyboard */; };
@@ -59,18 +49,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		360312BB1FE4397700892F6E /* LectureAtHome+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LectureAtHome+CoreDataClass.swift"; sourceTree = "<group>"; };
-		360312BC1FE4397700892F6E /* LectureAtHome+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LectureAtHome+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		360312BD1FE4397700892F6E /* LectureAtUni+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LectureAtUni+CoreDataClass.swift"; sourceTree = "<group>"; };
-		360312BE1FE4397700892F6E /* LectureAtUni+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LectureAtUni+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		360312BF1FE4397700892F6E /* Course+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course+CoreDataClass.swift"; sourceTree = "<group>"; };
-		360312C01FE4397700892F6E /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		360312C11FE4397700892F6E /* ExerciseAtHome+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseAtHome+CoreDataClass.swift"; sourceTree = "<group>"; };
-		360312C21FE4397700892F6E /* ExerciseAtHome+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseAtHome+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		360312C31FE4397700892F6E /* ExerciseAtUni+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseAtUni+CoreDataClass.swift"; sourceTree = "<group>"; };
-		360312C41FE4397700892F6E /* ExerciseAtUni+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseAtUni+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		360312C51FE4397700892F6E /* Semester+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Semester+CoreDataClass.swift"; sourceTree = "<group>"; };
-		360312C61FE4397700892F6E /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		265C493E65F3CDF1DB3EB4A2 /* Pods-StudentTimeRecording.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentTimeRecording.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StudentTimeRecording/Pods-StudentTimeRecording.debug.xcconfig"; sourceTree = "<group>"; };
+		360312D31FE4690200892F6E /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
+		360312D51FE470DB00892F6E /* RealmClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClasses.swift; sourceTree = "<group>"; };
+		9FA78CB5C7E08DD1A5B276C9 /* Pods-StudentTimeRecording.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentTimeRecording.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudentTimeRecording/Pods-StudentTimeRecording.release.xcconfig"; sourceTree = "<group>"; };
+		AE6B08CB0FB7D32DB30FB291 /* Pods_StudentTimeRecording.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudentTimeRecording.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6041FD01FDEC5C1008ABB53 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		E6041FD21FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6041FD41FDF0B56008ABB53 /* CoursesSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesSectionHeader.swift; sourceTree = "<group>"; };
@@ -104,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82043205AD3A37AC4E41D638 /* Pods_StudentTimeRecording.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +108,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14265A2072933A18710C240A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				265C493E65F3CDF1DB3EB4A2 /* Pods-StudentTimeRecording.debug.xcconfig */,
+				9FA78CB5C7E08DD1A5B276C9 /* Pods-StudentTimeRecording.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3ECBBB01356B10A6315A2123 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE6B08CB0FB7D32DB30FB291 /* Pods_StudentTimeRecording.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E67A1D851FE3DFF7005551AE /* ChartTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +180,8 @@
 				E6F246691FDABFB2002FA853 /* StudentTimeRecordingTests */,
 				E6F246741FDABFB2002FA853 /* StudentTimeRecordingUITests */,
 				E6F246501FDABFB2002FA853 /* Products */,
+				14265A2072933A18710C240A /* Pods */,
+				3ECBBB01356B10A6315A2123 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,18 +198,7 @@
 		E6F246511FDABFB2002FA853 /* StudentTimeRecording */ = {
 			isa = PBXGroup;
 			children = (
-				360312BB1FE4397700892F6E /* LectureAtHome+CoreDataClass.swift */,
-				360312BC1FE4397700892F6E /* LectureAtHome+CoreDataProperties.swift */,
-				360312BD1FE4397700892F6E /* LectureAtUni+CoreDataClass.swift */,
-				360312BE1FE4397700892F6E /* LectureAtUni+CoreDataProperties.swift */,
-				360312BF1FE4397700892F6E /* Course+CoreDataClass.swift */,
-				360312C01FE4397700892F6E /* Course+CoreDataProperties.swift */,
-				360312C11FE4397700892F6E /* ExerciseAtHome+CoreDataClass.swift */,
-				360312C21FE4397700892F6E /* ExerciseAtHome+CoreDataProperties.swift */,
-				360312C31FE4397700892F6E /* ExerciseAtUni+CoreDataClass.swift */,
-				360312C41FE4397700892F6E /* ExerciseAtUni+CoreDataProperties.swift */,
-				360312C51FE4397700892F6E /* Semester+CoreDataClass.swift */,
-				360312C61FE4397700892F6E /* Semester+CoreDataProperties.swift */,
+				360312D51FE470DB00892F6E /* RealmClasses.swift */,
 				E6F246521FDABFB2002FA853 /* AppDelegate.swift */,
 				E67A1D871FE3E02B005551AE /* CoursesTableView */,
 				E67A1D861FE3E010005551AE /* CoursesTab */,
@@ -218,6 +210,7 @@
 				E6F246611FDABFB2002FA853 /* Info.plist */,
 				E6F246591FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld */,
 				E6C34DE11FE32C0600787720 /* Extensions.swift */,
+				360312D31FE4690200892F6E /* RealmController.swift */,
 			);
 			path = StudentTimeRecording;
 			sourceTree = "<group>";
@@ -247,9 +240,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6F2467A1FDABFB2002FA853 /* Build configuration list for PBXNativeTarget "StudentTimeRecording" */;
 			buildPhases = (
+				761A4C21EC88A6F8DA12E785 /* [CP] Check Pods Manifest.lock */,
 				E6F2464B1FDABFB2002FA853 /* Sources */,
 				E6F2464C1FDABFB2002FA853 /* Frameworks */,
 				E6F2464D1FDABFB2002FA853 /* Resources */,
+				5C83C252B8C8057794E976A9 /* [CP] Embed Pods Frameworks */,
+				7249DDC0A7E08D13C9865AC7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -369,37 +365,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5C83C252B8C8057794E976A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-StudentTimeRecording/Pods-StudentTimeRecording-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudentTimeRecording/Pods-StudentTimeRecording-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7249DDC0A7E08D13C9865AC7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudentTimeRecording/Pods-StudentTimeRecording-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		761A4C21EC88A6F8DA12E785 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StudentTimeRecording-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E6F2464B1FDABFB2002FA853 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				360312CC1FE4397700892F6E /* Course+CoreDataProperties.swift in Sources */,
-				360312D21FE4397700892F6E /* Semester+CoreDataProperties.swift in Sources */,
 				E666D93C1FDDD02B00560881 /* CoursesTableViewController.swift in Sources */,
 				E6894D0F1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift in Sources */,
 				E6F2465B1FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld in Sources */,
-				360312D01FE4397700892F6E /* ExerciseAtUni+CoreDataProperties.swift in Sources */,
-				360312CE1FE4397700892F6E /* ExerciseAtHome+CoreDataProperties.swift in Sources */,
+				360312D41FE4690200892F6E /* RealmController.swift in Sources */,
 				E666D93E1FDDD24800560881 /* AddCourseViewController.swift in Sources */,
-				360312D11FE4397700892F6E /* Semester+CoreDataClass.swift in Sources */,
 				E6041FD31FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift in Sources */,
-				360312CA1FE4397700892F6E /* LectureAtUni+CoreDataProperties.swift in Sources */,
-				360312C81FE4397700892F6E /* LectureAtHome+CoreDataProperties.swift in Sources */,
 				E666D93A1FDDD00300560881 /* CoursesCustomCell.swift in Sources */,
 				E67A1D891FE3E13E005551AE /* ChartsSubviewController.swift in Sources */,
 				E6F246531FDABFB2002FA853 /* AppDelegate.swift in Sources */,
-				360312C71FE4397700892F6E /* LectureAtHome+CoreDataClass.swift in Sources */,
-				360312CD1FE4397700892F6E /* ExerciseAtHome+CoreDataClass.swift in Sources */,
-				360312CB1FE4397700892F6E /* Course+CoreDataClass.swift in Sources */,
 				E6041FD11FDEC5C1008ABB53 /* CoursesViewController.swift in Sources */,
 				E67A1D8D1FE3F447005551AE /* CourseDetailsTableViewController.swift in Sources */,
 				E6C34DDE1FE3173F00787720 /* AddOverlay.swift in Sources */,
+				360312D61FE470DB00892F6E /* RealmClasses.swift in Sources */,
 				E67A1D841FE3DFE6005551AE /* ChartsViewController.swift in Sources */,
 				E6C34DE21FE32C0600787720 /* Extensions.swift in Sources */,
 				E6041FD51FDF0B56008ABB53 /* CoursesSectionHeader.swift in Sources */,
-				360312C91FE4397700892F6E /* LectureAtUni+CoreDataClass.swift in Sources */,
-				360312CF1FE4397700892F6E /* ExerciseAtUni+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,9 +605,11 @@
 		};
 		E6F2467B1FDABFB2002FA853 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 265C493E65F3CDF1DB3EB4A2 /* Pods-StudentTimeRecording.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PWPA7U96ES;
 				INFOPLIST_FILE = StudentTimeRecording/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.StudentTimeRecording;
@@ -577,9 +621,11 @@
 		};
 		E6F2467C1FDABFB2002FA853 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FA78CB5C7E08DD1A5B276C9 /* Pods-StudentTimeRecording.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PWPA7U96ES;
 				INFOPLIST_FILE = StudentTimeRecording/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.StudentTimeRecording;
