@@ -27,7 +27,7 @@ class AddCourseViewController: UIViewController {
         if (addCourseTextField.text != "") {
             
             let newCoursesListEntry = NSEntityDescription.insertNewObject(forEntityName: "Course", into: self.managedContext!) as! Course
-            newCoursesListEntry.date = Date()
+            
             newCoursesListEntry.courseName = addCourseTextField.text!
             save()
             

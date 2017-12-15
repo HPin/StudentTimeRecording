@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B1003" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Course" representedClassName="Course" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Course" representedClassName="Course" syncable="YES">
         <attribute name="courseName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="courseNameShort" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="exerciseAtHome" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseAtHome" inverseName="course" inverseEntity="ExerciseAtHome" syncable="YES"/>
+        <relationship name="exerciseAtUni" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseAtUni" inverseName="course" inverseEntity="ExerciseAtUni" syncable="YES"/>
+        <relationship name="lectureAtHome" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LectureAtHome" inverseName="course" inverseEntity="LectureAtHome" syncable="YES"/>
+        <relationship name="lectureAtUni" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LectureAtUni" inverseName="course" inverseEntity="LectureAtUni" syncable="YES"/>
         <relationship name="semester" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Semester" inverseName="courses" inverseEntity="Semester" syncable="YES"/>
     </entity>
-    <entity name="Semester" representedClassName="Semester" syncable="YES" codeGenerationType="class">
+    <entity name="ExerciseAtHome" representedClassName="ExerciseAtHome" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="exerciseAtHome" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <entity name="ExerciseAtUni" representedClassName="ExerciseAtUni" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="exerciseAtUni" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <entity name="LectureAtHome" representedClassName="LectureAtHome" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="lectureAtHome" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <entity name="LectureAtUni" representedClassName="LectureAtUni" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="lectureAtUni" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <entity name="Semester" representedClassName="Semester" syncable="YES">
         <attribute name="semesterName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="semester" inverseEntity="Course" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Course" positionX="331" positionY="369" width="128" height="90"/>
-        <element name="Semester" positionX="151" positionY="177" width="128" height="75"/>
+        <element name="Course" positionX="331" positionY="369" width="128" height="148"/>
+        <element name="Semester" positionX="151" positionY="177" width="128" height="73"/>
+        <element name="ExerciseAtHome" positionX="252" positionY="315" width="128" height="88"/>
+        <element name="ExerciseAtUni" positionX="261" positionY="324" width="128" height="88"/>
+        <element name="LectureAtUni" positionX="270" positionY="333" width="128" height="88"/>
+        <element name="LectureAtHome" positionX="279" positionY="342" width="128" height="88"/>
     </elements>
 </model>
