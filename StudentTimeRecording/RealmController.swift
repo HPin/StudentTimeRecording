@@ -11,6 +11,17 @@ import RealmSwift
 
 class RealmController{
     
+    
+    func getAllSemester() -> Results<Semester>{
+        
+        let realm = try! Realm()
+        
+        let allSemester = realm.objects(Semester.self)
+        
+        return allSemester
+        
+    }
+    
     func addSemester(name: String){
         let realm = try! Realm()
         
