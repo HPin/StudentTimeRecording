@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate {
+    
+    let realmController = RealmController()
+    var semesters: Results<Semester>!
     
     func dismissTheOverlay() {
         addOverlay.dismissOverlay()
@@ -44,6 +48,14 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate {
     @IBOutlet weak var overlaySubview: UIView!
     
     @IBAction func overLayBarButton(_ sender: UIBarButtonItem) {
+        
+        realmController.addSemester(name: "WS 2017")
+        
+        let courseName = "projekttest"
+        let courseNameShort = "pro"
+        let sem = semesters[0]
+        
+        realmController.addCourse(name: courseName, nameShort: courseNameShort, semester: sem)
         
         addOverlay.createOverlay()
         
@@ -88,8 +100,9 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("start")
         
+        semesters = realmController.getAllSemesters()
+
 
         overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
         // Do any additional setup after loading the view.

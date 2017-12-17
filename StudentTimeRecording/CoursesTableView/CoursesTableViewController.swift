@@ -95,18 +95,34 @@ class CoursesTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("----------datasource at section courses count--------------")
-        print(dataSource[section].courses.count)
-        return dataSource[section].courses.count
+        
+        if section < dataSource.count {
+            return dataSource[section].courses.count
+        } else {
+            return 0
+        }
+        
+        //return dataSource[section].courses.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(CoursesCustomCell.self, forCellReuseIdentifier: "coursesCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "coursesCell", for: indexPath)
         
-        let currentCourse = dataSource[indexPath.section].courses[indexPath.row]
+        if indexPath.section < dataSource.count {
+            if indexPath.row < dataSource[indexPath.section].courses.count {
+                let currentCourse = dataSource[indexPath.section].courses[indexPath.row]
+                cell.textLabel?.text = currentCourse.nameShort
+            } else {
+                cell.textLabel?.text = "no data available"
+            }
+        } else {
+            cell.textLabel?.text =  "no data available"
+        }
         
-        cell.textLabel?.text = currentCourse.nameShort
+//        let currentCourse = dataSource[indexPath.section].courses[indexPath.row]
+//        cell.textLabel?.text = currentCourse.nameShort
+        
         cell.textLabel?.numberOfLines = 0               // make new lines when out of bounds
         cell.backgroundColor = UIColor(red: 146/255, green: 144/255, blue: 0/255, alpha: 1)
         

@@ -13,7 +13,7 @@ import RealmSwift
 class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, NewSemesterSubviewControllerDelegate {
    
     let realmController = RealmController()
-    var semesters: Results<Semester>?
+    var semesters: Results<Semester>!
     var selectedSemester: Semester?
     
     //let blackView = UIView()
@@ -27,6 +27,10 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func refreshPicker() {
         semesterPicker.reloadAllComponents()
+        
+        if semesters.count >= 1 {
+            selectedSemester = semesters[0]
+        }
     }
     
     func dismissTheOverlay() {
@@ -88,28 +92,26 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if let sems = semesters {
-            return sems.count
-        } else {
-            return 0
-        }
+        print("semesters: \(semesters.count)")
+        return semesters.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
+        print("row: \(row)")
         
-        if let name = semesters?[row].name {
-            return name
+        if row < semesters.count {
+            return semesters[row].name
         } else {
-            return ""
+            return "no data available"
         }
+        
+       
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        if let selectedSemester = semesters?[row] {
-            self.selectedSemester = selectedSemester
-        }
+        selectedSemester = semesters[row]
     }
     
     
@@ -169,12 +171,12 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     override func viewWillAppear(_ animated: Bool) {
 
-        semesters = try realmController.getAllSemesters()
-
-        if let selectedSemester = semesters?[0] {
-            self.selectedSemester = selectedSemester
+        semesters = realmController.getAllSemesters()
+        
+        if semesters.count >= 1 {
+            selectedSemester = semesters[0]
         }
-
+        
     }
     
    

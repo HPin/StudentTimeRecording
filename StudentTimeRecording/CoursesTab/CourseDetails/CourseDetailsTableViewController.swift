@@ -23,8 +23,7 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     
     override func viewWillAppear(_ animated: Bool) {
         reloadTableView()
-        print("----------datasource count--------------")
-        print(semesters.count)    }
+    }
     
     
     override func viewDidLoad() {

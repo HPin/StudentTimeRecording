@@ -14,16 +14,10 @@ class RealmController{
     
     func getAllSemesters() -> Results<Semester> {
         
-        var realm: Realm?
+        let realm = try! Realm()
         
-        do {
-            realm = try Realm()
-        } catch {
-            print("error in function getAllSemesters")
-        }
-        
-        let allSemesters = realm?.objects(Semester.self)
-        return allSemesters!
+        let allSemesters = realm.objects(Semester.self)
+        return allSemesters
         
     }
     
