@@ -7,12 +7,17 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
-class CoursesTableViewController: UITableViewController,  NSFetchedResultsControllerDelegate {
+class CoursesTableViewController: UITableViewController {
     //UITableViewDelegate, UITableViewDataSource maybe need to be included as well
     
-    var courseClickedAtIndexPath: String!
+    //var courseClickedAtIndexPath: String!
+    
+    let realmController = RealmController()
+    var dataSource: Results<Semester>!
+    
+    @IBOutlet weak var coursesTableView: UITableView!
     
     // pass reference to self into AddOverlay, otherwise we encounter a nil object there
     lazy var addOverlay: AddOverlay = {
@@ -25,6 +30,9 @@ class CoursesTableViewController: UITableViewController,  NSFetchedResultsContro
     }
     
     func showSettingsOverlay(setting: Setting) {
+        
+        
+        
         let dummySettingsViewController = UIViewController()
         dummySettingsViewController.view.backgroundColor = UIColor.white
         dummySettingsViewController.navigationItem.title = setting.name
@@ -34,11 +42,28 @@ class CoursesTableViewController: UITableViewController,  NSFetchedResultsContro
     }
     
     
-    @IBOutlet weak var coursesTableView: UITableView!
     
-   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reloadTableView()
+        print("----------datasource count--------------")
+        print(dataSource.count)    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        reloadTableView()
+    }
+    
+    func reloadTableView() {
+        
+        dataSource = realmController.getAllSemesters()
+        tableView?.reloadData()
+        
+    }
     
     // -------------------- update view -------------------------------------------
+    /*
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
     }
@@ -62,31 +87,27 @@ class CoursesTableViewController: UITableViewController,  NSFetchedResultsContro
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
     }
-    
+    */
     
     // -------------------- create table view entries -------------------------------------------
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let sections = fetchedResultsController.sections {
-            return sections.count
-        }
-        return 0
+        return dataSource.count
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController.sections {
-            let currentSection = sections[section]
-            return currentSection.numberOfObjects
-        }
-        return 0
+        print("----------datasource at section courses count--------------")
+        print(dataSource[section].courses.count)
+        return dataSource[section].courses.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(CoursesCustomCell.self, forCellReuseIdentifier: "coursesCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "coursesCell", for: indexPath)
-        let controller = RealmController()
-       
-        cell.textLabel?.text = coursesListEntry.courseName
+        
+        let currentCourse = dataSource[indexPath.section].courses[indexPath.row]
+        
+        cell.textLabel?.text = currentCourse.nameShort
         cell.textLabel?.numberOfLines = 0               // make new lines when out of bounds
         cell.backgroundColor = UIColor(red: 146/255, green: 144/255, blue: 0/255, alpha: 1)
         
@@ -97,26 +118,26 @@ class CoursesTableViewController: UITableViewController,  NSFetchedResultsContro
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = coursesTableView.cellForRow(at: indexPath) as! CoursesCustomCell
         
-        courseClickedAtIndexPath = currentCell.textLabel?.text
-            
-        print("-----------------------------")
-        print(courseClickedAtIndexPath)
+        //courseClickedAtIndexPath = currentCell.textLabel?.text
         
         performSegue(withIdentifier: "courseDetailsSegue", sender: self)
     }
     
     
-    
+    /*
     // -------------------- adds swipe to delete functionality ---------------
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
         let delete = UITableViewRowAction(style: .default, title: "delete") { (action, indexPath) in
             // call closure function
             self.deleteElement(path: indexPath)
         }
         return [delete]
     }
-    
+    */
     func deleteElement(path: IndexPath) -> Void {
+        
+        /*
         let deleteThisElem = fetchedResultsController.object(at: path)
         self.managedContext?.delete(deleteThisElem)                 // delete from storage
         do {
@@ -124,18 +145,13 @@ class CoursesTableViewController: UITableViewController,  NSFetchedResultsContro
         } catch {
             print("Could not delete entry from list.")
         }
+        */
     }
     
     
     
     
-    override func viewDidAppear(_ animated: Bool) {
-    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
     
     

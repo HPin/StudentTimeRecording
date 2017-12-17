@@ -8,13 +8,37 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     var courseClickedAtIndexPath: String!
+    
+    let realmController = RealmController()
+    var semesters: Results<Semester>!
 
     @IBOutlet weak var courseDetailsTableView: UITableView!
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reloadTableView()
+        print("----------datasource count--------------")
+        print(semesters.count)    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        reloadTableView()
+    }
+    
+    
+    func reloadTableView() {
+        semesters = realmController.getAllSemesters()
+        courseDetailsTableView.reloadData()
+    }
+    
+    /*
     // -------------------- create context -------------------------------------------
     lazy var managedContext: NSManagedObjectContext? = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -66,14 +90,11 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         courseDetailsTableView.endUpdates()
     }
-    
+    */
     
     // -------------------- create table view entries -------------------------------------------
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let sections = fetchedResultsController.sections {
-            return sections.count
-        }
-        return 0
+        return semesters.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,20 +102,19 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController.sections {
-            let currentSection = sections[section]
-            return currentSection.numberOfObjects
-        }
-        return 0
+        print("----------datasource at section courses count--------------")
+        print(semesters[section].courses.count)
+        return semesters[section].courses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //courseDetailsTableView.register(CourseDetailsTableViewCell.self, forCellReuseIdentifier: "courseDetailsCell")
         let cell = courseDetailsTableView.dequeueReusableCell(withIdentifier: "courseDetailsCell") as! CourseDetailsTableViewCell
-        let coursesListEntry = self.fetchedResultsController.object(at: indexPath) as! Course
         
-        cell.coursesCellTextLabel.text = coursesListEntry.courseName
-        cell.coursesCellTextLabel.numberOfLines = 0               // make new lines when out of bounds
+        let currentCourse = semesters[indexPath.section].courses[indexPath.row]
+        
+        cell.textLabel?.text = currentCourse.nameShort
+        cell.textLabel?.numberOfLines = 0               // make new lines when out of bounds
         cell.backgroundColor = UIColor(red: 146/255, green: 144/255, blue: 0/255, alpha: 1)
         
         return cell
@@ -104,16 +124,13 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as! CourseDetailsTableViewCell
         
-        courseClickedAtIndexPath = currentCell.textLabel?.text
-        
-        print("-----------------------------")
-        print(courseClickedAtIndexPath)
+        //courseClickedAtIndexPath = currentCell.textLabel?.text
         
         performSegue(withIdentifier: "courseDetailsSegue", sender: self)
     }
     
     
-    
+    /*
     // -------------------- adds swipe to delete functionality ---------------
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .default, title: "delete") { (action, indexPath) in
@@ -132,16 +149,7 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
             print("Could not delete entry from list.")
         }
     }
-    
-    
-  
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    
+    */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

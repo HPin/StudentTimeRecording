@@ -8,16 +8,25 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
  class CoursesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var CoursesCollectionView: UICollectionView!
     
+    let realmController = RealmController()
+    var semesters : Results<Semester>!
+    
+    
     let headerTitles:[String] = ["WS 2017/18", "SS 2017/18"]
-    let semesters:[[String]] = [["SEI", "FPS3", "MDT", "EMK", "PRO"], ["FPS2", "MDT", "PRO", "ABC"]]
+    //let semesters:[[String]] = [["SEI", "FPS3", "MDT", "EMK", "PRO"], ["FPS2", "MDT", "PRO", "ABC"]]
     let images:[String] = ["bg1", "bg2", "bg3", "bg4", "bg5", "bg6", "bg7", "bg8", "bg9", "bg10", "bg11", "bg12", "bg13", "bg14", "bg15", "bg16", "bg17", "bg18", "bg19", "bg20", "bg21", "bg22", "bg23"]
     
     var blockOperations = [BlockOperation]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reloadCollectionView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +42,14 @@ import CoreData
         customLayout.minimumLineSpacing = 20
         
         CoursesCollectionView.collectionViewLayout = customLayout
+        
+        reloadCollectionView()
+    }
+    
+    func reloadCollectionView() {
+        
+        semesters = realmController.getAllSemesters()
+        CoursesCollectionView?.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,46 +58,49 @@ import CoreData
     
    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if let sections = fetchedResultsController.sections {
-            return sections.count
-        }
-        return 0
-        //return semesters.count
+        
+        return semesters.count
+        
+//        if let sections = fetchedResultsController.sections {
+//            return sections.count
+//        }
+//        return 0
     }
     
     // number of views
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController.sections {
-            let currentSection = sections[section]
-            return currentSection.numberOfObjects
-        }
-        return 0
-        //return semesters[section].count
+        
+        return semesters[section].courses.count
+        
+//        if let sections = fetchedResultsController.sections {
+//            let currentSection = sections[section]
+//            return currentSection.numberOfObjects
+//        }
+//        return 0
     }
     
     // populate views
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let coursesListEntry = self.fetchedResultsController.object(at: indexPath) as! Course
+//        let coursesListEntry = self.fetchedResultsController.object(at: indexPath) as! Course
+//        let labelText = coursesListEntry.courseName
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CoursesCollectionViewCell
         
         //cell.layer.cornerRadius = cell.frame.size.height / 2
         cell.layer.cornerRadius = 20
         cell.coursesCVCellImageView.image = UIImage(named: "\(images[indexPath.row]).jpg")
-        //cell.coursesCVCellImageView.image = UIImage(named: "bg14.jpg")
-        //let labelText = semesters[indexPath.section][indexPath.row]
-        let labelText = coursesListEntry.courseName
         
+        let labelText = semesters[indexPath.section].courses[indexPath.row].nameShort
         
         let strokeTextAttributes = [
             NSAttributedStringKey.strokeColor : UIColor.black,
             NSAttributedStringKey.foregroundColor : UIColor.white,
-            NSAttributedStringKey.strokeWidth : -5.0,
+            NSAttributedStringKey.strokeWidth : 0.0,
             NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 40)
             ] as [NSAttributedStringKey : Any]
         
-        cell.abbreveationLabel.attributedText = NSAttributedString(string: labelText!, attributes: strokeTextAttributes)
+        cell.abbreveationLabel.attributedText = NSAttributedString(string: labelText, attributes: strokeTextAttributes)
         
         return cell
     }
@@ -93,7 +113,8 @@ import CoreData
         case UICollectionElementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "coursesSectionHeader", for: indexPath) as! CoursesSectionHeader
             
-            header.categoryTitleLabel.text = headerTitles[indexPath.section]
+//            header.categoryTitleLabel.text = headerTitles[indexPath.section]
+            header.categoryTitleLabel.text = semesters[indexPath.section].name
             
             return header
         default:
@@ -142,7 +163,7 @@ import CoreData
         self.CoursesCollectionView.reloadData()
         //self.tableView.beginUpdates()
     }
-    */
+  
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -172,6 +193,7 @@ import CoreData
         }
         
     }
+  */
     /*
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         

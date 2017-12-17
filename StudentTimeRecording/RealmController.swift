@@ -6,19 +6,19 @@
 //  Copyright © 2017 HPJS. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
+import Foundation
 
 class RealmController{
     
     
-    func getAllSemester() -> Results<Semester>{
+    func getAllSemesters() -> Results<Semester>{
         
         let realm = try! Realm()
         
-        let allSemester = realm.objects(Semester.self)
+        let allSemesters = realm.objects(Semester.self)
         
-        return allSemester
+        return allSemesters
         
     }
     
@@ -54,19 +54,20 @@ class RealmController{
         return nil
     }
     
-    func addCourse(name: String, nameShort: String, semesterName: String){
+    func addCourse(name: String, nameShort: String, semester: Semester){
         
         let realm = try! Realm()
         let course = Course()
         course.name = name
         course.nameShort = nameShort
         
-        let semester = getSemester(nameSemester: semesterName)
+        //var semester = getSemester(nameSemester: semesterName)
         try! realm.write {
             semester.courses.append(course)
+            print("appending course: \(course.name)")
         }
-       
     }
+    
     
     func addExerciseUniTime(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
         

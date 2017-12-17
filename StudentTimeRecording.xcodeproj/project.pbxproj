@@ -20,6 +20,8 @@
 		E67A1D891FE3E13E005551AE /* ChartsSubviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A1D881FE3E13E005551AE /* ChartsSubviewController.swift */; };
 		E67A1D8D1FE3F447005551AE /* CourseDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A1D8C1FE3F447005551AE /* CourseDetailsTableViewController.swift */; };
 		E6894D0F1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6894D0E1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift */; };
+		E6BCC5AA1FE5DA8E00729FF3 /* OverlayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C34DDF1FE3217E00787720 /* OverlayCell.swift */; };
+		E6BCC5AC1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BCC5AB1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift */; };
 		E6C34DDE1FE3173F00787720 /* AddOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C34DDD1FE3173E00787720 /* AddOverlay.swift */; };
 		E6C34DE21FE32C0600787720 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C34DE11FE32C0600787720 /* Extensions.swift */; };
 		E6F246531FDABFB2002FA853 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F246521FDABFB2002FA853 /* AppDelegate.swift */; };
@@ -64,6 +66,7 @@
 		E67A1D881FE3E13E005551AE /* ChartsSubviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSubviewController.swift; sourceTree = "<group>"; };
 		E67A1D8C1FE3F447005551AE /* CourseDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailsTableViewController.swift; sourceTree = "<group>"; };
 		E6894D0E1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		E6BCC5AB1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSemesterSubViewController.swift; sourceTree = "<group>"; };
 		E6C34DDD1FE3173E00787720 /* AddOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOverlay.swift; sourceTree = "<group>"; };
 		E6C34DDF1FE3217E00787720 /* OverlayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayCell.swift; sourceTree = "<group>"; };
 		E6C34DE11FE32C0600787720 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -148,8 +151,8 @@
 			children = (
 				E666D9391FDDD00300560881 /* CoursesCustomCell.swift */,
 				E666D93B1FDDD02B00560881 /* CoursesTableViewController.swift */,
-				E6C34DDD1FE3173E00787720 /* AddOverlay.swift */,
 				E6C34DDF1FE3217E00787720 /* OverlayCell.swift */,
+				E6C34DDD1FE3173E00787720 /* AddOverlay.swift */,
 			);
 			path = CoursesTableView;
 			sourceTree = "<group>";
@@ -171,6 +174,15 @@
 				E6894D0E1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift */,
 			);
 			path = CourseDetails;
+			sourceTree = "<group>";
+		};
+		E6BCC5AD1FE5DF2400729FF3 /* Add Data */ = {
+			isa = PBXGroup;
+			children = (
+				E666D93D1FDDD24800560881 /* AddCourseViewController.swift */,
+				E6BCC5AB1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift */,
+			);
+			path = "Add Data";
 			sourceTree = "<group>";
 		};
 		E6F246461FDABFB1002FA853 = {
@@ -199,18 +211,18 @@
 			isa = PBXGroup;
 			children = (
 				360312D51FE470DB00892F6E /* RealmClasses.swift */,
+				360312D31FE4690200892F6E /* RealmController.swift */,
 				E6F246521FDABFB2002FA853 /* AppDelegate.swift */,
+				E6C34DE11FE32C0600787720 /* Extensions.swift */,
+				E6BCC5AD1FE5DF2400729FF3 /* Add Data */,
 				E67A1D871FE3E02B005551AE /* CoursesTableView */,
 				E67A1D861FE3E010005551AE /* CoursesTab */,
 				E67A1D851FE3DFF7005551AE /* ChartTab */,
-				E666D93D1FDDD24800560881 /* AddCourseViewController.swift */,
 				E6F246561FDABFB2002FA853 /* Main.storyboard */,
 				E6F2465C1FDABFB2002FA853 /* Assets.xcassets */,
 				E6F2465E1FDABFB2002FA853 /* LaunchScreen.storyboard */,
 				E6F246611FDABFB2002FA853 /* Info.plist */,
 				E6F246591FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld */,
-				E6C34DE11FE32C0600787720 /* Extensions.swift */,
-				360312D31FE4690200892F6E /* RealmController.swift */,
 			);
 			path = StudentTimeRecording;
 			sourceTree = "<group>";
@@ -426,9 +438,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6BCC5AA1FE5DA8E00729FF3 /* OverlayCell.swift in Sources */,
 				E666D93C1FDDD02B00560881 /* CoursesTableViewController.swift in Sources */,
 				E6894D0F1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift in Sources */,
 				E6F2465B1FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld in Sources */,
+				E6BCC5AC1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift in Sources */,
 				360312D41FE4690200892F6E /* RealmController.swift in Sources */,
 				E666D93E1FDDD24800560881 /* AddCourseViewController.swift in Sources */,
 				E6041FD31FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift in Sources */,
