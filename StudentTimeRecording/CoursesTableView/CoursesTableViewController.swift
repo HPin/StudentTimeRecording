@@ -46,8 +46,7 @@ class CoursesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         reloadTableView()
-        print("----------datasource count--------------")
-        print(dataSource.count)    }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

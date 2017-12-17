@@ -17,6 +17,7 @@ import RealmSwift
     let realmController = RealmController()
     var semesters : Results<Semester>!
     
+    var selectedCourse: Course?
     
     let headerTitles:[String] = ["WS 2017/18", "SS 2017/18"]
     //let semesters:[[String]] = [["SEI", "FPS3", "MDT", "EMK", "PRO"], ["FPS2", "MDT", "PRO", "ABC"]]
@@ -124,7 +125,22 @@ import RealmSwift
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // save selected course (pass it later to details view contr.)
+        selectedCourse = semesters[indexPath.section].courses[indexPath.row]
+        
         performSegue(withIdentifier: "courseDetailsSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "courseDetailsSegue" {
+            if let detailsVC = segue.destination as? CourseDetailsTableViewController {
+                
+                detailsVC.selectedCourse = self.selectedCourse
+                
+            }
+        }
     }
     
     // #######core data stuff:#########

@@ -12,13 +12,18 @@ import Foundation
 class RealmController{
     
     
-    func getAllSemesters() -> Results<Semester>{
+    func getAllSemesters() -> Results<Semester> {
         
-        let realm = try! Realm()
+        var realm: Realm?
         
-        let allSemesters = realm.objects(Semester.self)
+        do {
+            realm = try Realm()
+        } catch {
+            print("error in function getAllSemesters")
+        }
         
-        return allSemesters
+        let allSemesters = realm?.objects(Semester.self)
+        return allSemesters!
         
     }
     
@@ -69,7 +74,7 @@ class RealmController{
     }
     
     
-    func addExerciseUniTime(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
+    func addTimeStudying(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
         
         let realm = try! Realm()
         let time = myTime()
@@ -84,7 +89,7 @@ class RealmController{
             if course.name == courseName{
                 
                 try! realm.write {
-                    course.timeExerciseUni.append(time)
+                    course.timeStudying.append(time)
                 }
             }
             
@@ -93,7 +98,7 @@ class RealmController{
         
     }
     
-    func addExerciseHomeTime(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
+    func addTimeAtHome(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
         
         let realm = try! Realm()
         let time = myTime()
@@ -108,7 +113,7 @@ class RealmController{
             if course.name == courseName{
                 
                 try! realm.write {
-                    course.timeExerciseHome.append(time)
+                    course.timeAtHome.append(time)
                 }
             }
             
@@ -117,7 +122,7 @@ class RealmController{
         
     }
     
-    func addLectureUniTime(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
+    func addTimeAtUniversity(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
         
         let realm = try! Realm()
         let time = myTime()
@@ -132,31 +137,7 @@ class RealmController{
             if course.name == courseName{
                 
                 try! realm.write {
-                    course.timeLectureUni.append(time)
-                }
-            }
-            
-        }
-        
-        
-    }
-    
-    func addLectureHomeTime(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
-        
-        let realm = try! Realm()
-        let time = myTime()
-        time.amountTime = amountTime
-        time.name = name
-        time.date = date
-        
-        
-        let semester = getSemester(nameSemester: semesterName)
-        for course in semester.courses{
-            
-            if course.name == courseName{
-                
-                try! realm.write {
-                    course.timeLectureHome.append(time)
+                    course.timeAtUniversity.append(time)
                 }
             }
             

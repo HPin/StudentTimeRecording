@@ -40,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="419" width="375" height="199"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="6XD-9b-ewx" kind="embed" id="Acq-qE-VeB"/>
+                                    <segue destination="6XD-9b-ewx" kind="embed" identifier="chartsOverlaySegue" id="Acq-qE-VeB"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -316,17 +316,37 @@
                                     <outlet property="delegate" destination="f49-mY-Cmq" id="eLV-yh-YCp"/>
                                 </connections>
                             </tableView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXf-XU-sfL">
+                                <rect key="frame" x="0.0" y="218" width="375" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="hG9-Yi-v2u"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Io5-MH-CdC" kind="embed" identifier="newTimeOverlaySegue" id="6Gb-y7-4kh"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QiF-td-w1Z" firstAttribute="trailing" secondItem="HEO-nz-Yw4" secondAttribute="trailing" id="6KO-ec-Vao"/>
                             <constraint firstItem="HEO-nz-Yw4" firstAttribute="leading" secondItem="QiF-td-w1Z" secondAttribute="leading" id="ACM-xp-a8l"/>
                             <constraint firstItem="HEO-nz-Yw4" firstAttribute="top" secondItem="QiF-td-w1Z" secondAttribute="top" id="KVf-eq-TsH"/>
+                            <constraint firstItem="gXf-XU-sfL" firstAttribute="leading" secondItem="QiF-td-w1Z" secondAttribute="leading" id="RRO-T2-S66"/>
                             <constraint firstItem="QiF-td-w1Z" firstAttribute="bottom" secondItem="HEO-nz-Yw4" secondAttribute="bottom" id="WKf-Gl-vLv"/>
+                            <constraint firstItem="gXf-XU-sfL" firstAttribute="trailing" secondItem="QiF-td-w1Z" secondAttribute="trailing" id="nY4-D1-SZw"/>
+                            <constraint firstItem="gXf-XU-sfL" firstAttribute="bottom" secondItem="QiF-td-w1Z" secondAttribute="bottom" id="sPb-1f-RXx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QiF-td-w1Z"/>
                     </view>
+                    <navigationItem key="navigationItem" id="SVM-gu-eku">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="z2X-ut-8mG">
+                            <connections>
+                                <action selector="addNewTimeButton:" destination="f49-mY-Cmq" id="pq2-yx-dKP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addTimeSubView" destination="gXf-XU-sfL" id="q8Z-gI-bGF"/>
                         <outlet property="courseDetailsTableView" destination="HEO-nz-Yw4" id="2iz-qd-8Qi"/>
                     </connections>
                 </viewController>
@@ -408,7 +428,7 @@
                                 <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="sp8-Qc-XIS" kind="embed" id="ZtC-hP-bRy"/>
+                                    <segue destination="sp8-Qc-XIS" kind="embed" identifier="newSemesterOverlaySegue" id="ZtC-hP-bRy"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -503,8 +523,21 @@
                                     <action selector="typeSegmentedControl:" destination="6XD-9b-ewx" eventType="valueChanged" id="uUd-Jc-tQd"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHV-tL-iKL">
+                                <rect key="frame" x="138" y="0.0" width="99" height="30"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="close"/>
+                                <connections>
+                                    <action selector="closeButton:" destination="6XD-9b-ewx" eventType="touchUpInside" id="85i-Dz-fGg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fvr-xo-y6c" firstAttribute="trailing" secondItem="UHV-tL-iKL" secondAttribute="trailing" constant="138" id="AB8-3z-GNQ"/>
+                            <constraint firstItem="UHV-tL-iKL" firstAttribute="top" secondItem="fvr-xo-y6c" secondAttribute="top" id="GZh-K7-ShJ"/>
+                            <constraint firstItem="UHV-tL-iKL" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" constant="138" id="nmF-2k-WGa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fvr-xo-y6c"/>
                     </view>
                     <connections>
@@ -513,7 +546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGv-bD-vkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2591" y="-315"/>
+            <point key="canvasLocation" x="2589.5999999999999" y="-315.29235382308849"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="vjX-wX-eoP">
@@ -579,6 +612,7 @@
                             <constraint firstAttribute="trailing" secondItem="cl7-Rj-06x" secondAttribute="trailing" id="x7D-Br-38R"/>
                             <constraint firstItem="Be8-uJ-l2z" firstAttribute="leading" secondItem="Kf4-7q-cTp" secondAttribute="leading" id="yV3-3D-yzD"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qi1-F8-L1i"/>
                     </view>
                     <connections>
                         <outlet property="yearPicker" destination="Be8-uJ-l2z" id="zyc-zN-uFw"/>
@@ -587,6 +621,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07m-Nh-GuJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3856.8000000000002" y="-1939.4302848575715"/>
+        </scene>
+        <!--Add Time Sub View Controller-->
+        <scene sceneID="U7q-u0-Sv9">
+            <objects>
+                <viewController id="Io5-MH-CdC" customClass="AddTimeSubViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1r2-Tl-Hrc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DzV-hf-esE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="z0v-ZJ-dZq"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="Ywu-Lf-rua">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Qw0-sj-yv1">
+                                            <connections>
+                                                <action selector="cancelButton:" destination="Io5-MH-CdC" id="Ydm-lh-G2G"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Glb-S3-SyK">
+                                            <connections>
+                                                <action selector="saveButton:" destination="Io5-MH-CdC" id="I4m-LK-wQV"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5zh-ct-1lJ">
+                                <rect key="frame" x="36" y="64" width="303" height="29"/>
+                                <segments>
+                                    <segment title="At University"/>
+                                    <segment title="At Home"/>
+                                    <segment title="Studying"/>
+                                </segments>
+                            </segmentedControl>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="WLw-yk-qBY">
+                                <rect key="frame" x="36" y="119" width="303" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="jKF-Qy-PTA"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="535227755.76530099">
+                                    <!--2017-12-17 18:22:35 +0000-->
+                                </date>
+                            </datePicker>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U10-fm-51r">
+                                <rect key="frame" x="36" y="254" width="303" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="My3-1u-4m9"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5zh-ct-1lJ" firstAttribute="top" secondItem="DzV-hf-esE" secondAttribute="bottom" constant="20" id="5jG-SW-rLF"/>
+                            <constraint firstItem="WLw-yk-qBY" firstAttribute="top" secondItem="5zh-ct-1lJ" secondAttribute="bottom" constant="27" id="LIa-f4-c59"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WLw-yk-qBY" secondAttribute="trailing" constant="20" id="X0T-3i-VNR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="U10-fm-51r" secondAttribute="trailing" constant="20" id="Yvy-aW-WnJ"/>
+                            <constraint firstItem="DzV-hf-esE" firstAttribute="top" secondItem="1r2-Tl-Hrc" secondAttribute="top" id="ZgJ-TM-muL"/>
+                            <constraint firstAttribute="trailing" secondItem="DzV-hf-esE" secondAttribute="trailing" id="agB-27-Ia9"/>
+                            <constraint firstItem="U10-fm-51r" firstAttribute="top" secondItem="WLw-yk-qBY" secondAttribute="bottom" constant="25" id="cZn-9f-cpt"/>
+                            <constraint firstItem="5zh-ct-1lJ" firstAttribute="leading" secondItem="1r2-Tl-Hrc" secondAttribute="leadingMargin" constant="20" id="egg-LC-RXO"/>
+                            <constraint firstItem="DzV-hf-esE" firstAttribute="leading" secondItem="1r2-Tl-Hrc" secondAttribute="leading" id="hZB-p6-cPa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5zh-ct-1lJ" secondAttribute="trailing" constant="20" id="i5M-04-8KQ"/>
+                            <constraint firstItem="U10-fm-51r" firstAttribute="leading" secondItem="1r2-Tl-Hrc" secondAttribute="leadingMargin" constant="20" id="lco-3D-dZJ"/>
+                            <constraint firstItem="WLw-yk-qBY" firstAttribute="leading" secondItem="1r2-Tl-Hrc" secondAttribute="leadingMargin" constant="20" id="tlf-wV-ywk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="WLw-yk-qBY" id="zQp-l6-McI"/>
+                        <outlet property="timePicker" destination="U10-fm-51r" id="hz3-Wx-Y9f"/>
+                        <outlet property="timeTypeSegmentedControl" destination="5zh-ct-1lJ" id="5ps-jJ-RlL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dxC-kx-tkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3856.8000000000002" y="-2687.8560719640182"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

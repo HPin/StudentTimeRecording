@@ -10,10 +10,10 @@ import UIKit
 import CoreData
 import RealmSwift
 
-class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
+class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, NewSemesterSubviewControllerDelegate {
+   
     let realmController = RealmController()
-    var semesters: Results<Semester>!
+    var semesters: Results<Semester>?
     var selectedSemester: Semester?
     
     //let blackView = UIView()
@@ -24,6 +24,27 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         overlay.addCourseViewController = self
         return overlay
     }()
+    
+    func refreshPicker() {
+        semesterPicker.reloadAllComponents()
+    }
+    
+    func dismissTheOverlay() {
+        addOverlay.dismissOverlay()
+    }
+    
+    @IBAction func newSemesterButton(_ sender: UIButton) {
+        addOverlay.createOverlay()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "newSemesterOverlaySegue" {
+            if let sender = segue.destination as? NewSemesterSubViewController {
+                sender.delegate = self
+            }
+        }
+    }
     
     @IBOutlet weak var overlaySubview: UIView!
     
@@ -40,7 +61,6 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        
         
         if (addCourseTextField.text != "") {
             
@@ -61,7 +81,6 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             }))
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -69,24 +88,33 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return semesters.count
+        if let sems = semesters {
+            return sems.count
+        } else {
+            return 0
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print("----------------")
-        print(semesters[row].name)
-        return semesters[row].name
+        
+        
+        if let name = semesters?[row].name {
+            return name
+        } else {
+            return ""
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedSemester = semesters[row]
+        
+        if let selectedSemester = semesters?[row] {
+            self.selectedSemester = selectedSemester
+        }
     }
     
     
     
-    @IBAction func newSemesterButton(_ sender: UIButton) {
-        addOverlay.createOverlay()
-    }
+    
         /*
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(blackViewDisappear)))
@@ -140,11 +168,13 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     
     override func viewWillAppear(_ animated: Bool) {
-        semesters = realmController.getAllSemesters()
-        
-        selectedSemester = semesters[0]
 
-        overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
+        semesters = try realmController.getAllSemesters()
+
+        if let selectedSemester = semesters?[0] {
+            self.selectedSemester = selectedSemester
+        }
+
     }
     
    

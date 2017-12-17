@@ -21,11 +21,9 @@ class Course: Object{
     @objc dynamic var name = ""
     @objc dynamic var nameShort = ""
     
-    let timeExerciseUni = List<myTime>()
-    let timeExerciseHome = List<myTime>()
-    let timeLectureUni = List<myTime>()
-    let timeLectureHome = List<myTime>()
-       
+    let timeAtUniversity = List<myTime>()
+    let timeAtHome = List<myTime>()
+    let timeStudying = List<myTime>()
 }
 
 class myTime: Object{

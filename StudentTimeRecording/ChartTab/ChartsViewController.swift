@@ -8,51 +8,88 @@
 
 import UIKit
 
-class ChartsViewController: UIViewController {
+class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate {
     
-    let blackView = UIView()
+    func dismissTheOverlay() {
+        addOverlay.dismissOverlay()
+    }
+    
+    
+    var chartsSubviewController: ChartsSubviewController!
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "chartsOverlaySegue" {
+            if let sender = segue.destination as? ChartsSubviewController {
+                sender.delegate = self
+            }
+        }
+    }
+    
+    @IBAction func closeButton(_ sender: UIButton) {
+        print("start")
+        
+        //self.overlaySubview.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 300)
+    }
+    
+    lazy var addOverlay: ChartsSubviewController = {
+        let overlay = ChartsSubviewController()
+        overlay.addCourseViewController = self
+        return overlay
+    }()
+    
+    //let blackView = UIView()
     
     @IBOutlet weak var overlaySubview: UIView!
     
     @IBAction func overLayBarButton(_ sender: UIBarButtonItem) {
-        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(blackViewDisappear)))
-        blackView.frame = view.frame
-        blackView.alpha = 0
         
-        view.addSubview(blackView)
-        view.addSubview(overlaySubview) // add overlay after(!) black view
+        addOverlay.createOverlay()
         
-        let overlayHeight: CGFloat = 300
-        //overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
-        
-        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.blackView.alpha = 1
-            
-            let overlayYLocation = self.view.frame.height - overlayHeight
-            self.overlaySubview.frame = CGRect(x: 0, y: overlayYLocation, width: self.view.frame.width, height: overlayHeight)
-            
-        }, completion: nil)
+//        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+//        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(blackViewDisappear)))
+//        blackView.frame = view.frame
+//        blackView.alpha = 0
+//
+//
+//        view.addSubview(blackView)
+//        view.addSubview(overlaySubview)
+//        //addChildViewController(ChartsSubviewController())
+//        //view.addSubview(overlaySubview) // add overlay after(!) black view
+//
+//        let overlayHeight: CGFloat = 300
+//        //overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
+//
+//        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+//            self.blackView.alpha = 1
+//
+//            let overlayYLocation = self.view.frame.height - overlayHeight
+//            self.overlaySubview.frame = CGRect(x: 0, y: overlayYLocation, width: self.view.frame.width, height: overlayHeight)
+//
+//        }, completion: nil)
     }
     
-    @objc func blackViewDisappear() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            
-            self.blackView.alpha = 0
-            
-            self.overlaySubview.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 300)
-            
-        }) { (completed: Bool) in
-            self.blackView.removeFromSuperview()
-            
-            //self.coursesTableViewController?.showSettingsOverlay(setting: setting)
-        }
-        
-        
-    }
+//    @objc func blackViewDisappear() {
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+//
+//            self.blackView.alpha = 0
+//
+//            self.overlaySubview.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 300)
+//
+//        }) { (completed: Bool) in
+//            self.blackView.removeFromSuperview()
+//
+//            //self.coursesTableViewController?.showSettingsOverlay(setting: setting)
+//        }
+//
+//
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("start")
+        
 
         overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
         // Do any additional setup after loading the view.

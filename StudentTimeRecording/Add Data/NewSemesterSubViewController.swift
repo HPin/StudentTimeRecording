@@ -9,11 +9,16 @@
 import UIKit
 import RealmSwift
 
+protocol NewSemesterSubviewControllerDelegate: class {
+    func dismissTheOverlay()
+    func refreshPicker()
+}
 class NewSemesterSubViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    weak var delegate: NewSemesterSubviewControllerDelegate?
+    
     let blackView = UIView()
 
-    
     var addCourseViewController: AddCourseViewController?
     
     let realmController = RealmController()
@@ -32,35 +37,40 @@ class NewSemesterSubViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var yearPicker: UIPickerView!
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
-       
-        dismiss(animated: true, completion: nil)
-        blackViewDisappear()
+        
+        delegate?.dismissTheOverlay()
     }
+ 
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        if selectedSemesterType != nil && selectedYear != nil {
-            let semesterName = "\(selectedSemesterType) \(selectedYear)"
         
-            realmController.addSemester(name: semesterName)
+        let semesterName = "\(selectedSemesterType) \(selectedYear)"
+        
+        realmController.addSemester(name: semesterName)
             
-            self.blackViewDisappear()
-        }
-        
+        delegate?.dismissTheOverlay()
+        delegate?.refreshPicker()
     }
-    
-    
     
     
     func createOverlay() {
+
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(blackViewDisappear)))
-        blackView.frame = view.frame
-        blackView.alpha = 0
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissOverlay)))
+        
+        
+        //window.addSubview(blackView)
+        //window.addSubview((addCourseViewController?.overlaySubview)!)
         
         addCourseViewController?.view.addSubview(blackView)
         
-        addCourseViewController?.view.addSubview((addCourseViewController?.overlaySubview)!)
         // add overlay after(!) black view
+        addCourseViewController?.view.addSubview((
+            addCourseViewController?.overlaySubview)!)
+        
+        blackView.frame = view.frame
+        blackView.alpha = 0                 // set alpha to 0 for animation
+        
         
         let overlayHeight: CGFloat = 300
         //overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
@@ -74,7 +84,10 @@ class NewSemesterSubViewController: UIViewController, UIPickerViewDelegate, UIPi
         }, completion: nil)
     }
     
-    @objc func blackViewDisappear() {
+    @objc func dismissOverlay() {
+        
+        //self.blackView.backgroundColor = UIColor.blue
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             
             self.blackView.alpha = 0
@@ -84,13 +97,14 @@ class NewSemesterSubViewController: UIViewController, UIPickerViewDelegate, UIPi
         }) { (completed: Bool) in
             self.blackView.removeFromSuperview()
             
-            //self.coursesTableViewController?.showSettingsOverlay(setting: setting)
         }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
 //        var originalY = semesterPicker.frame.origin.y
 //        semesterPicker.transform = CGAffineTransform(rotationAngle: -90 * (.pi / 180))
