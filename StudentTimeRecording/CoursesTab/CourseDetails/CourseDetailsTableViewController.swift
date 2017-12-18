@@ -29,24 +29,38 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addTimeSubView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
+        print(selectedCourse.timeStudying.count)
+        print(selectedCourse.timeStudying[0].hours)
+        print(selectedCourse.timeStudying[1].minutes)
+
+        
+        addTimeSubView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 400)
         
         reloadTableView()
     }
     
     // pass reference to self into overlay, otherwise we encounter a nil object there
-    lazy var addOverlay: AddTimeSubViewController = {
+    lazy var addTimeOverlay: AddTimeSubViewController = {
         let overlay = AddTimeSubViewController()
         overlay.courseDetailsTableViewController = self
         return overlay
     }()
     
     @IBAction func addNewTimeButton(_ sender: UIBarButtonItem) {
-        addOverlay.createOverlay()
+        addTimeOverlay.createOverlay()
     }
     
     func dismissTheOverlay() {
-        addOverlay.dismissOverlay()
+        addTimeOverlay.dismissOverlay()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newTimeOverlaySegue" {
+            if let sender = segue.destination as? AddTimeSubViewController {
+                sender.delegate = self
+                sender.selectedCourse = self.selectedCourse
+            }
+        }
     }
     
     func reloadTableView() {
@@ -61,30 +75,72 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
         return 3
     }
     
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let myHeader = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 80))
+        myHeader.backgroundColor = UIColor.lightGray
+        
+        let title = UILabel()
+        let sectionTitles = ["Time at University", "Time at Home", "Time for Studying"]
+        title.text = sectionTitles[section]
+        title.frame = CGRect(x: 45, y: 10, width: view.frame.width - 45, height: 60)
+        title.font = UIFont.systemFont(ofSize: 40)
+        myHeader.addSubview(title)
+        
+        return myHeader
+    }
+ 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 118
+        return 60
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-        return 3
+        if section == 0 {
+            return selectedCourse.timeAtUniversity.count
+        } else if section == 1 {
+            return selectedCourse.timeAtHome.count
+        } else if section == 2 {
+            return selectedCourse.timeStudying.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //courseDetailsTableView.register(CourseDetailsTableViewCell.self, forCellReuseIdentifier: "courseDetailsCell")
         let cell = courseDetailsTableView.dequeueReusableCell(withIdentifier: "courseDetailsCell") as! CourseDetailsTableViewCell
         
-        var currentCourse = Course()
-        if indexPath.section < semesters.count {
-            if indexPath.row < semesters[indexPath.section].courses.count {
-                currentCourse = semesters[indexPath.section].courses[indexPath.row]
+        var currentTime = myTime()
+        
+        
+        if indexPath.section == 0 {
+            if indexPath.row < selectedCourse.timeAtUniversity.count {
+                currentTime = selectedCourse.timeAtUniversity[indexPath.row]
+                cell.coursesCellTextLabel.text = String(currentTime.hours)
             } else {
-                
-                cell.coursesCellTextLabel.text = currentCourse.nameShort
+                cell.coursesCellTextLabel.text = "no data available"
+            }
+        } else if indexPath.section == 1 {
+            if indexPath.row < selectedCourse.timeAtHome.count {
+                currentTime = selectedCourse.timeAtHome[indexPath.row]
+                cell.coursesCellTextLabel.text = String(currentTime.hours)
+            } else {
+                cell.coursesCellTextLabel.text = "no data available"
+            }
+        } else if indexPath.section == 2 {
+            if indexPath.row < selectedCourse.timeStudying.count {
+                currentTime = selectedCourse.timeStudying[indexPath.row]
+                cell.coursesCellTextLabel.text = String(currentTime.hours)
+            } else {
+                cell.coursesCellTextLabel.text = "no data available"
             }
         } else {
-            
-            cell.coursesCellTextLabel.text = currentCourse.nameShort
+            cell.coursesCellTextLabel.text = "no data available"
         }
         
         
@@ -95,13 +151,7 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     }
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCell = tableView.cellForRow(at: indexPath) as! CourseDetailsTableViewCell
-        
-        //courseClickedAtIndexPath = currentCell.textLabel?.text
-        
-        performSegue(withIdentifier: "courseDetailsSegue", sender: self)
-    }
+    
     
     
     /*

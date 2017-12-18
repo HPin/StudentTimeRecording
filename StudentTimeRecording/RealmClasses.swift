@@ -29,7 +29,8 @@ class Course: Object{
 class myTime: Object{
     
     @objc dynamic var name = ""
-    @objc dynamic var amountTime = 0
-    @objc dynamic var date = NSDate()
+    @objc dynamic var hours = 0
+    @objc dynamic var minutes = 0
+    @objc dynamic var date = Date()
     
 }

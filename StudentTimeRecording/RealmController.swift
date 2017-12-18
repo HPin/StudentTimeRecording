@@ -68,75 +68,49 @@ class RealmController{
     }
     
     
-    func addTimeStudying(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
+    func addTimeStudying(name: String, date: Date, hours: Int, minutes: Int, course: Course){
         
         let realm = try! Realm()
         let time = myTime()
-        time.amountTime = amountTime
+        time.hours = hours
+        time.minutes = minutes
         time.name = name
         time.date = date
         
         
-        let semester = getSemester(nameSemester: semesterName)
-        for course in semester.courses{
-            
-            if course.name == courseName{
-                
-                try! realm.write {
-                    course.timeStudying.append(time)
-                }
-            }
-            
+        try! realm.write {
+            course.timeStudying.append(time)
         }
-        
         
     }
     
-    func addTimeAtHome(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
+    func addTimeAtHome(name: String, date: Date, hours: Int, minutes: Int, course: Course){
         
         let realm = try! Realm()
         let time = myTime()
-        time.amountTime = amountTime
+        time.hours = hours
+        time.minutes = minutes
         time.name = name
         time.date = date
         
-        
-        let semester = getSemester(nameSemester: semesterName)
-        for course in semester.courses{
-            
-            if course.name == courseName{
-                
-                try! realm.write {
-                    course.timeAtHome.append(time)
-                }
-            }
-            
+        try! realm.write {
+            course.timeAtHome.append(time)
         }
-        
         
     }
     
-    func addTimeAtUniversity(name: String, date: NSDate, amountTime: Int, courseName: String, semesterName: String){
+    func addTimeAtUniversity(name: String, date: Date, hours: Int, minutes: Int, course: Course){
         
         let realm = try! Realm()
         let time = myTime()
-        time.amountTime = amountTime
+        time.hours = hours
+        time.minutes = minutes
         time.name = name
         time.date = date
         
-        
-        let semester = getSemester(nameSemester: semesterName)
-        for course in semester.courses{
-            
-            if course.name == courseName{
-                
-                try! realm.write {
-                    course.timeAtUniversity.append(time)
-                }
-            }
-            
+        try! realm.write {
+            course.timeAtUniversity.append(time)
         }
-        
         
     }
     

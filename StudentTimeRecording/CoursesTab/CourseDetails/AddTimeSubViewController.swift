@@ -12,7 +12,7 @@ import RealmSwift
 protocol AddTimeSubViewControllerDelegate: class {
     func dismissTheOverlay()
 }
-class AddTimeSubViewController: UIViewController {
+class AddTimeSubViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     weak var delegate: AddTimeSubViewControllerDelegate?
     var courseDetailsTableViewController: CourseDetailsTableViewController?
@@ -20,6 +20,14 @@ class AddTimeSubViewController: UIViewController {
 
     let realmController = RealmController()
     var semesters: Results<Semester>!
+    
+    var selectedCourse: Course?
+    var selectedDate: Date = Date()
+    var selectedHours: Int = 0
+    var selectedMinutes: Int = 0
+    
+    let pickerHours: [Int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+    let pickerMinutes: [Int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
     
     @IBOutlet weak var timeTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -33,8 +41,58 @@ class AddTimeSubViewController: UIViewController {
 //        let semesterName = "\(selectedSemesterType) \(selectedYear)"
 //        realmController.addSemester(name: semesterName)
         
+        let selectDate = datePicker.date
+        print(selectDate)
+        print(selectedHours)
+        print(selectedMinutes)
+        print(self.selectedCourse?.nameShort)
+        
+        switch timeTypeSegmentedControl.selectedSegmentIndex {
+        case 0:
+            realmController.addTimeAtUniversity(name: "emk klausur lernen", date: datePicker.date, hours: selectedHours, minutes: selectedMinutes, course: self.selectedCourse!)
+        case 1:
+            realmController.addTimeAtHome(name: "emk klausur lernen", date: datePicker.date, hours: selectedHours, minutes: selectedMinutes, course: self.selectedCourse!)
+        case 2:
+            realmController.addTimeStudying(name: "emk klausur lernen", date: datePicker.date, hours: selectedHours, minutes: selectedMinutes, course: self.selectedCourse!)
+        default:
+            print("invalid segmented control index encountered")
+        }
+        
+        
+        
+        
         delegate?.dismissTheOverlay()
     }
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
+            return pickerHours.count
+        } else {
+            return pickerMinutes.count
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if component == 0 {
+            return String(pickerHours[row]) + " hours"
+        } else {
+            return String(pickerMinutes[row]) + " minutes"
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 0 {
+            selectedHours = pickerHours[row]
+        } else {
+            selectedMinutes = pickerMinutes[row]
+        }
+    }
+    
     
     func createOverlay() {
         
@@ -55,7 +113,7 @@ class AddTimeSubViewController: UIViewController {
         blackView.alpha = 0                 // set alpha to 0 for animation
         
         
-        let overlayHeight: CGFloat = 300
+        let overlayHeight: CGFloat = 400
         //overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
         
         UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -75,7 +133,7 @@ class AddTimeSubViewController: UIViewController {
             
             self.blackView.alpha = 0
             
-            self.courseDetailsTableViewController?.addTimeSubView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 300)
+            self.courseDetailsTableViewController?.addTimeSubView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 400)
             
         }) { (completed: Bool) in
             self.blackView.removeFromSuperview()
@@ -85,8 +143,7 @@ class AddTimeSubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {

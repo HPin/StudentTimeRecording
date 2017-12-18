@@ -174,6 +174,7 @@
 			children = (
 				E67A1D8C1FE3F447005551AE /* CourseDetailsTableViewController.swift */,
 				E6894D0E1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift */,
+				E6A036201FE6EC68008D2126 /* AddTimeSubViewController.swift */,
 			);
 			path = CourseDetails;
 			sourceTree = "<group>";
@@ -183,7 +184,6 @@
 			children = (
 				E666D93D1FDDD24800560881 /* AddCourseViewController.swift */,
 				E6BCC5AB1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift */,
-				E6A036201FE6EC68008D2126 /* AddTimeSubViewController.swift */,
 			);
 			path = "Add Data";
 			sourceTree = "<group>";
