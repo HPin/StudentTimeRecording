@@ -92,7 +92,21 @@ import RealmSwift
         cell.layer.cornerRadius = 20
         cell.coursesCVCellImageView.image = UIImage(named: "\(images[indexPath.row]).jpg")
         
-        let labelText = semesters[indexPath.section].courses[indexPath.row].nameShort
+        let labelText: String
+        if indexPath.section < semesters.count {
+            if indexPath.row < semesters[indexPath.section].courses.count {
+                
+                labelText = semesters[indexPath.section].courses[indexPath.row].nameShort
+                
+            } else {
+                
+                labelText = "no data available"
+            }
+        } else {
+            
+            labelText =  "no data available"
+        }
+        
         
         let strokeTextAttributes = [
             NSAttributedStringKey.strokeColor : UIColor.black,
@@ -127,9 +141,17 @@ import RealmSwift
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // save selected course (pass it later to details view contr.)
-        selectedCourse = semesters[indexPath.section].courses[indexPath.row]
+        
+        if indexPath.section < semesters.count {
+            if indexPath.row < semesters[indexPath.section].courses.count {
+                selectedCourse = semesters[indexPath.section].courses[indexPath.row]
+            } else {
+            }
+        } else {
+        }
         
         performSegue(withIdentifier: "courseDetailsSegue", sender: self)
+                                      
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -144,7 +166,7 @@ import RealmSwift
     }
     
     // #######core data stuff:#########
-    
+    /*
     // -------------------- create context -------------------------------------------
     lazy var managedContext: NSManagedObjectContext? = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -172,7 +194,7 @@ import RealmSwift
         }
         return frc
     }()
-    
+    */
     // -------------------- update view -------------------------------------------
     /*
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

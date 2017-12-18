@@ -74,10 +74,20 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
         //courseDetailsTableView.register(CourseDetailsTableViewCell.self, forCellReuseIdentifier: "courseDetailsCell")
         let cell = courseDetailsTableView.dequeueReusableCell(withIdentifier: "courseDetailsCell") as! CourseDetailsTableViewCell
         
-        let currentCourse = semesters[indexPath.section].courses[indexPath.row]
+        var currentCourse = Course()
+        if indexPath.section < semesters.count {
+            if indexPath.row < semesters[indexPath.section].courses.count {
+                currentCourse = semesters[indexPath.section].courses[indexPath.row]
+            } else {
+                
+                cell.coursesCellTextLabel.text = currentCourse.nameShort
+            }
+        } else {
+            
+            cell.coursesCellTextLabel.text = currentCourse.nameShort
+        }
         
         
-        cell.coursesCellTextLabel.text = currentCourse.nameShort
         cell.coursesCellTextLabel.numberOfLines = 0
         cell.backgroundColor = UIColor(red: 146/255, green: 144/255, blue: 0/255, alpha: 1)
         

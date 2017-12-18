@@ -15,7 +15,7 @@ class CoursesTableViewController: UITableViewController {
     //var courseClickedAtIndexPath: String!
     
     let realmController = RealmController()
-    var dataSource: Results<Semester>!
+    var semesters: Results<Semester>!
     
     @IBOutlet weak var coursesTableView: UITableView!
     
@@ -56,7 +56,7 @@ class CoursesTableViewController: UITableViewController {
     
     func reloadTableView() {
         
-        dataSource = realmController.getAllSemesters()
+        semesters = realmController.getAllSemesters()
         tableView?.reloadData()
         
     }
@@ -90,14 +90,14 @@ class CoursesTableViewController: UITableViewController {
     
     // -------------------- create table view entries -------------------------------------------
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return dataSource.count
+        return semesters.count
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section < dataSource.count {
-            return dataSource[section].courses.count
+        if section < semesters.count {
+            return semesters[section].courses.count
         } else {
             return 0
         }
@@ -109,9 +109,9 @@ class CoursesTableViewController: UITableViewController {
         tableView.register(CoursesCustomCell.self, forCellReuseIdentifier: "coursesCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "coursesCell", for: indexPath)
         
-        if indexPath.section < dataSource.count {
-            if indexPath.row < dataSource[indexPath.section].courses.count {
-                let currentCourse = dataSource[indexPath.section].courses[indexPath.row]
+        if indexPath.section < semesters.count {
+            if indexPath.row < semesters[indexPath.section].courses.count {
+                let currentCourse = semesters[indexPath.section].courses[indexPath.row]
                 cell.textLabel?.text = currentCourse.nameShort
             } else {
                 cell.textLabel?.text = "no data available"
