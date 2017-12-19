@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +25,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vF6-QO-LAG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="211"/>
+            <point key="canvasLocation" x="958" y="-183"/>
         </scene>
         <!--Charts View Controller-->
         <scene sceneID="m57-ht-SqU">
@@ -37,18 +36,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CF-Y3-9qM">
-                                <rect key="frame" x="0.0" y="419" width="375" height="199"/>
+                                <rect key="frame" x="0.0" y="318" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="6XD-9b-ewx" kind="embed" identifier="chartsOverlaySegue" id="Acq-qE-VeB"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="UcW-8m-T63"/>
                     </view>
                     <navigationItem key="navigationItem" id="NpG-JO-gT4">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="U1I-zi-g15">
+                        <barButtonItem key="rightBarButtonItem" title="Chart Options" id="U1I-zi-g15">
                             <connections>
                                 <action selector="overLayBarButton:" destination="ARI-Fv-fJp" id="BFN-Sv-s3c"/>
                             </connections>
@@ -60,69 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK2-KJ-Sum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="-558"/>
-        </scene>
-        <!--My Courses-->
-        <scene sceneID="d5A-6L-41t">
-            <objects>
-                <tableViewController id="kX5-XB-8FQ" customClass="CoursesTableViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z8o-Gn-brb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="coursesCell" id="6Pj-66-o7L">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Pj-66-o7L" id="ubh-OD-lad">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="kX5-XB-8FQ" id="3b7-e0-BVU"/>
-                            <outlet property="delegate" destination="kX5-XB-8FQ" id="95x-cL-IXk"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="My Courses" id="Cey-Mh-G2l">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="a3n-kt-XRT">
-                                <connections>
-                                    <segue destination="t99-mJ-aEn" kind="presentation" id="rCT-9R-qwp"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="edit" id="fSo-Yc-gk4">
-                                <connections>
-                                    <action selector="overlayButton:" destination="kX5-XB-8FQ" id="EzQ-jm-Ff6"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="coursesTableView" destination="z8o-Gn-brb" id="GFD-ZN-kZ7"/>
-                        <segue destination="BtQ-f5-Bbh" kind="show" identifier="courseDetailsSegue" id="RHE-GN-nXu"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lsy-Uw-Q4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1836" y="-1247"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="PRM-S1-Gpv">
-            <objects>
-                <viewController id="BtQ-f5-Bbh" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5Lq-RE-GdF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="PRH-lC-gLf"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="jTT-NY-HWh"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nNv-pA-GWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2961" y="-1247"/>
+            <point key="canvasLocation" x="1902" y="-1243"/>
         </scene>
         <!--Item-->
         <scene sceneID="xnl-JX-kOy">
@@ -471,40 +408,20 @@
                     </tabBar>
                     <connections>
                         <segue destination="PW8-4q-Jta" kind="relationship" relationship="viewControllers" id="BlU-cU-BnF"/>
-                        <segue destination="pfi-yJ-b7C" kind="relationship" relationship="viewControllers" id="XIY-lK-hIv"/>
                         <segue destination="Ns2-Lg-RjC" kind="relationship" relationship="viewControllers" id="UEH-4S-sUy"/>
                         <segue destination="8xs-3i-fMO" kind="relationship" relationship="viewControllers" id="01j-Mg-f9A"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJ2-lv-Ytb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="-558"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="MyR-r2-taY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pfi-yJ-b7C" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="n7j-3Q-KbT"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dDk-gc-8jb">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="kX5-XB-8FQ" kind="relationship" relationship="rootViewController" id="gtN-cw-6pN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EiX-dB-DkN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="944" y="-1246.776611694153"/>
+            <point key="canvasLocation" x="167" y="-1241"/>
         </scene>
         <!--Charts Subview Controller-->
         <scene sceneID="Qpq-77-l4T">
             <objects>
                 <viewController id="6XD-9b-ewx" customClass="ChartsSubviewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wkD-HK-Ln0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ib4-di-7mU">
@@ -518,20 +435,32 @@
                                     <action selector="typeSegmentedControl:" destination="6XD-9b-ewx" eventType="valueChanged" id="uUd-Jc-tQd"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHV-tL-iKL">
-                                <rect key="frame" x="138" y="0.0" width="99" height="30"/>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="close"/>
-                                <connections>
-                                    <action selector="closeButton:" destination="6XD-9b-ewx" eventType="touchUpInside" id="85i-Dz-fGg"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nz-YE-TcA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="iTF-uW-X1S"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="Jhc-Jt-VB9">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="k2N-MN-GE8">
+                                            <connections>
+                                                <action selector="closeButton:" destination="6XD-9b-ewx" id="4xe-sA-Khg"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="QzJ-oH-piu">
+                                            <connections>
+                                                <action selector="saveButton:" destination="6XD-9b-ewx" id="Kn4-Lh-T9Y"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fvr-xo-y6c" firstAttribute="trailing" secondItem="UHV-tL-iKL" secondAttribute="trailing" constant="138" id="AB8-3z-GNQ"/>
-                            <constraint firstItem="UHV-tL-iKL" firstAttribute="top" secondItem="fvr-xo-y6c" secondAttribute="top" id="GZh-K7-ShJ"/>
-                            <constraint firstItem="UHV-tL-iKL" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" constant="138" id="nmF-2k-WGa"/>
+                            <constraint firstItem="6Nz-YE-TcA" firstAttribute="top" secondItem="fvr-xo-y6c" secondAttribute="top" id="VCN-hz-KIw"/>
+                            <constraint firstItem="6Nz-YE-TcA" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" id="lT0-7m-yBg"/>
+                            <constraint firstItem="6Nz-YE-TcA" firstAttribute="trailing" secondItem="fvr-xo-y6c" secondAttribute="trailing" id="tF2-QM-hzA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fvr-xo-y6c"/>
                     </view>
@@ -541,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGv-bD-vkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2589.5999999999999" y="-315.29235382308849"/>
+            <point key="canvasLocation" x="2786" y="-1242"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="vjX-wX-eoP">
@@ -560,7 +489,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Eg-By-REg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="944" y="-558.62068965517244"/>
+            <point key="canvasLocation" x="959" y="-1242"/>
         </scene>
         <!--New Semester Sub View Controller-->
         <scene sceneID="788-Ki-ec7">
@@ -701,7 +630,4 @@
             <point key="canvasLocation" x="3856.8000000000002" y="-2687.8560719640182"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="hSA-2a-jAR"/>
-    </inferredMetricsTieBreakers>
 </document>

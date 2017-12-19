@@ -49,14 +49,6 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate {
     
     @IBAction func overLayBarButton(_ sender: UIBarButtonItem) {
         
-        realmController.addSemester(name: "WS 2017")
-        
-        let courseName = "projekttest"
-        let courseNameShort = "pro"
-        let sem = semesters[0]
-        
-        realmController.addCourse(name: courseName, nameShort: courseNameShort, semester: sem)
-        
         addOverlay.createOverlay()
         
 //        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -105,7 +97,6 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate {
 
 
         overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

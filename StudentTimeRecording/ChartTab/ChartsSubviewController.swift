@@ -25,9 +25,12 @@ class ChartsSubviewController: UIViewController {
     @IBAction func typeSegmentedControl(_ sender: UISegmentedControl) {
     }
     
-    @IBAction func closeButton(_ sender: Any) {
-        //self.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 300)
-        print("sending color")
+    
+    @IBAction func closeButton(_ sender: UIBarButtonItem) {
+        delegate?.dismissTheOverlay()
+    }
+    
+    @IBAction func saveButton(_ sender: UIBarButtonItem) {
         delegate?.dismissTheOverlay()
     }
     

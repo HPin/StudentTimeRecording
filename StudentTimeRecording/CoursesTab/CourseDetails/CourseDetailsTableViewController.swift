@@ -29,10 +29,8 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(selectedCourse.timeStudying.count)
-        print(selectedCourse.timeStudying[0].hours)
-        print(selectedCourse.timeStudying[1].minutes)
-
+        self.courseDetailsTableView.delegate = self
+        self.courseDetailsTableView.dataSource = self
         
         addTimeSubView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 400)
         
@@ -70,8 +68,23 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     
    
     
-    // -------------------- create table view entries -------------------------------------------
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    // -------------------- create table view entries
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        var sectionsNumber = 0
+        
+//        if selectedCourse.timeAtUniversity.count != 0 {
+//            sectionsNumber += 1
+//        }
+//
+//        if selectedCourse.timeAtHome.count != 0 {
+//            sectionsNumber += 1
+//        }
+//
+//        if selectedCourse.timeStudying.count != 0 {
+//            sectionsNumber += 1
+//        }
+        
         return 3
     }
     
@@ -100,23 +113,29 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
+//        print("---------timeatuni")
+//        print(selectedCourse.timeAtUniversity.count)
+//        print(selectedCourse.timeAtHome.count)
+//        print(selectedCourse.timeStudying.count)
+//
         if section == 0 {
             return selectedCourse.timeAtUniversity.count
-        } else if section == 1 {
-            return selectedCourse.timeAtHome.count
-        } else if section == 2 {
-            return selectedCourse.timeStudying.count
-        } else {
-            return 0
         }
+        if section == 1 {
+            return selectedCourse.timeAtHome.count
+        }
+        if section == 2 {
+            return selectedCourse.timeStudying.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //courseDetailsTableView.register(CourseDetailsTableViewCell.self, forCellReuseIdentifier: "courseDetailsCell")
         let cell = courseDetailsTableView.dequeueReusableCell(withIdentifier: "courseDetailsCell") as! CourseDetailsTableViewCell
         
-        var currentTime = myTime()
-        
+        var currentTime: myTime
         
         if indexPath.section == 0 {
             if indexPath.row < selectedCourse.timeAtUniversity.count {

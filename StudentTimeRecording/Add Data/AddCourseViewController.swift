@@ -92,13 +92,10 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        print("semesters: \(semesters.count)")
         return semesters.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        print("row: \(row)")
         
         if row < semesters.count {
             return semesters[row].name
@@ -106,7 +103,6 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             return "no data available"
         }
         
-       
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
