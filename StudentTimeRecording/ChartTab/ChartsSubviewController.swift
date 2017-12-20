@@ -34,32 +34,11 @@ class ChartsSubviewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     var addCourseViewController: ChartsViewController?
     
-    
-    
-    @IBAction func closeButton(_ sender: UIBarButtonItem) {
-        delegate?.dismissTheOverlay()
-    }
-    
-    @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        
-        if let sem = selectedSemester{
-            if let cour = selectedCourse{
-                
-                delegate?.reloadChart(course: cour)
-            }
-            else{
-                
-                delegate?.reloadChart(semester: sem)
-            }
-        }
-        
-        else{
-            delegate?.reloadChart()
-        }
+    @IBAction func exitBtn(_ sender: Any) {
         
         delegate?.dismissTheOverlay()
     }
-   
+    
     
     func createOverlay() {
         
@@ -164,16 +143,24 @@ class ChartsSubviewController: UIViewController, UIPickerViewDelegate, UIPickerV
         if component == 0 {
             if row > 0 {
                 selectedSemester = semesters[row-1]
+                picker.selectRow(0, inComponent: 1, animated: true)
+                selectedCourse = nil
+                delegate?.reloadChart(semester: selectedSemester!)
             }
             else{
                 selectedSemester = nil
+                delegate?.reloadChart()
             }
         } else {
             if row > 0 {
                 selectedCourse = selectedSemester!.courses[row-1]
+                delegate?.reloadChart(course: selectedCourse!)
             }
             else{
                 selectedCourse = nil
+                if let sem = selectedSemester{
+                    delegate?.reloadChart(semester: sem)
+                }
             }
             
         }

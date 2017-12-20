@@ -13,14 +13,14 @@ import Charts
 class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
     
     
+    @IBOutlet weak var headerLabel: UILabel!
     
-    @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet weak var pieChartView: PieChartView!
     let realmController = RealmController()
     var semesters: Results<Semester>!
     
     var selectedCourse: Course!
     
-    var colors: [UIColor] = []
     weak var axisFormatDelegate: IAxisValueFormatter?
     
     
@@ -103,11 +103,15 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
             
         let chartDataSet = PieChartDataSet(values: dataEntries, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
-        barChartView.data = chartData
+        pieChartView.data = chartData
         
-        chartDataSet.colors = colors
+        chartDataSet.colors = ChartColorTemplates.colorful()
         
-        barChartView.chartDescription?.text = "All semesters"
+        headerLabel.text = "All Semesters"
+        
+        pieChartView.chartDescription?.text = nil
+        pieChartView.animate(xAxisDuration: 1.0)
+        pieChartView.legendRenderer.computeLegend(data: chartData)
         
     }
         
@@ -138,11 +142,15 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         
         let chartDataSet = PieChartDataSet(values: dataEntries, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
-        barChartView.data = chartData
+        pieChartView.data = chartData
     
-        chartDataSet.colors = colors
+        chartDataSet.colors = ChartColorTemplates.colorful()
         
-        barChartView.chartDescription?.text = semester.name
+        headerLabel.text = semester.name
+        
+        pieChartView.chartDescription?.text = nil
+        pieChartView.animate(xAxisDuration: 1.0)
+        pieChartView.legendRenderer.computeLegend(data: chartData)
     }
     
     func updateChartWithData(course: Course) {
@@ -199,11 +207,16 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         
         let chartDataSet = PieChartDataSet(values: dataEntries, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
-        barChartView.data = chartData
+        pieChartView.data = chartData
         
-        chartDataSet.colors = colors
+        chartDataSet.colors = ChartColorTemplates.colorful()
         
-        barChartView.chartDescription?.text = "Course: \(course.name)"
+        
+        headerLabel.text = "Course: \(course.name)"
+        
+        pieChartView.chartDescription?.text = nil
+        pieChartView.animate(xAxisDuration: 1.0)
+        pieChartView.legendRenderer.computeLegend(data: chartData)
     }
     
     
@@ -211,16 +224,10 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         super.viewDidLoad()
         axisFormatDelegate = self
         semesters = realmController.getAllSemesters()
-        barChartView.noDataText = "Please add some course time first"
+        pieChartView.noDataText = "Please add some course time first"
+        pieChartView.animate(xAxisDuration: 2.0)
         
-        for i in 0..<20{
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
-            
-            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-            colors.append(color)
-        }
+        
 
 
         overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
