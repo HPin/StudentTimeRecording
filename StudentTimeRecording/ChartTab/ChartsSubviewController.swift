@@ -7,23 +7,33 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol ChartsSubviewControllerDelegate: class {
     func dismissTheOverlay()
+    
+    func reloadChart(course: Course)
+    func reloadChart(semester: Semester)
+    func reloadChart()
 }
 
-class ChartsSubviewController: UIViewController {
-
+class ChartsSubviewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+   
+    
+    var selectedCourse: Course?
+    var selectedSemester: Semester?
+    let realmController = RealmController()
+    var semesters: Results<Semester>!
+    
+    @IBOutlet weak var picker: UIPickerView!
+    
+    
     weak var delegate: ChartsSubviewControllerDelegate?
     
     let blackView = UIView()
     
     var addCourseViewController: ChartsViewController?
     
-    @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
-    
-    @IBAction func typeSegmentedControl(_ sender: UISegmentedControl) {
-    }
     
     
     @IBAction func closeButton(_ sender: UIBarButtonItem) {
@@ -31,8 +41,25 @@ class ChartsSubviewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
+        
+        if let sem = selectedSemester{
+            if let cour = selectedCourse{
+                
+                delegate?.reloadChart(course: cour)
+            }
+            else{
+                
+                delegate?.reloadChart(semester: sem)
+            }
+        }
+        
+        else{
+            delegate?.reloadChart()
+        }
+        
         delegate?.dismissTheOverlay()
     }
+   
     
     func createOverlay() {
         
@@ -81,26 +108,95 @@ class ChartsSubviewController: UIViewController {
         }
     }
     
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0{
+            return semesters.count + 1
+        }
+        else{
+        
+            let index = picker.selectedRow(inComponent: 0)
+            if index > 0{
+                
+                selectedSemester = semesters[picker.selectedRow(inComponent: 0) - 1]
+            return selectedSemester!.courses.count + 1
+            }
+            
+            else {return 1}
+        }
+    }
+    
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        
+        if component == 0 {
+            if row == 0{
+                return "---------"
+            }
+            else{
+                return semesters[row-1].name
+            }
+        } else {
+            if row == 0{
+                return "---------"
+            }
+            else{
+            let index = picker.selectedRow(inComponent: 0)
+                if index > 0{
+                    
+                    selectedSemester = semesters[picker.selectedRow(inComponent: 0) - 1]
+                    return selectedSemester!.courses[row-1].name
+                }
+                return ""
+            }
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        
+        if component == 0 {
+            if row > 0 {
+                selectedSemester = semesters[row-1]
+            }
+            else{
+                selectedSemester = nil
+            }
+        } else {
+            if row > 0 {
+                selectedCourse = selectedSemester!.courses[row-1]
+            }
+            else{
+                selectedCourse = nil
+            }
+            
+        }
+        
+        picker.reloadAllComponents()
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+        semesters = realmController.getAllSemesters()
+        
+        if semesters.count != 0{
+            selectedSemester = semesters[0]
+        }
+        
+         }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+          }
+ 
 
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AL8-Y4-rS0">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AL8-Y4-rS0">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
             <objects>
                 <viewController id="8xs-3i-fMO" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A2t-GS-jYd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="OeE-X9-N2c"/>
@@ -32,18 +32,30 @@
             <objects>
                 <viewController id="ARI-Fv-fJp" customClass="ChartsViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EaT-iq-ajp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CF-Y3-9qM">
-                                <rect key="frame" x="0.0" y="318" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="387" width="414" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="6XD-9b-ewx" kind="embed" identifier="chartsOverlaySegue" id="Acq-qE-VeB"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCK-Pz-Bvd" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="139" width="414" height="350"/>
+                                <color key="backgroundColor" red="0.87036512310000003" green="0.87036512310000003" blue="0.87036512310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="odY-CD-bjp"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kCK-Pz-Bvd" firstAttribute="leading" secondItem="UcW-8m-T63" secondAttribute="leading" id="3h1-d3-GOP"/>
+                            <constraint firstItem="kCK-Pz-Bvd" firstAttribute="trailing" secondItem="UcW-8m-T63" secondAttribute="trailing" id="Oc8-yY-cbn"/>
+                            <constraint firstItem="kCK-Pz-Bvd" firstAttribute="top" secondItem="UcW-8m-T63" secondAttribute="top" constant="75" id="WNH-39-agt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UcW-8m-T63"/>
                     </view>
                     <navigationItem key="navigationItem" id="NpG-JO-gT4">
@@ -54,12 +66,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barChartView" destination="kCK-Pz-Bvd" id="42P-PW-sWx"/>
                         <outlet property="overlaySubview" destination="8CF-Y3-9qM" id="AHb-Qg-a9M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK2-KJ-Sum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902" y="-1243"/>
+            <point key="canvasLocation" x="1901.5999999999999" y="-1243.6281859070466"/>
         </scene>
         <!--Item-->
         <scene sceneID="xnl-JX-kOy">
@@ -67,7 +80,7 @@
                 <navigationController id="PW8-4q-Jta" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="vcg-8y-z7Z"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K6d-X4-ByA">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -83,11 +96,11 @@
             <objects>
                 <viewController id="Rmb-ia-GBr" customClass="CoursesViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6qS-TN-OVj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pXF-yt-PYe">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vvv-Ng-AjX">
                                     <size key="itemSize" width="148" height="139"/>
@@ -96,7 +109,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Ctw-iC-41U">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </imageView>
@@ -145,11 +158,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="coursesSectionHeader" id="aJX-00-kFz" customClass="CoursesSectionHeader" customModule="StudentTimeRecording" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huK-9X-lza">
-                                            <rect key="frame" x="150" y="6.5" width="75.5" height="38.5"/>
+                                            <rect key="frame" x="379.33333333333331" y="6.6666666666666679" width="75.333333333333314" height="38.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                             <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -201,7 +214,7 @@
             <objects>
                 <viewController id="TAt-Gt-QKI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z42-Pq-Lqf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="LgB-gW-Y8j"/>
@@ -216,22 +229,22 @@
             <objects>
                 <viewController id="f49-mY-Cmq" customClass="CourseDetailsTableViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1N6-ei-fHG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HEO-nz-Yw4">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="courseDetailsCell" id="DtD-5b-s0W" customClass="CourseDetailsTableViewCell" customModule="StudentTimeRecording" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="courseDetailsCell" id="DtD-5b-s0W" customClass="CourseDetailsTableViewCell" customModule="StudentTimeRecording" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DtD-5b-s0W" id="pmf-v3-pL0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAx-QA-hrz">
-                                                    <rect key="frame" x="35" y="12" width="61.5" height="22"/>
+                                                    <rect key="frame" x="35" y="12" width="61.666666666666657" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -291,11 +304,11 @@
             <objects>
                 <viewController id="t99-mJ-aEn" customClass="AddCourseViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U7f-Ev-8yh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVU-Pg-qf8">
-                                <rect key="frame" x="0.0" y="30" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="30" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="81F-BV-IXg"/>
                                 </constraints>
@@ -318,13 +331,13 @@
                                 </connections>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new course" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xaa-su-3OH">
-                                <rect key="frame" x="56" y="114" width="263.5" height="39.5"/>
+                                <rect key="frame" x="75.333333333333343" y="114.00000000000001" width="263.33333333333326" height="39.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoZ-qf-3g4">
-                                <rect key="frame" x="0.0" y="194" width="375" height="122"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="122"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="122" id="J2L-ka-d70"/>
                                 </constraints>
@@ -334,21 +347,21 @@
                                 </connections>
                             </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TbH-EB-gIH">
-                                <rect key="frame" x="20" y="416" width="335" height="30"/>
+                                <rect key="frame" x="20" y="416" width="374" height="30"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course Abbreveation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bjp-TE-mCW">
-                                <rect key="frame" x="20" y="486" width="335" height="30"/>
+                                <rect key="frame" x="20" y="486" width="374" height="30"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mK-Vk-zkn">
-                                <rect key="frame" x="40" y="346" width="295" height="30"/>
+                                <rect key="frame" x="40" y="346" width="334" height="30"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="titleShadowOffset" width="0.0" height="12"/>
                                 <state key="normal" title="Create a new Semester"/>
@@ -357,7 +370,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wns-Oi-J3i">
-                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="436" width="414" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="sp8-Qc-XIS" kind="embed" identifier="newSemesterOverlaySegue" id="ZtC-hP-bRy"/>
@@ -421,22 +434,11 @@
             <objects>
                 <viewController id="6XD-9b-ewx" customClass="ChartsSubviewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wkD-HK-Ln0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ib4-di-7mU">
-                                <rect key="frame" x="127" y="85" width="121" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                                <connections>
-                                    <action selector="typeSegmentedControl:" destination="6XD-9b-ewx" eventType="valueChanged" id="uUd-Jc-tQd"/>
-                                </connections>
-                            </segmentedControl>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nz-YE-TcA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="iTF-uW-X1S"/>
                                 </constraints>
@@ -455,22 +457,33 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tjr-XV-Dzk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="256"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6XD-9b-ewx" id="Gxl-0s-53d"/>
+                                    <outlet property="delegate" destination="6XD-9b-ewx" id="5dc-En-AZp"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Tjr-XV-Dzk" firstAttribute="trailing" secondItem="fvr-xo-y6c" secondAttribute="trailing" id="EYT-Am-qf8"/>
+                            <constraint firstItem="Tjr-XV-Dzk" firstAttribute="bottom" secondItem="fvr-xo-y6c" secondAttribute="bottom" id="P5e-Rd-i0S"/>
                             <constraint firstItem="6Nz-YE-TcA" firstAttribute="top" secondItem="fvr-xo-y6c" secondAttribute="top" id="VCN-hz-KIw"/>
                             <constraint firstItem="6Nz-YE-TcA" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" id="lT0-7m-yBg"/>
+                            <constraint firstItem="Tjr-XV-Dzk" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" id="lqK-EL-Fd2"/>
                             <constraint firstItem="6Nz-YE-TcA" firstAttribute="trailing" secondItem="fvr-xo-y6c" secondAttribute="trailing" id="tF2-QM-hzA"/>
+                            <constraint firstItem="Tjr-XV-Dzk" firstAttribute="top" secondItem="6Nz-YE-TcA" secondAttribute="bottom" id="tjc-uB-ag4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fvr-xo-y6c"/>
                     </view>
                     <connections>
-                        <outlet property="typeSegmentedControl" destination="ib4-di-7mU" id="dzU-Ho-Ruz"/>
+                        <outlet property="picker" destination="Tjr-XV-Dzk" id="Jjt-Df-7JZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGv-bD-vkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2786" y="-1242"/>
+            <point key="canvasLocation" x="2973.913043478261" y="-1244.8369565217392"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="vjX-wX-eoP">
@@ -479,7 +492,7 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="F6A-nM-U58"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MHS-BX-hMN">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -496,11 +509,11 @@
             <objects>
                 <viewController id="sp8-Qc-XIS" customClass="NewSemesterSubViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kf4-7q-cTp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cl7-Rj-06x">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ygh-7x-WuU"/>
                                 </constraints>
@@ -520,7 +533,7 @@
                                 </items>
                             </navigationBar>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-uJ-l2z">
-                                <rect key="frame" x="0.0" y="88" width="375" height="162"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="sp8-Qc-XIS" id="NKs-1Y-Z3Z"/>
                                     <outlet property="delegate" destination="sp8-Qc-XIS" id="xbV-ia-NzS"/>
