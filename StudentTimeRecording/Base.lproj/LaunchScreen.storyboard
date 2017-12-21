@@ -30,21 +30,22 @@
                                     <constraint firstAttribute="height" constant="250" id="zxJ-NI-oK7"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNIVERSITIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwH-Xg-7pM">
-                                <rect key="frame" x="60" y="310.5" width="255" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <color key="textColor" red="0.57380741830000004" green="0.56553578380000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title" translatesAutoresizingMaskIntoConstraints="NO" id="Iix-Jd-4lm">
+                                <rect key="frame" x="42" y="262" width="291" height="142"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291" id="DCJ-nN-ewN"/>
+                                    <constraint firstAttribute="height" constant="142" id="gCH-Ov-kpu"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gwH-Xg-7pM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5Qo-3Q-xwl"/>
                             <constraint firstItem="GSs-sP-z6T" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Jbp-dT-46t"/>
-                            <constraint firstItem="gwH-Xg-7pM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Mbw-Ic-Ppf"/>
+                            <constraint firstItem="Iix-Jd-4lm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="T0H-BV-4dw"/>
                             <constraint firstItem="GSs-sP-z6T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T9p-Ys-JW3"/>
                             <constraint firstItem="9bw-x1-IaB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="al6-C3-p8M"/>
                             <constraint firstAttribute="bottom" secondItem="GSs-sP-z6T" secondAttribute="bottom" id="cmv-TH-7cr"/>
+                            <constraint firstItem="Iix-Jd-4lm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ekp-J8-FCH"/>
                             <constraint firstItem="9bw-x1-IaB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="mmN-lb-2YW"/>
                             <constraint firstItem="9bw-x1-IaB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rJe-86-zIX"/>
                         </constraints>
@@ -59,5 +60,6 @@
     <resources>
         <image name="bg20" width="640" height="426"/>
         <image name="bg5" width="640" height="426"/>
+        <image name="title" width="1164" height="307"/>
     </resources>
 </document>

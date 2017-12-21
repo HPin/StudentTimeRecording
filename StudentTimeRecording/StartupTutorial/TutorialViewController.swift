@@ -10,8 +10,15 @@ import UIKit
 
 class TutorialViewController: UIViewController {
     
+    @IBOutlet weak var startButton: UIButton!
+    
     @IBAction func skipTutorialButton(_ sender: UIButton) {
         UserDefaults.standard.set(true, forKey: "isFirstAppStart")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        startButton.layer.borderWidth = 4
+        startButton.layer.borderColor = startButton.tintColor.cgColor
     }
     
     override func viewDidLoad() {
