@@ -12,13 +12,17 @@ import RealmSwift
 protocol ChartsSubviewControllerDelegate: class {
     func dismissTheOverlay()
     
-    func reloadChart(course: Course)
-    func reloadChart(semester: Semester)
-    func reloadChart()
+    func reloadPieChart(course: Course)
+    func reloadPieChart(semester: Semester)
+    func reloadPieChart()
+    func reloadLineChart(course: Course)
+    func reloadLineChart(semester: Semester)
+    func reloadLineChart()
 }
 
 class ChartsSubviewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
    
+    @IBOutlet weak var chartController: UISegmentedControl!
     
     var selectedCourse: Course?
     var selectedSemester: Semester?
@@ -87,6 +91,44 @@ class ChartsSubviewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
     }
     
+    @IBAction func chartControllerClicked(_ sender: Any) {
+        
+        if chartController.selectedSegmentIndex == 0{
+            
+            if picker.selectedRow(inComponent: 0) > 0{
+                if picker.selectedRow(inComponent: 1) > 0 {
+                    
+                    delegate?.reloadPieChart(course: selectedCourse!)
+                }
+                else{
+                    
+                    delegate?.reloadPieChart(semester: selectedSemester!)
+                }
+            }
+            else{
+                delegate?.reloadPieChart()
+            }
+        }
+        
+        else if chartController.selectedSegmentIndex == 1{
+            
+            if picker.selectedRow(inComponent: 0) > 0{
+                if picker.selectedRow(inComponent: 1) > 0 {
+                    
+                    delegate?.reloadLineChart(course: selectedCourse!)
+                }
+                else{
+                    
+                    delegate?.reloadLineChart(semester: selectedSemester!)
+                }
+            }
+            else{
+                delegate?.reloadLineChart()
+            }
+            
+        }
+        
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -145,21 +187,49 @@ class ChartsSubviewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 selectedSemester = semesters[row-1]
                 picker.selectRow(0, inComponent: 1, animated: true)
                 selectedCourse = nil
-                delegate?.reloadChart(semester: selectedSemester!)
+                if chartController.selectedSegmentIndex == 0 {
+                    
+                    delegate?.reloadPieChart(semester: selectedSemester!)
+                }
+                else if chartController.selectedSegmentIndex == 1{
+                    
+                    delegate?.reloadLineChart(semester: selectedSemester!)
+                }
             }
             else{
                 selectedSemester = nil
-                delegate?.reloadChart()
+                if chartController.selectedSegmentIndex == 0 {
+                    
+                    delegate?.reloadPieChart()
+                }
+                else if chartController.selectedSegmentIndex == 1{
+                    
+                    delegate?.reloadLineChart()
+                }
             }
         } else {
             if row > 0 {
                 selectedCourse = selectedSemester!.courses[row-1]
-                delegate?.reloadChart(course: selectedCourse!)
+                if chartController.selectedSegmentIndex == 0 {
+                    
+                    delegate?.reloadPieChart(course: selectedCourse!)
+                }
+                else if chartController.selectedSegmentIndex == 1{
+                    
+                    delegate?.reloadLineChart(course: selectedCourse!)
+                }
             }
             else{
                 selectedCourse = nil
                 if let sem = selectedSemester{
-                    delegate?.reloadChart(semester: sem)
+                    if chartController.selectedSegmentIndex == 0 {
+                        
+                        delegate?.reloadPieChart(semester: sem)
+                    }
+                    else if chartController.selectedSegmentIndex == 1{
+                        
+                        delegate?.reloadLineChart(semester: sem)
+                    }
                 }
             }
             

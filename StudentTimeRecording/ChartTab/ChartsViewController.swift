@@ -15,6 +15,7 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
     
     @IBOutlet weak var headerLabel: UILabel!
     
+    @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var pieChartView: PieChartView!
     let realmController = RealmController()
     var semesters: Results<Semester>!
@@ -28,16 +29,40 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         addOverlay.dismissOverlay()
     }
     
-    func reloadChart(course: Course) {
-        updateChartWithData(course: course)
+    func reloadPieChart(course: Course) {
+        pieChartView.isHidden = false
+        lineChartView.isHidden = true
+        updatePieChartWithData(course: course)
     }
     
-    func reloadChart(semester: Semester) {
-        updateChartWithData(semester: semester)
+    func reloadPieChart(semester: Semester) {
+        pieChartView.isHidden = false
+        lineChartView.isHidden = true
+        updatePieChartWithData(semester: semester)
     }
     
-    func reloadChart() {
-        updateChartWithData()
+    func reloadPieChart() {
+        pieChartView.isHidden = false
+        lineChartView.isHidden = true
+        updatePieChartWithData()
+    }
+    
+    func reloadLineChart(course: Course) {
+        lineChartView.isHidden = false
+        pieChartView.isHidden = true
+        updatePieChartWithData(course: course)
+    }
+    
+    func reloadLineChart(semester: Semester) {
+        lineChartView.isHidden = false
+        pieChartView.isHidden = true
+        updatePieChartWithData(semester: semester)
+    }
+    
+    func reloadLineChart() {
+        lineChartView.isHidden = false
+        pieChartView.isHidden = true
+        updateLineChartWithData()
     }
     
     
@@ -72,8 +97,83 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         addOverlay.createOverlay()
     }
     
+    func updateLineChartWithData() {
+        var dataEntries: [ChartDataEntry] = []
+        var workEntries: [myTime] = []
+        semesters = realmController.getAllSemesters()
+        
+        for x in 0..<semesters.count{
+            for i in 0..<semesters[x].courses.count {
+                
+                for j in 0..<semesters[x].courses[i].timeAtHome.count{
+                   workEntries.append(semesters[x].courses[i].timeAtHome[j])
+                    print("\(semesters[x].courses[i].timeAtHome[j].hours) :home")
+                }
+                for k in 0..<semesters[x].courses[i].timeAtUniversity.count{
+                    workEntries.append(semesters[x].courses[i].timeAtUniversity[k])
+                    print("\(semesters[x].courses[i].timeAtUniversity[k].hours) :uni")
+                }
+                for l in 0..<semesters[x].courses[i].timeStudying.count{
+                    workEntries.append(semesters[x].courses[i].timeStudying[l])
+                    print("\(semesters[x].courses[i].timeStudying[l].hours) :study")
+                }
+                
+            }
+            
+        }
+        
+        let workEntriesSorted = workEntries.sorted(by: {$0.date > $1.date})
+        
+        for i in 0..<workEntriesSorted.count{
+            
+            let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
+            let dataEntry = ChartDataEntry(x: Double(timeIntervalForDate), y: Double(workEntriesSorted[i].hours))
+            dataEntries.append(dataEntry)
+        }
+       /*
+        if timeCourse > 0 {
+            let dataEntry = PieChartDataEntry()
+            dataEntry.y = Double(timeCourse)
+            
+            //                let strokeTextAttributes = [
+            //                    NSAttributedStringKey.strokeColor : UIColor.black,
+            //                    NSAttributedStringKey.foregroundColor : UIColor.white,
+            //                    NSAttributedStringKey.strokeWidth : 0.0,
+            //                    NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 40)
+            //                    ] as [NSAttributedStringKey : Any]
+            //
+            //                cell.abbreveationLabel.attributedText = NSAttributedString(string: labelText, attributes: strokeTextAttributes)
+            
+            
+            dataEntry.label = semesters[x].name
+            
+            
+            dataEntries.append(dataEntry)
+        }*/
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: nil)
+        let chartData = LineChartData(dataSet: chartDataSet)
+        if dataEntries.count > 0 {
+            lineChartView.data = chartData
+        }
+        else{
+            lineChartView.data = nil
+        }
+        
+        let xaxis = lineChartView.xAxis
+        xaxis.valueFormatter = axisFormatDelegate
+        xaxis.granularity = 1.0
+        chartDataSet.colors = ChartColorTemplates.colorful()
+        
+        headerLabel.text = "All Semesters"
+        
+        lineChartView.chartDescription?.text = nil
+        lineChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
+        lineChartView.legendRenderer.computeLegend(data: chartData)
+        
+    }
     
-    func updateChartWithData() {
+    
+    func updatePieChartWithData() {
         var dataEntries: [ChartDataEntry] = []
         semesters = realmController.getAllSemesters()
         
@@ -108,26 +208,32 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
                 
                 dataEntry.label = semesters[x].name
                 
+                
                 dataEntries.append(dataEntry)
             }
         }
             
         let chartDataSet = PieChartDataSet(values: dataEntries, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
-        pieChartView.data = chartData
+        if dataEntries.count > 0 {
+            pieChartView.data = chartData
+        }
+        else{
+            pieChartView.data = nil
+        }
         
         chartDataSet.colors = ChartColorTemplates.colorful()
         
         headerLabel.text = "All Semesters"
         
         pieChartView.chartDescription?.text = nil
-        pieChartView.animate(xAxisDuration: 1.0)
+        pieChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
         pieChartView.legendRenderer.computeLegend(data: chartData)
         
     }
         
     
-    func updateChartWithData(semester: Semester) {
+    func updatePieChartWithData(semester: Semester) {
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<semester.courses.count {
             
@@ -145,26 +251,31 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
                 let dataEntry = PieChartDataEntry()
                 dataEntry.y = Double(timeCourse)
                 dataEntry.label = semester.courses[i].name
-               
-                dataEntries.append(dataEntry)
+                if timeCourse > 0{
+                    dataEntries.append(dataEntry)
+                }
             }
         }
         
         
         let chartDataSet = PieChartDataSet(values: dataEntries, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
-        pieChartView.data = chartData
-    
+        if dataEntries.count > 0 {
+            pieChartView.data = chartData
+        }
+        else{
+            pieChartView.data = nil
+        }
         chartDataSet.colors = ChartColorTemplates.colorful()
         
         headerLabel.text = semester.name
         
         pieChartView.chartDescription?.text = nil
-        pieChartView.animate(xAxisDuration: 1.0)
+        pieChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
         pieChartView.legendRenderer.computeLegend(data: chartData)
     }
     
-    func updateChartWithData(course: Course) {
+    func updatePieChartWithData(course: Course) {
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<3{
             
@@ -179,7 +290,9 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
                 dataEntry.y = Double(timeCourseHome)
                 dataEntry.label = "Time at Home"
                 
-                dataEntries.append(dataEntry)
+                    if timeCourseHome > 0{
+                        dataEntries.append(dataEntry)
+                    }
                 }
             }
             else if i == 1{
@@ -194,7 +307,9 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
                 dataEntry.y = Double(timeCourseUni)
                 dataEntry.label = "Time at Uni"
                 
-                dataEntries.append(dataEntry)
+                    if timeCourseUni > 0{
+                        dataEntries.append(dataEntry)
+                    }
                 }
             }
             else{
@@ -208,7 +323,9 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
                 dataEntry.y = Double(timeCourseStudy)
                 dataEntry.label = "Time studing"
                 
-                dataEntries.append(dataEntry)
+                    if timeCourseStudy > 0{
+                        dataEntries.append(dataEntry)
+                    }
                 }
             }
           
@@ -218,7 +335,12 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         
         let chartDataSet = PieChartDataSet(values: dataEntries, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
-        pieChartView.data = chartData
+        if dataEntries.count > 0 {
+            pieChartView.data = chartData
+        }
+        else{
+            pieChartView.data = nil
+        }
         
         chartDataSet.colors = ChartColorTemplates.colorful()
         
@@ -226,7 +348,7 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         headerLabel.text = "Course: \(course.name)"
         
         pieChartView.chartDescription?.text = nil
-        pieChartView.animate(xAxisDuration: 1.0)
+        pieChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
         pieChartView.legendRenderer.computeLegend(data: chartData)
     }
     
@@ -235,12 +357,15 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         super.viewDidLoad()
         axisFormatDelegate = self
         semesters = realmController.getAllSemesters()
+        lineChartView.noDataText = "Please add some course time first"
+        lineChartView.dragEnabled = true
+        lineChartView.setScaleEnabled(true)
+        lineChartView.pinchZoomEnabled = true
         pieChartView.noDataText = "Please add some course time first"
-        pieChartView.animate(xAxisDuration: 2.0)
+        pieChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
+        //pieChartView.backgroundColor = UIColor.red
+        pieChartView.holeColor = UIColor.darkGray
         
-        
-
-
         overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
     }
     
@@ -250,7 +375,7 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
     override func viewWillAppear(_ animated: Bool) {
         
         semesters = realmController.getAllSemesters()
-        updateChartWithData()
+        updatePieChartWithData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -264,7 +389,7 @@ extension UIViewController: IAxisValueFormatter {
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM"
+        dateFormatter.dateFormat = "dd.MMM"
         return dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
 }

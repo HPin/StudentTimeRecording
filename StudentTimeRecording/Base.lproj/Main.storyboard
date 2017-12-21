@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AL8-Y4-rS0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AL8-Y4-rS0">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -71,9 +71,16 @@
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCK-Pz-Bvd" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="114" width="414" height="350"/>
-                                <color key="backgroundColor" red="0.87036512310000003" green="0.87036512310000003" blue="0.87036512310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="odY-CD-bjp"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGo-mj-0pH" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="114" width="414" height="350"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="SS7-fl-sCL"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNt-yy-gDf">
@@ -87,10 +94,13 @@
                         <constraints>
                             <constraint firstItem="kCK-Pz-Bvd" firstAttribute="leading" secondItem="UcW-8m-T63" secondAttribute="leading" id="3h1-d3-GOP"/>
                             <constraint firstItem="UNt-yy-gDf" firstAttribute="top" secondItem="UcW-8m-T63" secondAttribute="top" constant="25" id="AKY-Vf-NCN"/>
+                            <constraint firstItem="bGo-mj-0pH" firstAttribute="top" secondItem="UNt-yy-gDf" secondAttribute="bottom" constant="25" id="LW2-q1-5mX"/>
                             <constraint firstItem="kCK-Pz-Bvd" firstAttribute="trailing" secondItem="UcW-8m-T63" secondAttribute="trailing" id="Oc8-yY-cbn"/>
                             <constraint firstAttribute="trailing" secondItem="UNt-yy-gDf" secondAttribute="trailing" constant="10" id="PPz-Vu-KwM"/>
                             <constraint firstItem="UNt-yy-gDf" firstAttribute="leading" secondItem="EaT-iq-ajp" secondAttribute="leading" constant="10" id="V6q-vF-L3L"/>
                             <constraint firstItem="kCK-Pz-Bvd" firstAttribute="top" secondItem="UNt-yy-gDf" secondAttribute="bottom" constant="25" id="ckV-be-ASE"/>
+                            <constraint firstItem="bGo-mj-0pH" firstAttribute="trailing" secondItem="UcW-8m-T63" secondAttribute="trailing" id="qqw-Ih-WJb"/>
+                            <constraint firstItem="bGo-mj-0pH" firstAttribute="leading" secondItem="UcW-8m-T63" secondAttribute="leading" id="zlQ-vp-ehA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UcW-8m-T63"/>
                     </view>
@@ -103,13 +113,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="headerLabel" destination="UNt-yy-gDf" id="Tjt-gP-Boz"/>
+                        <outlet property="lineChartView" destination="bGo-mj-0pH" id="yAO-cn-cdX"/>
                         <outlet property="overlaySubview" destination="8CF-Y3-9qM" id="AHb-Qg-a9M"/>
                         <outlet property="pieChartView" destination="kCK-Pz-Bvd" id="42P-PW-sWx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK2-KJ-Sum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1901.5999999999999" y="-1243.6281859070466"/>
+            <point key="canvasLocation" x="1901.449275362319" y="-1244.021739130435"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xnl-JX-kOy">
@@ -560,26 +571,43 @@
                                 </items>
                             </navigationBar>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tjr-XV-Dzk">
-                                <rect key="frame" x="0.0" y="44" width="414" height="256"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="206"/>
                                 <connections>
                                     <outlet property="dataSource" destination="6XD-9b-ewx" id="Gxl-0s-53d"/>
                                     <outlet property="delegate" destination="6XD-9b-ewx" id="5dc-En-AZp"/>
                                 </connections>
                             </pickerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OGI-t6-098">
+                                <rect key="frame" x="130" y="64" width="154" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7du-YE-Skx"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Pie Chart"/>
+                                    <segment title="Line Chart"/>
+                                </segments>
+                                <connections>
+                                    <action selector="chartControllerClicked:" destination="6XD-9b-ewx" eventType="valueChanged" id="boN-Ym-g5m"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Tjr-XV-Dzk" firstAttribute="top" secondItem="OGI-t6-098" secondAttribute="bottom" id="Coe-Nw-GEu"/>
                             <constraint firstItem="Tjr-XV-Dzk" firstAttribute="trailing" secondItem="fvr-xo-y6c" secondAttribute="trailing" id="EYT-Am-qf8"/>
                             <constraint firstItem="Tjr-XV-Dzk" firstAttribute="bottom" secondItem="fvr-xo-y6c" secondAttribute="bottom" id="P5e-Rd-i0S"/>
                             <constraint firstItem="6Nz-YE-TcA" firstAttribute="top" secondItem="fvr-xo-y6c" secondAttribute="top" id="VCN-hz-KIw"/>
+                            <constraint firstItem="OGI-t6-098" firstAttribute="top" secondItem="6Nz-YE-TcA" secondAttribute="bottom" constant="20" id="fhc-WB-f7v"/>
+                            <constraint firstItem="fvr-xo-y6c" firstAttribute="trailing" secondItem="OGI-t6-098" secondAttribute="trailing" constant="130" id="gvp-g8-qer"/>
                             <constraint firstItem="6Nz-YE-TcA" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" id="lT0-7m-yBg"/>
                             <constraint firstItem="Tjr-XV-Dzk" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" id="lqK-EL-Fd2"/>
+                            <constraint firstItem="OGI-t6-098" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" constant="130" id="mLO-mu-wDa"/>
                             <constraint firstItem="6Nz-YE-TcA" firstAttribute="trailing" secondItem="fvr-xo-y6c" secondAttribute="trailing" id="tF2-QM-hzA"/>
-                            <constraint firstItem="Tjr-XV-Dzk" firstAttribute="top" secondItem="6Nz-YE-TcA" secondAttribute="bottom" id="tjc-uB-ag4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fvr-xo-y6c"/>
                     </view>
                     <connections>
+                        <outlet property="chartController" destination="OGI-t6-098" id="axO-qA-but"/>
                         <outlet property="picker" destination="Tjr-XV-Dzk" id="Jjt-Df-7JZ"/>
                     </connections>
                 </viewController>
