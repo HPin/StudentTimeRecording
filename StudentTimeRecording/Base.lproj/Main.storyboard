@@ -19,16 +19,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mrr-rj-k7v">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mrr-rj-k7v">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B7Z-T9-Fdh">
-                                        <rect key="frame" x="82" y="448" width="228" height="30"/>
+                                        <rect key="frame" x="20" y="520" width="380" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="8xs-3i-fMO" id="Mk1-Ag-u59"/>
                                         </connections>
@@ -36,7 +35,13 @@
                                 </subviews>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.58081901069999997" green="0.088427625600000004" blue="0.31863921880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Mrr-rj-k7v" secondAttribute="bottom" id="667-Tc-QJJ"/>
+                            <constraint firstItem="Mrr-rj-k7v" firstAttribute="leading" secondItem="OeE-X9-N2c" secondAttribute="leading" id="87w-S3-uac"/>
+                            <constraint firstItem="Mrr-rj-k7v" firstAttribute="trailing" secondItem="OeE-X9-N2c" secondAttribute="trailing" id="Xvg-vA-Z4y"/>
+                            <constraint firstItem="Mrr-rj-k7v" firstAttribute="top" secondItem="A2t-GS-jYd" secondAttribute="top" id="tYV-Aq-ojf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="OeE-X9-N2c"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="deadline" selectedImage="deadline" id="A0g-yF-3Ox"/>
@@ -78,7 +83,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kCK-Pz-Bvd" firstAttribute="leading" secondItem="UcW-8m-T63" secondAttribute="leading" id="3h1-d3-GOP"/>
                             <constraint firstItem="UNt-yy-gDf" firstAttribute="top" secondItem="UcW-8m-T63" secondAttribute="top" constant="25" id="AKY-Vf-NCN"/>
@@ -389,7 +394,7 @@
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="t99-mJ-aEn" id="0S7-ZF-jEg"/>
                                                 </connections>
@@ -399,7 +404,7 @@
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="t99-mJ-aEn" id="jz1-iU-Xbc"/>
                                                 </connections>

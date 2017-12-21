@@ -14,7 +14,32 @@ class DeadlinesViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
+        
+        let totalHeight = view.frame.height
+        let textFieldY = textField.frame.origin.y
+        let textFieldDistanceFromBottom = totalHeight - textFieldY
+        
+        let offset = 280 - textFieldDistanceFromBottom
+        
+        
+        if offset > 0 {
+            UIView.animateKeyframes(withDuration: 2.5, delay: 0.0, options: [], animations: {
+                
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: offset + 30), animated: false)
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3, animations: {
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: offset - 15), animated: false)
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3, animations: {
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
+                })
+                
+            }, completion: nil)
+           
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

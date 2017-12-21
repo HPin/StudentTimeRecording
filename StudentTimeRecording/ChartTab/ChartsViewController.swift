@@ -95,6 +95,17 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
             if timeCourse > 0 {
                 let dataEntry = PieChartDataEntry()
                 dataEntry.y = Double(timeCourse)
+                
+//                let strokeTextAttributes = [
+//                    NSAttributedStringKey.strokeColor : UIColor.black,
+//                    NSAttributedStringKey.foregroundColor : UIColor.white,
+//                    NSAttributedStringKey.strokeWidth : 0.0,
+//                    NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 40)
+//                    ] as [NSAttributedStringKey : Any]
+//
+//                cell.abbreveationLabel.attributedText = NSAttributedString(string: labelText, attributes: strokeTextAttributes)
+                
+                
                 dataEntry.label = semesters[x].name
                 
                 dataEntries.append(dataEntry)

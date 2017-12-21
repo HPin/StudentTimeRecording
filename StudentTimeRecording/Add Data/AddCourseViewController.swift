@@ -116,9 +116,46 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        let totalHeight = view.frame.height
+        let textFieldY = textField.frame.origin.y
+        let textFieldDistanceFromBottom = totalHeight - textFieldY
         
-        scrollView.setContentOffset(CGPoint(x: 0, y: 30), animated: true)
+        let offset = 280 - textFieldDistanceFromBottom
         
+        
+        if offset > 0 {
+            UIView.animateKeyframes(withDuration: 2.5, delay: 0.0, options: [], animations: {
+                
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: offset + 30), animated: false)
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3, animations: {
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: offset - 15), animated: false)
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3, animations: {
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
+                })
+                
+            }, completion: nil)
+        } else {
+            UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: [], animations: {
+                
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
+                    textField.transform = CGAffineTransform(translationX: 0, y: 10)
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3, animations: {
+                    textField.transform = CGAffineTransform(translationX: 0, y: -5)
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3, animations: {
+                    textField.transform = CGAffineTransform(translationX: 0, y: 0)
+                })
+                
+            }, completion: nil)
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
