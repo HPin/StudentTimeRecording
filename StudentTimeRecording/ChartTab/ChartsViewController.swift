@@ -50,13 +50,13 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
     func reloadLineChart(course: Course) {
         lineChartView.isHidden = false
         pieChartView.isHidden = true
-        updatePieChartWithData(course: course)
+        updateLineChartWithData(course: course)
     }
     
     func reloadLineChart(semester: Semester) {
         lineChartView.isHidden = false
         pieChartView.isHidden = true
-        updatePieChartWithData(semester: semester)
+        updateLineChartWithData(semester: semester)
     }
     
     func reloadLineChart() {
@@ -122,36 +122,21 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
             
         }
         
-        let workEntriesSorted = workEntries.sorted(by: {$0.date > $1.date})
-        
+        let workEntriesSorted = workEntries.sorted(by: {$0.date < $1.date})
+        var totalTime: Int = 0
         for i in 0..<workEntriesSorted.count{
             
             let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
-            let dataEntry = ChartDataEntry(x: Double(timeIntervalForDate), y: Double(workEntriesSorted[i].hours))
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(totalTime + workEntriesSorted[i].hours))
             dataEntries.append(dataEntry)
+            totalTime = totalTime + workEntriesSorted[i].hours
         }
-       /*
-        if timeCourse > 0 {
-            let dataEntry = PieChartDataEntry()
-            dataEntry.y = Double(timeCourse)
-            
-            //                let strokeTextAttributes = [
-            //                    NSAttributedStringKey.strokeColor : UIColor.black,
-            //                    NSAttributedStringKey.foregroundColor : UIColor.white,
-            //                    NSAttributedStringKey.strokeWidth : 0.0,
-            //                    NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 40)
-            //                    ] as [NSAttributedStringKey : Any]
-            //
-            //                cell.abbreveationLabel.attributedText = NSAttributedString(string: labelText, attributes: strokeTextAttributes)
-            
-            
-            dataEntry.label = semesters[x].name
-            
-            
-            dataEntries.append(dataEntry)
-        }*/
+
         let chartDataSet = LineChartDataSet(values: dataEntries, label: nil)
+        chartDataSet.label = "Total time spend "
+        chartDataSet.colors = [NSUIColor.red]
         let chartData = LineChartData(dataSet: chartDataSet)
+        
         if dataEntries.count > 0 {
             lineChartView.data = chartData
         }
@@ -159,12 +144,111 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
             lineChartView.data = nil
         }
         
-        let xaxis = lineChartView.xAxis
-        xaxis.valueFormatter = axisFormatDelegate
-        xaxis.granularity = 1.0
-        chartDataSet.colors = ChartColorTemplates.colorful()
+        
         
         headerLabel.text = "All Semesters"
+        
+        lineChartView.chartDescription?.text = nil
+        lineChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
+        lineChartView.legendRenderer.computeLegend(data: chartData)
+        
+    }
+    
+    func updateLineChartWithData(semester: Semester) {
+        var dataEntries: [ChartDataEntry] = []
+        var workEntries: [myTime] = []
+        
+            for i in 0..<semester.courses.count {
+                
+                for j in 0..<semester.courses[i].timeAtHome.count{
+                    workEntries.append(semester.courses[i].timeAtHome[j])
+                    print("\(semester.courses[i].timeAtHome[j].hours) :home")
+                }
+                for k in 0..<semester.courses[i].timeAtUniversity.count{
+                    workEntries.append(semester.courses[i].timeAtUniversity[k])
+                    print("\(semester.courses[i].timeAtUniversity[k].hours) :uni")
+                }
+                for l in 0..<semester.courses[i].timeStudying.count{
+                    workEntries.append(semester.courses[i].timeStudying[l])
+                    print("\(semester.courses[i].timeStudying[l].hours) :study")
+                }
+                
+            
+        }
+        
+        let workEntriesSorted = workEntries.sorted(by: {$0.date < $1.date})
+        var totalTime: Int = 0
+        for i in 0..<workEntriesSorted.count{
+            
+            let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(totalTime + workEntriesSorted[i].hours))
+            dataEntries.append(dataEntry)
+            totalTime = totalTime + workEntriesSorted[i].hours
+        }
+        
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: nil)
+        chartDataSet.label = "Total time spend for \(semester.name)"
+        chartDataSet.colors = [NSUIColor.red]
+        let chartData = LineChartData(dataSet: chartDataSet)
+        
+        if dataEntries.count > 0 {
+            lineChartView.data = chartData
+        }
+        else{
+            lineChartView.data = nil
+        }
+        
+        
+        
+        headerLabel.text = semester.name
+        
+        lineChartView.chartDescription?.text = nil
+        lineChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
+        lineChartView.legendRenderer.computeLegend(data: chartData)
+        
+    }
+    
+    func updateLineChartWithData(course: Course) {
+        var dataEntries: [ChartDataEntry] = []
+        var workEntries: [myTime] = []
+        
+        
+        for j in 0..<course.timeAtHome.count{
+            workEntries.append(course.timeAtHome[j])
+        }
+        for k in 0..<course.timeAtUniversity.count{
+            workEntries.append(course.timeAtUniversity[k])
+        }
+        for l in 0..<course.timeStudying.count{
+            workEntries.append(course.timeStudying[l])
+        }
+        
+        
+        let workEntriesSorted = workEntries.sorted(by: {$0.date < $1.date})
+        var totalTime: Int = 0
+        for i in 0..<workEntriesSorted.count{
+            
+            let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(totalTime + workEntriesSorted[i].hours))
+            dataEntries.append(dataEntry)
+            totalTime = totalTime + workEntriesSorted[i].hours
+        }
+        
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: nil)
+        chartDataSet.label = "Total time spend for \(course.name)"
+        chartDataSet.colors = [NSUIColor.red]
+        let chartData = LineChartData(dataSet: chartDataSet)
+        
+        if dataEntries.count > 0 {
+            lineChartView.data = chartData
+        }
+        else{
+            lineChartView.data = nil
+        }
+        
+        
+        
+        headerLabel.text = "Course: \(course.name)"
         
         lineChartView.chartDescription?.text = nil
         lineChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)

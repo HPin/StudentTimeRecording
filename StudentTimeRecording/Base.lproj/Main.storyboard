@@ -96,18 +96,12 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCK-Pz-Bvd" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="114" width="414" height="350"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="543"/>
                                 <color key="backgroundColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="odY-CD-bjp"/>
-                                </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGo-mj-0pH" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="114" width="414" height="350"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="543"/>
                                 <color key="backgroundColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="SS7-fl-sCL"/>
-                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNt-yy-gDf">
                                 <rect key="frame" x="10" y="89" width="394" height="0.0"/>
@@ -121,9 +115,11 @@
                             <constraint firstItem="kCK-Pz-Bvd" firstAttribute="leading" secondItem="UcW-8m-T63" secondAttribute="leading" id="3h1-d3-GOP"/>
                             <constraint firstItem="UNt-yy-gDf" firstAttribute="top" secondItem="UcW-8m-T63" secondAttribute="top" constant="25" id="AKY-Vf-NCN"/>
                             <constraint firstItem="bGo-mj-0pH" firstAttribute="top" secondItem="UNt-yy-gDf" secondAttribute="bottom" constant="25" id="LW2-q1-5mX"/>
+                            <constraint firstItem="UcW-8m-T63" firstAttribute="bottom" secondItem="kCK-Pz-Bvd" secondAttribute="bottom" constant="30" id="O8P-FE-QZQ"/>
                             <constraint firstItem="kCK-Pz-Bvd" firstAttribute="trailing" secondItem="UcW-8m-T63" secondAttribute="trailing" id="Oc8-yY-cbn"/>
                             <constraint firstAttribute="trailing" secondItem="UNt-yy-gDf" secondAttribute="trailing" constant="10" id="PPz-Vu-KwM"/>
                             <constraint firstItem="UNt-yy-gDf" firstAttribute="leading" secondItem="EaT-iq-ajp" secondAttribute="leading" constant="10" id="V6q-vF-L3L"/>
+                            <constraint firstItem="UcW-8m-T63" firstAttribute="bottom" secondItem="bGo-mj-0pH" secondAttribute="bottom" constant="30" id="Xya-VB-cCa"/>
                             <constraint firstItem="kCK-Pz-Bvd" firstAttribute="top" secondItem="UNt-yy-gDf" secondAttribute="bottom" constant="25" id="ckV-be-ASE"/>
                             <constraint firstItem="bGo-mj-0pH" firstAttribute="trailing" secondItem="UcW-8m-T63" secondAttribute="trailing" id="qqw-Ih-WJb"/>
                             <constraint firstItem="bGo-mj-0pH" firstAttribute="leading" secondItem="UcW-8m-T63" secondAttribute="leading" id="zlQ-vp-ehA"/>
@@ -633,7 +629,7 @@
                                     <constraint firstAttribute="height" constant="44" id="iTF-uW-X1S"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Title" id="Jhc-Jt-VB9">
+                                    <navigationItem title="Charts" id="Jhc-Jt-VB9">
                                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="TXe-LW-CXt">
                                             <connections>
                                                 <action selector="exitBtn:" destination="6XD-9b-ewx" id="V98-oD-SM9"/>
