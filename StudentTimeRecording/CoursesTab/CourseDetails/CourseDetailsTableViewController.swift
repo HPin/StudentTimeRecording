@@ -32,6 +32,8 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
         self.courseDetailsTableView.delegate = self
         self.courseDetailsTableView.dataSource = self
         
+        self.courseDetailsTableView.backgroundColor = UIColor.darkGray
+        
         addTimeSubView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 400)
         
         reloadTableView()
@@ -71,44 +73,50 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     // -------------------- create table view entries
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        var sectionsNumber = 0
+        var isEmpty = true
         
-//        if selectedCourse.timeAtUniversity.count != 0 {
-//            sectionsNumber += 1
-//        }
-//
-//        if selectedCourse.timeAtHome.count != 0 {
-//            sectionsNumber += 1
-//        }
-//
-//        if selectedCourse.timeStudying.count != 0 {
-//            sectionsNumber += 1
-//        }
+        if selectedCourse.timeAtUniversity.count != 0 {
+            isEmpty = false
+        }
+
+        if selectedCourse.timeAtHome.count != 0 {
+            isEmpty = false
+        }
+
+        if selectedCourse.timeStudying.count != 0 {
+            isEmpty = false
+        }
         
-        return 3
+        if isEmpty {
+            return 0
+        } else {
+            return 3
+        }
+        
     }
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        return 50
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let myHeader = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 80))
-        myHeader.backgroundColor = UIColor.lightGray
+        let myHeader = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        myHeader.backgroundColor = UIColor.brown
         
         let title = UILabel()
         let sectionTitles = ["Time at University", "Time at Home", "Time for Studying"]
         title.text = sectionTitles[section]
-        title.frame = CGRect(x: 45, y: 10, width: view.frame.width - 45, height: 60)
-        title.font = UIFont.systemFont(ofSize: 40)
+        title.frame = CGRect(x: 45, y: 10, width: view.frame.width - 45, height: 30)
+        title.font = UIFont.systemFont(ofSize: 30)
+        title.textColor = UIColor.white
         myHeader.addSubview(title)
         
         return myHeader
     }
  
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 80
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,31 +148,60 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
         if indexPath.section == 0 {
             if indexPath.row < selectedCourse.timeAtUniversity.count {
                 currentTime = selectedCourse.timeAtUniversity[indexPath.row]
-                cell.coursesCellTextLabel.text = String(currentTime.hours)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .none
+                dateFormatter.dateStyle = .medium
+                
+                cell.coursesCellTextLabel.text = currentTime.name
+                cell.dateTextLabel.text = dateFormatter.string(from: currentTime.date)
+                cell.timeTextLabel.text = "\(currentTime.hours) h \(currentTime.minutes) min"
             } else {
                 cell.coursesCellTextLabel.text = "no data available"
+                cell.dateTextLabel.text = "n/V"
+                cell.timeTextLabel.text = "n/V"
             }
         } else if indexPath.section == 1 {
             if indexPath.row < selectedCourse.timeAtHome.count {
                 currentTime = selectedCourse.timeAtHome[indexPath.row]
-                cell.coursesCellTextLabel.text = String(currentTime.hours)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .none
+                dateFormatter.dateStyle = .medium
+                
+                cell.coursesCellTextLabel.text = currentTime.name
+                cell.dateTextLabel.text = dateFormatter.string(from: currentTime.date)
+                cell.timeTextLabel.text = "\(currentTime.hours) h \(currentTime.minutes) min"
             } else {
                 cell.coursesCellTextLabel.text = "no data available"
+                cell.dateTextLabel.text = "n/V"
+                cell.timeTextLabel.text = "n/V"
             }
         } else if indexPath.section == 2 {
             if indexPath.row < selectedCourse.timeStudying.count {
                 currentTime = selectedCourse.timeStudying[indexPath.row]
-                cell.coursesCellTextLabel.text = String(currentTime.hours)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .none
+                dateFormatter.dateStyle = .medium
+                
+                cell.coursesCellTextLabel.text = currentTime.name
+                cell.dateTextLabel.text = dateFormatter.string(from: currentTime.date)
+                cell.timeTextLabel.text = "\(currentTime.hours) h \(currentTime.minutes) min"
             } else {
                 cell.coursesCellTextLabel.text = "no data available"
+                cell.dateTextLabel.text = "n/V"
+                cell.timeTextLabel.text = "n/V"
             }
         } else {
             cell.coursesCellTextLabel.text = "no data available"
+            cell.dateTextLabel.text = "n/V"
+            cell.timeTextLabel.text = "n/V"
         }
         
         
         cell.coursesCellTextLabel.numberOfLines = 0
-        cell.backgroundColor = UIColor(red: 146/255, green: 144/255, blue: 0/255, alpha: 1)
+        cell.backgroundColor = UIColor.lightGray
         
         return cell
     }
