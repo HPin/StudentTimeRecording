@@ -12,6 +12,10 @@ class CourseDetailsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var coursesCellTextLabel: UILabel!
     
+    @IBOutlet weak var timeTextLabel: UILabel!
+    
+    @IBOutlet weak var dateTextLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
