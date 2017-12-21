@@ -10,13 +10,15 @@ import UIKit
 import CoreData
 import RealmSwift
 
-class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, NewSemesterSubviewControllerDelegate {
+class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, NewSemesterSubviewControllerDelegate {
    
     let realmController = RealmController()
     var semesters: Results<Semester>!
     var selectedSemester: Semester?
     
-    //let blackView = UIView()
+    var activeTextField: UITextField!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // pass reference to self into overlay, otherwise we encounter a nil object there
     lazy var addOverlay: NewSemesterSubViewController = {
@@ -113,56 +115,24 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     
     
-        /*
-        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(blackViewDisappear)))
-        blackView.frame = view.frame
-        blackView.alpha = 0
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        view.addSubview(blackView)
-        view.addSubview(overlaySubview) // add overlay after(!) black view
+        scrollView.setContentOffset(CGPoint(x: 0, y: 30), animated: true)
         
-        let overlayHeight: CGFloat = 300
-        //overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
-        
-        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.blackView.alpha = 1
-            
-            let overlayYLocation = self.view.frame.height - overlayHeight
-            self.overlaySubview.frame = CGRect(x: 0, y: overlayYLocation, width: self.view.frame.width, height: overlayHeight)
-            
-        }, completion: nil)
     }
     
-    @objc func blackViewDisappear() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            
-            self.blackView.alpha = 0
-            
-            self.overlaySubview.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 300)
-            
-        }) { (completed: Bool) in
-            self.blackView.removeFromSuperview()
-            
-            //self.coursesTableViewController?.showSettingsOverlay(setting: setting)
-        }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
-    */
     
-//    lazy var managedContext: NSManagedObjectContext? = {
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return nil
-//        }
-//        return appDelegate.persistentContainer.viewContext
-//    }()
-//    
-//    
-//    func save() {
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return
-//        }
-//        appDelegate.saveContext()
-//    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -174,12 +144,13 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         
     }
-    
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         overlaySubview.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

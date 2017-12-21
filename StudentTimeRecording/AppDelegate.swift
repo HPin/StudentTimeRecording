@@ -16,7 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var rootVC: UIViewController
+        
+        
+        if (UserDefaults.standard.value(forKey: "isFirstAppStart") as? Bool) == nil {
+            
+            rootVC = storyboard.instantiateViewController(withIdentifier: "TutorialViewController")
+            
+        } else {
+    
+            rootVC = storyboard.instantiateInitialViewController()!
+            
+        }
+        
+        self.window?.rootViewController = rootVC
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
