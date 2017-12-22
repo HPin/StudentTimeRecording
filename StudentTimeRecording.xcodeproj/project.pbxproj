@@ -15,20 +15,15 @@
 		E6041FD11FDEC5C1008ABB53 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6041FD01FDEC5C1008ABB53 /* CoursesViewController.swift */; };
 		E6041FD31FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6041FD21FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift */; };
 		E6041FD51FDF0B56008ABB53 /* CoursesSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6041FD41FDF0B56008ABB53 /* CoursesSectionHeader.swift */; };
-		E666D93A1FDDD00300560881 /* CoursesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666D9391FDDD00300560881 /* CoursesCustomCell.swift */; };
-		E666D93C1FDDD02B00560881 /* CoursesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666D93B1FDDD02B00560881 /* CoursesTableViewController.swift */; };
 		E666D93E1FDDD24800560881 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666D93D1FDDD24800560881 /* AddCourseViewController.swift */; };
 		E67A1D841FE3DFE6005551AE /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A1D831FE3DFE6005551AE /* ChartsViewController.swift */; };
 		E67A1D891FE3E13E005551AE /* ChartsSubviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A1D881FE3E13E005551AE /* ChartsSubviewController.swift */; };
 		E67A1D8D1FE3F447005551AE /* CourseDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A1D8C1FE3F447005551AE /* CourseDetailsTableViewController.swift */; };
 		E6894D0F1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6894D0E1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift */; };
 		E6A036211FE6EC68008D2126 /* AddTimeSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A036201FE6EC68008D2126 /* AddTimeSubViewController.swift */; };
-		E6BCC5AA1FE5DA8E00729FF3 /* OverlayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C34DDF1FE3217E00787720 /* OverlayCell.swift */; };
 		E6BCC5AC1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BCC5AB1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift */; };
 		E6C0B3081FEBE2E100D12964 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0B3071FEBE2E100D12964 /* TutorialViewController.swift */; };
 		E6C0B30B1FEBF3DC00D12964 /* DeadlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0B30A1FEBF3DC00D12964 /* DeadlinesViewController.swift */; };
-		E6C34DDE1FE3173F00787720 /* AddOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C34DDD1FE3173E00787720 /* AddOverlay.swift */; };
-		E6C34DE21FE32C0600787720 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C34DE11FE32C0600787720 /* Extensions.swift */; };
 		E6F246531FDABFB2002FA853 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F246521FDABFB2002FA853 /* AppDelegate.swift */; };
 		E6F246581FDABFB2002FA853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F246561FDABFB2002FA853 /* Main.storyboard */; };
 		E6F2465B1FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6F246591FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld */; };
@@ -66,8 +61,6 @@
 		E6041FD01FDEC5C1008ABB53 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		E6041FD21FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6041FD41FDF0B56008ABB53 /* CoursesSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesSectionHeader.swift; sourceTree = "<group>"; };
-		E666D9391FDDD00300560881 /* CoursesCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCustomCell.swift; sourceTree = "<group>"; };
-		E666D93B1FDDD02B00560881 /* CoursesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableViewController.swift; sourceTree = "<group>"; };
 		E666D93D1FDDD24800560881 /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		E67A1D831FE3DFE6005551AE /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		E67A1D881FE3E13E005551AE /* ChartsSubviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSubviewController.swift; sourceTree = "<group>"; };
@@ -77,9 +70,6 @@
 		E6BCC5AB1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSemesterSubViewController.swift; sourceTree = "<group>"; };
 		E6C0B3071FEBE2E100D12964 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		E6C0B30A1FEBF3DC00D12964 /* DeadlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesViewController.swift; sourceTree = "<group>"; };
-		E6C34DDD1FE3173E00787720 /* AddOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOverlay.swift; sourceTree = "<group>"; };
-		E6C34DDF1FE3217E00787720 /* OverlayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayCell.swift; sourceTree = "<group>"; };
-		E6C34DE11FE32C0600787720 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E6F2464F1FDABFB2002FA853 /* StudentTimeRecording.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentTimeRecording.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F246521FDABFB2002FA853 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6F246571FDABFB2002FA853 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,17 +144,6 @@
 				E67A1D8F1FE3F474005551AE /* CourseDetails */,
 			);
 			path = CoursesTab;
-			sourceTree = "<group>";
-		};
-		E67A1D871FE3E02B005551AE /* CoursesTableView */ = {
-			isa = PBXGroup;
-			children = (
-				E666D9391FDDD00300560881 /* CoursesCustomCell.swift */,
-				E666D93B1FDDD02B00560881 /* CoursesTableViewController.swift */,
-				E6C34DDF1FE3217E00787720 /* OverlayCell.swift */,
-				E6C34DDD1FE3173E00787720 /* AddOverlay.swift */,
-			);
-			path = CoursesTableView;
 			sourceTree = "<group>";
 		};
 		E67A1D8E1FE3F457005551AE /* CoursesOverview */ = {
@@ -242,10 +221,8 @@
 				E6F246521FDABFB2002FA853 /* AppDelegate.swift */,
 				360312D51FE470DB00892F6E /* RealmClasses.swift */,
 				360312D31FE4690200892F6E /* RealmController.swift */,
-				E6C34DE11FE32C0600787720 /* Extensions.swift */,
 				E6C0B3061FEBE24F00D12964 /* StartupTutorial */,
 				E6BCC5AD1FE5DF2400729FF3 /* Add Data */,
-				E67A1D871FE3E02B005551AE /* CoursesTableView */,
 				E67A1D861FE3E010005551AE /* CoursesTab */,
 				E67A1D851FE3DFF7005551AE /* ChartTab */,
 				E6C0B3091FEBF3AB00D12964 /* DeadlinesTab */,
@@ -471,8 +448,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6BCC5AA1FE5DA8E00729FF3 /* OverlayCell.swift in Sources */,
-				E666D93C1FDDD02B00560881 /* CoursesTableViewController.swift in Sources */,
 				E6C0B3081FEBE2E100D12964 /* TutorialViewController.swift in Sources */,
 				E6894D0F1FE3F7EE00CF46DB /* CourseDetailsTableViewCell.swift in Sources */,
 				E6F2465B1FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld in Sources */,
@@ -481,17 +456,14 @@
 				36A395291FEC880300CA262E /* DeadlinesTableViewCell.swift in Sources */,
 				E666D93E1FDDD24800560881 /* AddCourseViewController.swift in Sources */,
 				E6041FD31FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift in Sources */,
-				E666D93A1FDDD00300560881 /* CoursesCustomCell.swift in Sources */,
 				E67A1D891FE3E13E005551AE /* ChartsSubviewController.swift in Sources */,
 				E6F246531FDABFB2002FA853 /* AppDelegate.swift in Sources */,
 				E6041FD11FDEC5C1008ABB53 /* CoursesViewController.swift in Sources */,
 				E6C0B30B1FEBF3DC00D12964 /* DeadlinesViewController.swift in Sources */,
 				E67A1D8D1FE3F447005551AE /* CourseDetailsTableViewController.swift in Sources */,
-				E6C34DDE1FE3173F00787720 /* AddOverlay.swift in Sources */,
 				E6A036211FE6EC68008D2126 /* AddTimeSubViewController.swift in Sources */,
 				360312D61FE470DB00892F6E /* RealmClasses.swift in Sources */,
 				E67A1D841FE3DFE6005551AE /* ChartsViewController.swift in Sources */,
-				E6C34DE21FE32C0600787720 /* Extensions.swift in Sources */,
 				36A3952B1FEC8FAF00CA262E /* AddDeadlineSubviewController.swift in Sources */,
 				E6041FD51FDF0B56008ABB53 /* CoursesSectionHeader.swift in Sources */,
 			);
@@ -695,6 +667,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PWPA7U96ES;
 				INFOPLIST_FILE = StudentTimeRecordingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.StudentTimeRecordingTests;
@@ -711,6 +684,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PWPA7U96ES;
 				INFOPLIST_FILE = StudentTimeRecordingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.StudentTimeRecordingTests;
@@ -726,6 +700,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PWPA7U96ES;
 				INFOPLIST_FILE = StudentTimeRecordingUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.StudentTimeRecordingUITests;
@@ -741,6 +716,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PWPA7U96ES;
 				INFOPLIST_FILE = StudentTimeRecordingUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.StudentTimeRecordingUITests;

@@ -107,15 +107,12 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
                 
                 for j in 0..<semesters[x].courses[i].timeAtHome.count{
                    workEntries.append(semesters[x].courses[i].timeAtHome[j])
-                    print("\(semesters[x].courses[i].timeAtHome[j].hours) :home")
                 }
                 for k in 0..<semesters[x].courses[i].timeAtUniversity.count{
                     workEntries.append(semesters[x].courses[i].timeAtUniversity[k])
-                    print("\(semesters[x].courses[i].timeAtUniversity[k].hours) :uni")
                 }
                 for l in 0..<semesters[x].courses[i].timeStudying.count{
                     workEntries.append(semesters[x].courses[i].timeStudying[l])
-                    print("\(semesters[x].courses[i].timeStudying[l].hours) :study")
                 }
                 
             }
@@ -126,14 +123,15 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         var totalTime: Int = 0
         for i in 0..<workEntriesSorted.count{
             
-            let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(totalTime + workEntriesSorted[i].hours))
+            //let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
+            totalTime = totalTime + (workEntriesSorted[i].hours*60) + workEntriesSorted[i].minutes
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(totalTime)/60.0)
             dataEntries.append(dataEntry)
-            totalTime = totalTime + workEntriesSorted[i].hours
+            
         }
 
         let chartDataSet = LineChartDataSet(values: dataEntries, label: nil)
-        chartDataSet.label = "Total time spend "
+        chartDataSet.label = "Total time spend in hours"
         chartDataSet.colors = [NSUIColor.red]
         let chartData = LineChartData(dataSet: chartDataSet)
         
@@ -162,15 +160,12 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
                 
                 for j in 0..<semester.courses[i].timeAtHome.count{
                     workEntries.append(semester.courses[i].timeAtHome[j])
-                    print("\(semester.courses[i].timeAtHome[j].hours) :home")
                 }
                 for k in 0..<semester.courses[i].timeAtUniversity.count{
                     workEntries.append(semester.courses[i].timeAtUniversity[k])
-                    print("\(semester.courses[i].timeAtUniversity[k].hours) :uni")
                 }
                 for l in 0..<semester.courses[i].timeStudying.count{
                     workEntries.append(semester.courses[i].timeStudying[l])
-                    print("\(semester.courses[i].timeStudying[l].hours) :study")
                 }
                 
             
@@ -180,14 +175,14 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         var totalTime: Int = 0
         for i in 0..<workEntriesSorted.count{
             
-            let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(totalTime + workEntriesSorted[i].hours))
+            //let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
+            totalTime = totalTime + (workEntriesSorted[i].hours*60) + workEntriesSorted[i].minutes
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(totalTime)/60.0)
             dataEntries.append(dataEntry)
-            totalTime = totalTime + workEntriesSorted[i].hours
         }
         
         let chartDataSet = LineChartDataSet(values: dataEntries, label: nil)
-        chartDataSet.label = "Total time spend for \(semester.name)"
+        chartDataSet.label = "Total time spend for \(semester.name) in hours"
         chartDataSet.colors = [NSUIColor.red]
         let chartData = LineChartData(dataSet: chartDataSet)
         
@@ -228,14 +223,14 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         var totalTime: Int = 0
         for i in 0..<workEntriesSorted.count{
             
-            let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(totalTime + workEntriesSorted[i].hours))
+            //let timeIntervalForDate: TimeInterval = workEntriesSorted[i].date.timeIntervalSince1970
+            totalTime = totalTime + (workEntriesSorted[i].hours*60) + workEntriesSorted[i].minutes
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(totalTime)/60.0)
             dataEntries.append(dataEntry)
-            totalTime = totalTime + workEntriesSorted[i].hours
         }
         
         let chartDataSet = LineChartDataSet(values: dataEntries, label: nil)
-        chartDataSet.label = "Total time spend for \(course.name)"
+        chartDataSet.label = "Total time spend for \(course.name) in hours"
         chartDataSet.colors = [NSUIColor.red]
         let chartData = LineChartData(dataSet: chartDataSet)
         
@@ -266,29 +261,22 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
             for i in 0..<semesters[x].courses.count {
                 
                 for j in 0..<semesters[x].courses[i].timeAtHome.count{
-                    timeCourse = timeCourse + semesters[x].courses[i].timeAtHome[j].hours
+                    timeCourse = timeCourse + (semesters[x].courses[i].timeAtHome[j].hours*60) +
+                    semesters[x].courses[i].timeAtHome[j].minutes
                 }
                 for k in 0..<semesters[x].courses[i].timeAtUniversity.count{
-                    timeCourse = timeCourse + semesters[x].courses[i].timeAtUniversity[k].hours
+                    timeCourse = timeCourse + (semesters[x].courses[i].timeAtUniversity[k].hours*60) + semesters[x].courses[i].timeAtUniversity[k].minutes
                 }
                 for l in 0..<semesters[x].courses[i].timeStudying.count{
-                    timeCourse = timeCourse + semesters[x].courses[i].timeStudying[l].hours
+                    timeCourse = timeCourse + (semesters[x].courses[i].timeStudying[l].hours*60) + semesters[x].courses[i].timeStudying[l].minutes
                 }
                 
             }
             if timeCourse > 0 {
                 let dataEntry = PieChartDataEntry()
-                dataEntry.y = Double(timeCourse)
-                
-//                let strokeTextAttributes = [
-//                    NSAttributedStringKey.strokeColor : UIColor.black,
-//                    NSAttributedStringKey.foregroundColor : UIColor.white,
-//                    NSAttributedStringKey.strokeWidth : 0.0,
-//                    NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 40)
-//                    ] as [NSAttributedStringKey : Any]
-//
-//                cell.abbreveationLabel.attributedText = NSAttributedString(string: labelText, attributes: strokeTextAttributes)
-                
+                let timeCourseHours: Double
+                timeCourseHours = Double(timeCourse)/60.0
+                dataEntry.y = timeCourseHours
                 
                 dataEntry.label = semesters[x].name
                 
@@ -310,7 +298,7 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         
         headerLabel.text = "All Semesters"
         
-        pieChartView.chartDescription?.text = nil
+        pieChartView.chartDescription?.text =  "in hours"
         pieChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
         pieChartView.legendRenderer.computeLegend(data: chartData)
         
@@ -323,17 +311,20 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
             
             var timeCourse = 0
             for j in 0..<semester.courses[i].timeAtHome.count{
-                timeCourse = timeCourse + semester.courses[i].timeAtHome[j].hours
+                timeCourse = timeCourse + (semester.courses[i].timeAtHome[j].hours * 60) +
+                semester.courses[i].timeAtHome[j].minutes
             }
             for k in 0..<semester.courses[i].timeAtUniversity.count{
-                timeCourse = timeCourse + semester.courses[i].timeAtUniversity[k].hours
+                timeCourse = timeCourse + (semester.courses[i].timeAtUniversity[k].hours * 60) +
+                semester.courses[i].timeAtUniversity[k].minutes
             }
             for l in 0..<semester.courses[i].timeStudying.count{
-                timeCourse = timeCourse + semester.courses[i].timeStudying[l].hours
+                timeCourse = timeCourse + (semester.courses[i].timeStudying[l].hours * 60) +
+                semester.courses[i].timeStudying[l].minutes
             }
             if timeCourse > 0 {
                 let dataEntry = PieChartDataEntry()
-                dataEntry.y = Double(timeCourse)
+                dataEntry.y = Double(timeCourse)/60.0
                 dataEntry.label = semester.courses[i].name
                 if timeCourse > 0{
                     dataEntries.append(dataEntry)
@@ -354,7 +345,7 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
         
         headerLabel.text = semester.name
         
-        pieChartView.chartDescription?.text = nil
+        pieChartView.chartDescription?.text = "in hours"
         pieChartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
         pieChartView.legendRenderer.computeLegend(data: chartData)
     }
@@ -366,13 +357,14 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
             if i == 0{
                 var timeCourseHome = 0
                 for j in 0..<course.timeAtHome.count{
-                    timeCourseHome = timeCourseHome + course.timeAtHome[j].hours
+                    timeCourseHome = timeCourseHome + (course.timeAtHome[j].hours * 60) +
+                    course.timeAtHome[j].minutes
                 }
                 if timeCourseHome > 0 {
                     
                 let dataEntry = PieChartDataEntry()
-                dataEntry.y = Double(timeCourseHome)
-                dataEntry.label = "Time at Home"
+                dataEntry.y = Double(timeCourseHome)/60.0
+                dataEntry.label = "Time at Home in hours"
                 
                     if timeCourseHome > 0{
                         dataEntries.append(dataEntry)
@@ -383,13 +375,14 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
                 
                 var timeCourseUni = 0
                 for j in 0..<course.timeAtUniversity.count{
-                    timeCourseUni = timeCourseUni + course.timeAtUniversity[j].hours
+                    timeCourseUni = timeCourseUni + (course.timeAtUniversity[j].hours * 60) +
+                    course.timeAtUniversity[j].minutes
                 }
                 if timeCourseUni > 0 {
                     
                 let dataEntry = PieChartDataEntry()
-                dataEntry.y = Double(timeCourseUni)
-                dataEntry.label = "Time at Uni"
+                dataEntry.y = Double(timeCourseUni)/60.0
+                dataEntry.label = "Time at Uni in hours"
                 
                     if timeCourseUni > 0{
                         dataEntries.append(dataEntry)
@@ -399,13 +392,14 @@ class ChartsViewController: UIViewController, ChartsSubviewControllerDelegate{
             else{
                 var timeCourseStudy = 0
                 for j in 0..<course.timeStudying.count{
-                    timeCourseStudy = timeCourseStudy + course.timeStudying[j].hours
+                    timeCourseStudy = timeCourseStudy + (course.timeStudying[j].hours * 60) +
+                    course.timeStudying[j].minutes
                 }
                 if timeCourseStudy > 0 {
                     
                 let dataEntry = PieChartDataEntry()
-                dataEntry.y = Double(timeCourseStudy)
-                dataEntry.label = "Time studing"
+                dataEntry.y = Double(timeCourseStudy)/60.0
+                dataEntry.label = "Time studing in hours"
                 
                     if timeCourseStudy > 0{
                         dataEntries.append(dataEntry)

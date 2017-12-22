@@ -88,7 +88,7 @@ class DeadlinesViewController: UIViewController, UITableViewDelegate, UITableVie
             realmController.deleteDeadline(deadline: currentDeadline)
             
         }
-        tableView.reloadData()
+        reloadTableView()
     }
     
     func reloadTableView() {
