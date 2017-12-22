@@ -52,7 +52,7 @@ class DeadlinesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if indexPath.section == 0 {
             if indexPath.row < deadlines.count {
-                currentDeadline = deadlines[indexPath.row]
+                currentDeadline = deadlinesSorted[indexPath.row]
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeStyle = .none
@@ -84,7 +84,7 @@ class DeadlinesViewController: UIViewController, UITableViewDelegate, UITableVie
         var currentDeadline: Deadline
         
         if indexPath.row < deadlines.count {
-            currentDeadline = deadlines[indexPath.row]
+            currentDeadline = deadlinesSorted[indexPath.row]
             realmController.deleteDeadline(deadline: currentDeadline)
             
         }
