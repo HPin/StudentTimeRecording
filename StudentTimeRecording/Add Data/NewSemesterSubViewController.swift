@@ -45,8 +45,24 @@ class NewSemesterSubViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
         
         let semesterName = "\(selectedSemesterType) \(selectedYear)"
+        var alreadyExists = false
         
-        realmController.addSemester(name: semesterName)
+        semesters = realmController.getAllSemesters()
+        for semester in semesters {
+            if semester.name == semesterName {
+                alreadyExists = true
+            }
+        }
+        
+        if !alreadyExists {
+            realmController.addSemester(name: semesterName)
+        } else {
+            let alert = UIAlertController(title: "ERROR", message: "This semester exists already.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
             
         delegate?.dismissTheOverlay()
         delegate?.refreshPicker()
