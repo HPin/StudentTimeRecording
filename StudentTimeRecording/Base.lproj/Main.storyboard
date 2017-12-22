@@ -752,7 +752,7 @@
                                 </connections>
                             </pickerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OGI-t6-098">
-                                <rect key="frame" x="130" y="64" width="115" height="31"/>
+                                <rect key="frame" x="100" y="64" width="175" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7du-YE-Skx"/>
                                 </constraints>
@@ -772,10 +772,10 @@
                             <constraint firstItem="Tjr-XV-Dzk" firstAttribute="bottom" secondItem="fvr-xo-y6c" secondAttribute="bottom" id="P5e-Rd-i0S"/>
                             <constraint firstItem="6Nz-YE-TcA" firstAttribute="top" secondItem="fvr-xo-y6c" secondAttribute="top" id="VCN-hz-KIw"/>
                             <constraint firstItem="OGI-t6-098" firstAttribute="top" secondItem="6Nz-YE-TcA" secondAttribute="bottom" constant="20" id="fhc-WB-f7v"/>
-                            <constraint firstItem="fvr-xo-y6c" firstAttribute="trailing" secondItem="OGI-t6-098" secondAttribute="trailing" constant="130" id="gvp-g8-qer"/>
+                            <constraint firstItem="fvr-xo-y6c" firstAttribute="trailing" secondItem="OGI-t6-098" secondAttribute="trailing" constant="100" id="gvp-g8-qer"/>
                             <constraint firstItem="6Nz-YE-TcA" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" id="lT0-7m-yBg"/>
                             <constraint firstItem="Tjr-XV-Dzk" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" id="lqK-EL-Fd2"/>
-                            <constraint firstItem="OGI-t6-098" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" constant="130" id="mLO-mu-wDa"/>
+                            <constraint firstItem="OGI-t6-098" firstAttribute="leading" secondItem="fvr-xo-y6c" secondAttribute="leading" constant="100" id="mLO-mu-wDa"/>
                             <constraint firstItem="6Nz-YE-TcA" firstAttribute="trailing" secondItem="fvr-xo-y6c" secondAttribute="trailing" id="tF2-QM-hzA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fvr-xo-y6c"/>
