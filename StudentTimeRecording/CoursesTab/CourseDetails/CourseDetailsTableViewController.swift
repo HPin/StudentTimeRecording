@@ -207,7 +207,35 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     }
     
     
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard editingStyle == .delete else { return }
+        
+        var currentTime: myTime
+        
+        if indexPath.section == 0 {
+            if indexPath.row < selectedCourse.timeAtUniversity.count {
+                currentTime = selectedCourse.timeAtUniversity[indexPath.row]
+                realmController.deleteTime(time: currentTime)
+
+            }
+        } else if indexPath.section == 1 {
+            if indexPath.row < selectedCourse.timeAtHome.count {
+                currentTime = selectedCourse.timeAtHome[indexPath.row]
+                realmController.deleteTime(time: currentTime)
+
+                
+            }
+        } else if indexPath.section == 2 {
+            if indexPath.row < selectedCourse.timeStudying.count {
+                currentTime = selectedCourse.timeStudying[indexPath.row]
+                realmController.deleteTime(time: currentTime)
+            }
+        }
+        
+        tableView.reloadData()
+       
+    }
     
     
     /*

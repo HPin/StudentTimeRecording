@@ -111,7 +111,19 @@ class RealmController{
         try! realm.write {
             course.timeAtUniversity.append(time)
         }
-        
     }
+    
+    func deleteTime(time: myTime) {
+        let realm = try! Realm()
+        
+        do {
+            try realm.write {
+                realm.delete(time)
+            }
+        } catch {
+            print("realm error")
+        }
+    }
+    
     
 }
