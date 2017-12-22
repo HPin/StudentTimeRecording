@@ -822,7 +822,7 @@
                                     <constraint firstAttribute="height" constant="44" id="ygh-7x-WuU"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="new semester" id="tOn-SK-u4H">
+                                    <navigationItem title="New Semester" id="tOn-SK-u4H">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NFW-gb-CoF">
                                             <connections>
                                                 <action selector="cancelButton:" destination="sp8-Qc-XIS" id="XG9-IG-Tlt"/>

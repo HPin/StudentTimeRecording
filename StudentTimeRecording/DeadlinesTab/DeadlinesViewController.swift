@@ -15,6 +15,7 @@ class DeadlinesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var addDeadlineOverlay: UIView!
     
     var deadlines: Results<Deadline>!
+    var deadlinesSorted: [Deadline] = []
     
     @IBOutlet weak var deadlineTableView: UITableView!
      let realmController = RealmController()
@@ -92,6 +93,8 @@ class DeadlinesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func reloadTableView() {
         deadlines = realmController.getAllDeadlines()
+        
+        deadlinesSorted = deadlines.sorted(by: {$0.date < $1.date})
         deadlineTableView.reloadData()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
