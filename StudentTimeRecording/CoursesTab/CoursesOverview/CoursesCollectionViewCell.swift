@@ -10,14 +10,17 @@ import UIKit
 
 class CoursesCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var deleteButtonBackgroundView: UIVisualEffectView!
+    
     @IBOutlet weak var abbreveationLabel: UILabel!
     
     @IBOutlet weak var coursesCVCellImageView: UIImageView!
+    
     /*
     override var isHighlighted: Bool {
         didSet {
             self.backgroundColor = isHighlighted ? UIColor.blue : UIColor.green
         }
     }
- */
+    */
 }

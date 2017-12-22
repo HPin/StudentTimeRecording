@@ -30,21 +30,26 @@
                                     <constraint firstAttribute="height" constant="250" id="zxJ-NI-oK7"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title" translatesAutoresizingMaskIntoConstraints="NO" id="M2d-l5-KYf">
-                                <rect key="frame" x="0.0" y="250" width="320" height="68"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNIVERSITIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUl-Ke-gOv">
+                                <rect key="frame" x="16" y="258" width="288" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="458-J7-RBM"/>
+                                    <constraint firstAttribute="height" constant="52" id="h98-yU-fKV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                <color key="textColor" red="0.99990183115005493" green="1" blue="0.99987989664077759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="M2d-l5-KYf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BK3-xi-XWh"/>
+                            <constraint firstItem="KUl-Ke-gOv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DCM-46-irl"/>
                             <constraint firstItem="GSs-sP-z6T" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Jbp-dT-46t"/>
                             <constraint firstItem="GSs-sP-z6T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T9p-Ys-JW3"/>
-                            <constraint firstItem="M2d-l5-KYf" firstAttribute="top" secondItem="9bw-x1-IaB" secondAttribute="bottom" id="XrR-07-jlq"/>
                             <constraint firstItem="9bw-x1-IaB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="al6-C3-p8M"/>
                             <constraint firstAttribute="bottom" secondItem="GSs-sP-z6T" secondAttribute="bottom" id="cmv-TH-7cr"/>
-                            <constraint firstItem="GSs-sP-z6T" firstAttribute="top" secondItem="M2d-l5-KYf" secondAttribute="bottom" id="gj8-R9-4W9"/>
+                            <constraint firstItem="KUl-Ke-gOv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="jlh-wp-e29"/>
                             <constraint firstItem="9bw-x1-IaB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="mmN-lb-2YW"/>
-                            <constraint firstItem="M2d-l5-KYf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nd2-Gs-CH3"/>
                             <constraint firstItem="9bw-x1-IaB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rJe-86-zIX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -58,6 +63,5 @@
     <resources>
         <image name="bg20" width="640" height="426"/>
         <image name="bg5" width="640" height="426"/>
-        <image name="title" width="1164" height="307"/>
     </resources>
 </document>

@@ -154,6 +154,9 @@ import RealmSwift
                                       
     }
     
+
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "courseDetailsSegue" {
@@ -164,6 +167,8 @@ import RealmSwift
             }
         }
     }
+    
+    
     
     // #######core data stuff:#########
     /*

@@ -21,6 +21,21 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
     
     @IBOutlet weak var addTimeSubView: UIView!
     
+    @IBAction func deleteCourseButton(_ sender: UIBarButtonItem) {
+        var shouldGetClosed = true
+        
+        let alert = UIAlertController(title: "Delete Course", message: "Do you really want to delete this course?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes, delete!", style: .default, handler: { (action) in
+            self.realmController.deleteCourse(course: self.selectedCourse)
+            self.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "No, cancel!", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+
+    }
     override func viewWillAppear(_ animated: Bool) {
         reloadTableView()
     }

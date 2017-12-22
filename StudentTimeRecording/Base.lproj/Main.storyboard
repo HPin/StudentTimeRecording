@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -435,11 +436,18 @@
                         <viewLayoutGuide key="safeArea" id="QiF-td-w1Z"/>
                     </view>
                     <navigationItem key="navigationItem" id="SVM-gu-eku">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="z2X-ut-8mG">
-                            <connections>
-                                <action selector="addNewTimeButton:" destination="f49-mY-Cmq" id="pq2-yx-dKP"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="z2X-ut-8mG">
+                                <connections>
+                                    <action selector="addNewTimeButton:" destination="f49-mY-Cmq" id="pq2-yx-dKP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Delete Course" id="U4a-00-Vhr">
+                                <connections>
+                                    <action selector="deleteCourseButton:" destination="f49-mY-Cmq" id="lIK-1y-6vj"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="addTimeSubView" destination="gXf-XU-sfL" id="q8Z-gI-bGF"/>
