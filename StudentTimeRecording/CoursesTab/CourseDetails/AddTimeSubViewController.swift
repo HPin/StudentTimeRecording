@@ -11,6 +11,7 @@ import RealmSwift
 
 protocol AddTimeSubViewControllerDelegate: class {
     func dismissTheOverlay()
+    func reloadTableViewSub()
 }
 class AddTimeSubViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -58,7 +59,7 @@ class AddTimeSubViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         
         
-        
+        delegate?.reloadTableViewSub()
         delegate?.dismissTheOverlay()
     }
     

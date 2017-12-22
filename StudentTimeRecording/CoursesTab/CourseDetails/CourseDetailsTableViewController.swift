@@ -54,6 +54,10 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
         addTimeOverlay.dismissOverlay()
     }
     
+    func reloadTableViewSub() {
+        reloadTableView()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "newTimeOverlaySegue" {
             if let sender = segue.destination as? AddTimeSubViewController {
@@ -237,27 +241,6 @@ class CourseDetailsTableViewController: UIViewController, UITableViewDelegate, U
        
     }
     
-    
-    /*
-    // -------------------- adds swipe to delete functionality ---------------
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .default, title: "delete") { (action, indexPath) in
-            // call closure function
-            self.deleteElement(path: indexPath)
-        }
-        return [delete]
-    }
-    
-    func deleteElement(path: IndexPath) -> Void {
-        let deleteThisElem = fetchedResultsController.object(at: path)
-        self.managedContext?.delete(deleteThisElem)                 // delete from storage
-        do {
-            try self.managedContext?.save()                         // store changes
-        } catch {
-            print("Could not delete entry from list.")
-        }
-    }
-    */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

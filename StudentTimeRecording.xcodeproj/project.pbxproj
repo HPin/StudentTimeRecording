@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		360312D41FE4690200892F6E /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312D31FE4690200892F6E /* RealmController.swift */; };
 		360312D61FE470DB00892F6E /* RealmClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360312D51FE470DB00892F6E /* RealmClasses.swift */; };
+		36A395291FEC880300CA262E /* DeadlinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A395281FEC880300CA262E /* DeadlinesTableViewCell.swift */; };
+		36A3952B1FEC8FAF00CA262E /* AddDeadlineSubviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A3952A1FEC8FAF00CA262E /* AddDeadlineSubviewController.swift */; };
 		82043205AD3A37AC4E41D638 /* Pods_StudentTimeRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6B08CB0FB7D32DB30FB291 /* Pods_StudentTimeRecording.framework */; };
 		E6041FD11FDEC5C1008ABB53 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6041FD01FDEC5C1008ABB53 /* CoursesViewController.swift */; };
 		E6041FD31FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6041FD21FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift */; };
@@ -57,6 +59,8 @@
 		265C493E65F3CDF1DB3EB4A2 /* Pods-StudentTimeRecording.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentTimeRecording.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StudentTimeRecording/Pods-StudentTimeRecording.debug.xcconfig"; sourceTree = "<group>"; };
 		360312D31FE4690200892F6E /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		360312D51FE470DB00892F6E /* RealmClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClasses.swift; sourceTree = "<group>"; };
+		36A395281FEC880300CA262E /* DeadlinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesTableViewCell.swift; sourceTree = "<group>"; };
+		36A3952A1FEC8FAF00CA262E /* AddDeadlineSubviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeadlineSubviewController.swift; sourceTree = "<group>"; };
 		9FA78CB5C7E08DD1A5B276C9 /* Pods-StudentTimeRecording.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentTimeRecording.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudentTimeRecording/Pods-StudentTimeRecording.release.xcconfig"; sourceTree = "<group>"; };
 		AE6B08CB0FB7D32DB30FB291 /* Pods_StudentTimeRecording.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudentTimeRecording.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6041FD01FDEC5C1008ABB53 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				E6C0B30A1FEBF3DC00D12964 /* DeadlinesViewController.swift */,
+				36A395281FEC880300CA262E /* DeadlinesTableViewCell.swift */,
+				36A3952A1FEC8FAF00CA262E /* AddDeadlineSubviewController.swift */,
 			);
 			path = DeadlinesTab;
 			sourceTree = "<group>";
@@ -472,6 +478,7 @@
 				E6F2465B1FDABFB2002FA853 /* StudentTimeRecording.xcdatamodeld in Sources */,
 				E6BCC5AC1FE5DEBF00729FF3 /* NewSemesterSubViewController.swift in Sources */,
 				360312D41FE4690200892F6E /* RealmController.swift in Sources */,
+				36A395291FEC880300CA262E /* DeadlinesTableViewCell.swift in Sources */,
 				E666D93E1FDDD24800560881 /* AddCourseViewController.swift in Sources */,
 				E6041FD31FDEC8C6008ABB53 /* CoursesCollectionViewCell.swift in Sources */,
 				E666D93A1FDDD00300560881 /* CoursesCustomCell.swift in Sources */,
@@ -485,6 +492,7 @@
 				360312D61FE470DB00892F6E /* RealmClasses.swift in Sources */,
 				E67A1D841FE3DFE6005551AE /* ChartsViewController.swift in Sources */,
 				E6C34DE21FE32C0600787720 /* Extensions.swift in Sources */,
+				36A3952B1FEC8FAF00CA262E /* AddDeadlineSubviewController.swift in Sources */,
 				E6041FD51FDF0B56008ABB53 /* CoursesSectionHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

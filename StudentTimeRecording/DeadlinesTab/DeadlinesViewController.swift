@@ -7,72 +7,123 @@
 //
 
 import UIKit
+import RealmSwift
 
-class DeadlinesViewController: UIViewController, UITextFieldDelegate {
+class DeadlinesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddDeadlineSubviewControllerDelegate {
+   
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addDeadlineOverlay: UIView!
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    var deadlines: Results<Deadline>!
+    
+    @IBOutlet weak var deadlineTableView: UITableView!
+     let realmController = RealmController()
+    
+    lazy var addDeadlineOverlay_: AddDeadlineSubviewController = {
+        let overlay = AddDeadlineSubviewController()
+        overlay.deadlineViewController = self
+        return overlay
+    }()
+    
+    @IBAction func addDeadlineOverlay(_ sender: Any) {
+        addDeadlineOverlay_.createOverlay()
+    }
+    
+    func dismissTheOverlay() {
         
-        let totalHeight = view.frame.height
-        let textFieldY = textField.frame.origin.y
-        let textFieldDistanceFromBottom = totalHeight - textFieldY
+        addDeadlineOverlay_.dismissOverlay()
+    }
+    
+    func reloadTableViewFromSub() {
+        reloadTableView()
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return deadlines.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //courseDetailsTableView.register(CourseDetailsTableViewCell.self, forCellReuseIdentifier: "courseDetailsCell")
+        let cell = deadlineTableView.dequeueReusableCell(withIdentifier: "deadlineCell") as! DeadlinesTableViewCell
         
-        let offset = 280 - textFieldDistanceFromBottom
+        var currentDeadline: Deadline
         
-        
-        if offset > 0 {
-            UIView.animateKeyframes(withDuration: 2.5, delay: 0.0, options: [], animations: {
+        if indexPath.section == 0 {
+            if indexPath.row < deadlines.count {
+                currentDeadline = deadlines[indexPath.row]
                 
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3, animations: {
-                    self.scrollView.setContentOffset(CGPoint(x: 0, y: offset + 30), animated: false)
-                })
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .none
+                dateFormatter.dateStyle = .medium
                 
-                UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3, animations: {
-                    self.scrollView.setContentOffset(CGPoint(x: 0, y: offset - 15), animated: false)
-                })
-                
-                UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3, animations: {
-                    self.scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
-                })
-                
-            }, completion: nil)
-           
+                cell.deadlineCellName.text = currentDeadline.name
+                cell.deadlineCellDate.text = dateFormatter.string(from: currentDeadline.date)
+            } else {
+                cell.deadlineCellName.text = "no data available"
+                cell.deadlineCellDate.text = "n/V"
+            }
+        } else {
+            cell.deadlineCellName.text = "no data available"
+            cell.deadlineCellDate.text = "n/V"
         }
+        
+        
+        cell.deadlineCellName.numberOfLines = 0
+        cell.backgroundColor = UIColor.lightGray
+        
+        return cell
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard editingStyle == .delete else { return }
+        
+        var currentDeadline: Deadline
+        
+        if indexPath.row < deadlines.count {
+            currentDeadline = deadlines[indexPath.row]
+            realmController.deleteDeadline(deadline: currentDeadline)
+            
+        }
+        tableView.reloadData()
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        textField.resignFirstResponder()
-        
-        return true
+    func reloadTableView() {
+        deadlines = realmController.getAllDeadlines()
+        deadlineTableView.reloadData()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "deadlineOverlaySegue" {
+            if let sender = segue.destination as? AddDeadlineSubviewController {
+                sender.delegate = self
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.deadlineTableView.delegate = self
+        self.deadlineTableView.dataSource = self
+        
+        self.deadlineTableView.backgroundColor = UIColor.darkGray
+        
+        addDeadlineOverlay.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 300)
+        
+        reloadTableView()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reloadTableView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -35,7 +35,7 @@ class myTime: Object{
     
 }
 
-class deadline: Object{
+class Deadline: Object{
     
     @objc dynamic var name = ""
     @objc dynamic var date = Date()

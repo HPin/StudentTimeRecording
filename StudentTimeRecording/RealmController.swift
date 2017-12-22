@@ -125,9 +125,34 @@ class RealmController{
         }
     }
     
-    func addDeadline(){
+    func addDeadline(deadline: Deadline){
+        
+        let realm = try! Realm()
+        
+        try! realm.write{
+            realm.add(deadline)
+        }
         
         
     }
     
+    func deleteDeadline(deadline: Deadline) {
+        let realm = try! Realm()
+        
+        do {
+            try realm.write {
+                realm.delete(deadline)
+            }
+        } catch {
+            print("realm error")
+        }
+    }
+    
+    func getAllDeadlines() -> Results<Deadline> {
+        
+        let realm = try! Realm()
+        
+        let allDeadlines = realm.objects(Deadline.self)
+        return allDeadlines
+    }
 }

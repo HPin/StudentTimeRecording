@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AL8-Y4-rS0">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +23,7 @@
                 <navigationController id="RJF-Yz-LfN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Deadline" image="deadline" selectedImage="deadline" id="TVr-90-vGY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gdR-jN-I07">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -33,28 +34,77 @@
             </objects>
             <point key="canvasLocation" x="776" y="-491"/>
         </scene>
-        <!--View Controller-->
+        <!--Deadlines View Controller-->
         <scene sceneID="idh-xt-st7">
             <objects>
-                <viewController id="7r7-Ed-ENi" sceneMemberID="viewController">
+                <viewController id="7r7-Ed-ENi" customClass="DeadlinesViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q78-8x-yFt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TRy-XI-3Bt">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deadlineCell" id="tJp-bO-33n">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deadlineCell" rowHeight="80" id="tJp-bO-33n" customClass="DeadlinesTableViewCell" customModule="StudentTimeRecording" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tJp-bO-33n" id="v9k-lh-oRE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVg-WR-eki">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="34"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1b-U9-v4h" userLabel="Line">
+                                                    <rect key="frame" x="15" y="38" width="312" height="3"/>
+                                                    <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="r0W-Gw-p5m">
+                                                    <rect key="frame" x="15" y="46" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="Mjm-gt-m32"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Qkb-5u-6fb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 dec 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJq-5U-z8z">
+                                                    <rect key="frame" x="64" y="49" width="116" height="26"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KVg-WR-eki" firstAttribute="top" secondItem="v9k-lh-oRE" secondAttribute="top" id="74l-vv-VE3"/>
+                                                <constraint firstItem="kJq-5U-z8z" firstAttribute="top" secondItem="x1b-U9-v4h" secondAttribute="bottom" constant="8" symbolic="YES" id="AFg-ll-LgC"/>
+                                                <constraint firstItem="kJq-5U-z8z" firstAttribute="leading" secondItem="r0W-Gw-p5m" secondAttribute="trailing" constant="19" id="AWj-sJ-eyX"/>
+                                                <constraint firstItem="x1b-U9-v4h" firstAttribute="top" secondItem="KVg-WR-eki" secondAttribute="bottom" constant="4" id="Cue-V0-NQ2"/>
+                                                <constraint firstItem="r0W-Gw-p5m" firstAttribute="leading" secondItem="KVg-WR-eki" secondAttribute="leading" id="Q0X-a7-gb0"/>
+                                                <constraint firstItem="x1b-U9-v4h" firstAttribute="leading" secondItem="r0W-Gw-p5m" secondAttribute="leading" id="UOy-kL-GXz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="x1b-U9-v4h" secondAttribute="trailing" constant="33" id="Wo3-Bg-LJl"/>
+                                                <constraint firstItem="r0W-Gw-p5m" firstAttribute="top" secondItem="x1b-U9-v4h" secondAttribute="bottom" constant="5" id="e9t-40-Cb7"/>
+                                                <constraint firstItem="x1b-U9-v4h" firstAttribute="centerY" secondItem="v9k-lh-oRE" secondAttribute="centerY" id="mlB-h1-PSj"/>
+                                                <constraint firstItem="KVg-WR-eki" firstAttribute="leading" secondItem="v9k-lh-oRE" secondAttribute="leading" constant="15" id="ocE-Kr-b8O"/>
+                                                <constraint firstAttribute="trailing" secondItem="KVg-WR-eki" secondAttribute="trailing" constant="15" id="raz-Yq-YeI"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="deadlineCellDate" destination="kJq-5U-z8z" id="jAx-bJ-5aG"/>
+                                            <outlet property="deadlineCellName" destination="KVg-WR-eki" id="Qpp-9C-akm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDT-kc-gad">
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="owM-tR-2Qg" kind="embed" identifier="deadlineOverlaySegue" id="QWq-rM-Ikk"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -65,37 +115,47 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JHu-zk-Mqo"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6gu-Nc-RSj"/>
+                    <navigationItem key="navigationItem" id="6gu-Nc-RSj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="WbL-g4-HOx">
+                            <connections>
+                                <action selector="addDeadlineOverlay:" destination="7r7-Ed-ENi" id="bDh-Mf-LCu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addDeadlineOverlay" destination="BDT-kc-gad" id="sVD-wc-amt"/>
+                        <outlet property="deadlineTableView" destination="TRy-XI-3Bt" id="Gzh-Kr-IEw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Gh-k8-Udx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1619" y="-492"/>
+            <point key="canvasLocation" x="1618.4000000000001" y="-492.50374812593708"/>
         </scene>
         <!--Charts View Controller-->
         <scene sceneID="m57-ht-SqU">
             <objects>
                 <viewController id="ARI-Fv-fJp" customClass="ChartsViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EaT-iq-ajp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CF-Y3-9qM">
-                                <rect key="frame" x="0.0" y="387" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="318" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="6XD-9b-ewx" kind="embed" identifier="chartsOverlaySegue" id="Acq-qE-VeB"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCK-Pz-Bvd" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="114" width="414" height="543"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="474"/>
                                 <color key="backgroundColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGo-mj-0pH" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="114" width="414" height="543"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="474"/>
                                 <color key="backgroundColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNt-yy-gDf">
-                                <rect key="frame" x="10" y="89" width="394" height="0.0"/>
+                                <rect key="frame" x="10" y="89" width="355" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -141,7 +201,7 @@
                 <navigationController id="PW8-4q-Jta" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Overview" image="collectionItem" selectedImage="collectionItem" id="vcg-8y-z7Z"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K6d-X4-ByA">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -157,11 +217,11 @@
             <objects>
                 <viewController id="Rmb-ia-GBr" customClass="CoursesViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6qS-TN-OVj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pXF-yt-PYe">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vvv-Ng-AjX">
                                     <size key="itemSize" width="148" height="139"/>
@@ -214,11 +274,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.45000000000000001" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="coursesSectionHeader" id="aJX-00-kFz" customClass="CoursesSectionHeader" customModule="StudentTimeRecording" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huK-9X-lza">
-                                            <rect key="frame" x="122.66666666666669" y="6.6666666666666679" width="75" height="38.333333333333329"/>
+                                            <rect key="frame" x="122.5" y="6.5" width="75" height="38.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -257,7 +317,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CoursesCollectionView" destination="pXF-yt-PYe" id="Gig-DQ-O9b"/>
-                        <segue destination="TAt-Gt-QKI" kind="show" identifier="testsegue" id="ZUb-ql-dH4"/>
                         <segue destination="f49-mY-Cmq" kind="show" identifier="courseDetailsSegue" id="Fa7-Df-QMb"/>
                     </connections>
                 </viewController>
@@ -265,56 +324,41 @@
             </objects>
             <point key="canvasLocation" x="1981.5999999999999" y="-2687.4062968515746"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Vde-4V-zfS">
-            <objects>
-                <viewController id="TAt-Gt-QKI" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Z42-Pq-Lqf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="LgB-gW-Y8j"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ie6-2U-Tn4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2961" y="-3358"/>
-        </scene>
         <!--Course Details Table View Controller-->
         <scene sceneID="gDi-Ft-Bt7">
             <objects>
                 <viewController id="f49-mY-Cmq" customClass="CourseDetailsTableViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1N6-ei-fHG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HEO-nz-Yw4">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="courseDetailsCell" rowHeight="80" id="DtD-5b-s0W" customClass="CourseDetailsTableViewCell" customModule="StudentTimeRecording" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DtD-5b-s0W" id="pmf-v3-pL0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAx-QA-hrz">
-                                                    <rect key="frame" x="15" y="2" width="384" height="33.666666666666664"/>
+                                                    <rect key="frame" x="15" y="2" width="345" height="33.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
                                                     <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ub9-EG-xXs" userLabel="Line">
-                                                    <rect key="frame" x="15" y="37" width="350" height="3"/>
+                                                    <rect key="frame" x="15" y="37" width="311" height="3"/>
                                                     <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="3" id="zZm-QL-6wm"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 dec 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhe-E6-1zB">
-                                                    <rect key="frame" x="267" y="51" width="116" height="25.666666666666671"/>
+                                                    <rect key="frame" x="267" y="51" width="116" height="25.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -334,7 +378,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 h 30 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ss0-Hk-HeD">
-                                                    <rect key="frame" x="53" y="48" width="161" height="25.666666666666671"/>
+                                                    <rect key="frame" x="53" y="48" width="161" height="25.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="161" id="xon-tY-BaS"/>
                                                     </constraints>
@@ -374,7 +418,7 @@
                                 </connections>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXf-XU-sfL">
-                                <rect key="frame" x="0.0" y="287" width="414" height="400"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="384"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="Io5-MH-CdC" kind="embed" identifier="newTimeOverlaySegue" id="6Gb-y7-4kh"/>
@@ -404,24 +448,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6R2-gN-Kyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2960.8695652173915" y="-2687.771739130435"/>
+            <point key="canvasLocation" x="2960.8000000000002" y="-2688.3058470764618"/>
         </scene>
         <!--Add Course View Controller-->
         <scene sceneID="OjR-Mz-p3u">
             <objects>
                 <viewController id="t99-mJ-aEn" customClass="AddCourseViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U7f-Ev-8yh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p3B-EO-5o9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3d-OV-gss" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
                                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVU-Pg-qf8">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="XIf-dr-oNv"/>
                                                 </constraints>
@@ -444,13 +488,13 @@
                                                 </connections>
                                             </navigationBar>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new course" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xaa-su-3OH">
-                                                <rect key="frame" x="20" y="70" width="374" height="40"/>
+                                                <rect key="frame" x="20" y="70" width="335" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoZ-qf-3g4">
-                                                <rect key="frame" x="20" y="162.66666666666666" width="374" height="121.99999999999997"/>
+                                                <rect key="frame" x="20" y="162.5" width="335" height="122"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="122" id="WKc-Mp-4PQ"/>
                                                 </constraints>
@@ -460,7 +504,7 @@
                                                 </connections>
                                             </pickerView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TbH-EB-gIH">
-                                                <rect key="frame" x="20" y="359.66666666666669" width="374" height="30"/>
+                                                <rect key="frame" x="20" y="359.5" width="335" height="30"/>
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -470,7 +514,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course Abbreveation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bjp-TE-mCW">
-                                                <rect key="frame" x="20" y="409.66666666666669" width="374" height="30"/>
+                                                <rect key="frame" x="20" y="409.5" width="335" height="30"/>
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -480,13 +524,13 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the semester:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqt-pZ-swn">
-                                                <rect key="frame" x="20" y="130" width="374" height="27.666666666666657"/>
+                                                <rect key="frame" x="20" y="130" width="335" height="27.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mK-Vk-zkn">
-                                                <rect key="frame" x="20" y="289.66666666666669" width="374" height="30"/>
+                                                <rect key="frame" x="20" y="289.5" width="335" height="30"/>
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="D7A-Kt-npO"/>
@@ -532,7 +576,7 @@
                                 </constraints>
                             </scrollView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wns-Oi-J3i">
-                                <rect key="frame" x="0.0" y="436" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="sp8-Qc-XIS" kind="embed" identifier="newSemesterOverlaySegue" id="ZtC-hP-bRy"/>
@@ -565,38 +609,38 @@
             <objects>
                 <viewController storyboardIdentifier="TutorialViewController" id="uGt-2Z-oB1" customClass="TutorialViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1hV-dw-sV5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aurora" translatesAutoresizingMaskIntoConstraints="NO" id="QBS-ek-qUD">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQB-Mf-6Zq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4RN-rc-bGX">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_no_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Qpv-AV-iVP">
-                                            <rect key="frame" x="17" y="95" width="380" height="380"/>
+                                            <rect key="frame" x="17" y="95" width="341" height="341"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Qpv-AV-iVP" secondAttribute="height" multiplier="1:1" id="qo6-Tz-DIM"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HW-Az-T2l">
-                                            <rect key="frame" x="22" y="32.000000000000007" width="370" height="76.666666666666686"/>
+                                            <rect key="frame" x="22" y="32" width="331" height="76.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="64"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title" translatesAutoresizingMaskIntoConstraints="NO" id="wrA-Cm-Aqv">
-                                            <rect key="frame" x="0.0" y="455.00000000000006" width="414" height="139.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="416" width="375" height="126.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="wrA-Cm-Aqv" secondAttribute="height" multiplier="80:27" id="fLG-bk-xC9"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWp-gb-5i5">
-                                            <rect key="frame" x="112" y="619.66666666666663" width="191" height="69"/>
+                                            <rect key="frame" x="92.5" y="567.5" width="191" height="69"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="191" id="ckC-B2-MSJ"/>
                                                 <constraint firstAttribute="height" constant="69" id="yV3-Jb-CjV"/>
@@ -674,11 +718,11 @@
             <objects>
                 <viewController id="6XD-9b-ewx" customClass="ChartsSubviewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wkD-HK-Ln0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nz-YE-TcA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="iTF-uW-X1S"/>
                                 </constraints>
@@ -693,14 +737,14 @@
                                 </items>
                             </navigationBar>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tjr-XV-Dzk">
-                                <rect key="frame" x="0.0" y="94" width="414" height="206"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="206"/>
                                 <connections>
                                     <outlet property="dataSource" destination="6XD-9b-ewx" id="Gxl-0s-53d"/>
                                     <outlet property="delegate" destination="6XD-9b-ewx" id="5dc-En-AZp"/>
                                 </connections>
                             </pickerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OGI-t6-098">
-                                <rect key="frame" x="130" y="64" width="154" height="31"/>
+                                <rect key="frame" x="130" y="64" width="115" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7du-YE-Skx"/>
                                 </constraints>
@@ -744,7 +788,7 @@
                     <tabBarItem key="tabBarItem" title="Charts" image="chart" selectedImage="chart" id="F6A-nM-U58"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MHS-BX-hMN">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -761,11 +805,11 @@
             <objects>
                 <viewController id="sp8-Qc-XIS" customClass="NewSemesterSubViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kf4-7q-cTp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cl7-Rj-06x">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ygh-7x-WuU"/>
                                 </constraints>
@@ -785,7 +829,7 @@
                                 </items>
                             </navigationBar>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-uJ-l2z">
-                                <rect key="frame" x="0.0" y="88" width="414" height="162"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="sp8-Qc-XIS" id="NKs-1Y-Z3Z"/>
                                     <outlet property="delegate" destination="sp8-Qc-XIS" id="xbV-ia-NzS"/>
@@ -816,11 +860,11 @@
             <objects>
                 <viewController id="Io5-MH-CdC" customClass="AddTimeSubViewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1r2-Tl-Hrc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DzV-hf-esE">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="z0v-ZJ-dZq"/>
                                 </constraints>
@@ -840,7 +884,7 @@
                                 </items>
                             </navigationBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5zh-ct-1lJ">
-                                <rect key="frame" x="40" y="64" width="334" height="29"/>
+                                <rect key="frame" x="36" y="64" width="303" height="29"/>
                                 <segments>
                                     <segment title="At University"/>
                                     <segment title="At Home"/>
@@ -848,7 +892,7 @@
                                 </segments>
                             </segmentedControl>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="WLw-yk-qBY">
-                                <rect key="frame" x="40" y="210" width="334" height="90"/>
+                                <rect key="frame" x="40" y="194" width="295" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="cZZ-jM-10d"/>
                                 </constraints>
@@ -857,7 +901,7 @@
                                 </date>
                             </datePicker>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U10-fm-51r">
-                                <rect key="frame" x="40" y="300" width="334" height="90"/>
+                                <rect key="frame" x="40" y="284" width="295" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="8Ge-Bm-snJ"/>
                                 </constraints>
@@ -867,19 +911,19 @@
                                 </connections>
                             </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="25K-B5-gP8">
-                                <rect key="frame" x="112.66666666666666" y="124" width="261.33333333333337" height="30"/>
+                                <rect key="frame" x="112.5" y="124" width="222.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="VOt-8s-egW"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="Io5-MH-CdC" id="RSd-96-M2l"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCu-yc-7EJ">
-                                <rect key="frame" x="40" y="126.99999999999999" width="62.666666666666657" height="26.333333333333329"/>
+                                <rect key="frame" x="40" y="127" width="62.5" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -917,6 +961,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxC-kx-tkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3856.521739130435" y="-2688.5869565217395"/>
+        </scene>
+        <!--Add Deadline Subview Controller-->
+        <scene sceneID="JIW-Au-vSR">
+            <objects>
+                <viewController id="owM-tR-2Qg" customClass="AddDeadlineSubviewController" customModule="StudentTimeRecording" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UJy-hW-4mG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hVg-aT-p7e">
+                                <rect key="frame" x="33" y="126" width="295" height="129"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="535227755.76530099">
+                                    <!--2017-12-17 18:22:35 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8g-B5-IPG">
+                                <rect key="frame" x="33" y="91" width="63" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ch-9Z-h3U">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="DEJ-qK-5VA"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Add Deadline" id="ol3-fb-Oi6">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kka-Ya-PlX">
+                                            <connections>
+                                                <action selector="cancelBtn:" destination="owM-tR-2Qg" id="CZ9-p4-3mo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wYV-Pz-Bke">
+                                            <connections>
+                                                <action selector="saveBtn:" destination="owM-tR-2Qg" id="m8L-f5-eid"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSY-AS-wB4">
+                                <rect key="frame" x="115" y="89" width="223" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="owM-tR-2Qg" id="8B4-GM-mdj"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3Ch-9Z-h3U" firstAttribute="leading" secondItem="UJy-hW-4mG" secondAttribute="leading" id="EXb-aw-sGC"/>
+                            <constraint firstAttribute="trailing" secondItem="3Ch-9Z-h3U" secondAttribute="trailing" id="xIM-oH-ri2"/>
+                            <constraint firstItem="3Ch-9Z-h3U" firstAttribute="top" secondItem="UJy-hW-4mG" secondAttribute="top" id="zje-XI-ouZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="hVg-aT-p7e" id="3b4-bh-mrf"/>
+                        <outlet property="nameTF" destination="kSY-AS-wB4" id="jt1-Gp-STu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u2k-fS-nHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2648.8000000000002" y="-431.78410794602701"/>
         </scene>
     </scenes>
     <resources>
