@@ -34,3 +34,10 @@ class myTime: Object{
     @objc dynamic var date = Date()
     
 }
+
+class deadline: Object{
+    
+    @objc dynamic var name = ""
+    @objc dynamic var date = Date()
+    
+}

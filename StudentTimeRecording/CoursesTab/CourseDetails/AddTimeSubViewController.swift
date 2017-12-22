@@ -12,12 +12,14 @@ import RealmSwift
 protocol AddTimeSubViewControllerDelegate: class {
     func dismissTheOverlay()
 }
-class AddTimeSubViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddTimeSubViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     weak var delegate: AddTimeSubViewControllerDelegate?
     var courseDetailsTableViewController: CourseDetailsTableViewController?
     let blackView = UIView()
 
+    @IBOutlet weak var nameTF: UITextField!
+    
     let realmController = RealmController()
     var semesters: Results<Semester>!
     
@@ -42,18 +44,14 @@ class AddTimeSubViewController: UIViewController, UIPickerViewDelegate, UIPicker
 //        realmController.addSemester(name: semesterName)
         
         let selectDate = datePicker.date
-        print(selectDate)
-        print(selectedHours)
-        print(selectedMinutes)
-        print(self.selectedCourse?.nameShort)
         
         switch timeTypeSegmentedControl.selectedSegmentIndex {
         case 0:
-            realmController.addTimeAtUniversity(name: "emk klausur lernen", date: datePicker.date, hours: selectedHours, minutes: selectedMinutes, course: self.selectedCourse!)
+            realmController.addTimeAtUniversity(name: nameTF.text!, date: datePicker.date, hours: selectedHours, minutes: selectedMinutes, course: self.selectedCourse!)
         case 1:
-            realmController.addTimeAtHome(name: "emk klausur lernen", date: datePicker.date, hours: selectedHours, minutes: selectedMinutes, course: self.selectedCourse!)
+            realmController.addTimeAtHome(name: nameTF.text!, date: datePicker.date, hours: selectedHours, minutes: selectedMinutes, course: self.selectedCourse!)
         case 2:
-            realmController.addTimeStudying(name: "emk klausur lernen", date: datePicker.date, hours: selectedHours, minutes: selectedMinutes, course: self.selectedCourse!)
+            realmController.addTimeStudying(name: nameTF.text!, date: datePicker.date, hours: selectedHours, minutes: selectedMinutes, course: self.selectedCourse!)
         default:
             print("invalid segmented control index encountered")
         }
@@ -123,6 +121,14 @@ class AddTimeSubViewController: UIViewController, UIPickerViewDelegate, UIPicker
             self.courseDetailsTableViewController?.addTimeSubView.frame = CGRect(x: 0, y: overlayYLocation, width: self.view.frame.width, height: overlayHeight)
             
         }, completion: nil)
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
     }
     
     @objc func dismissOverlay() {
