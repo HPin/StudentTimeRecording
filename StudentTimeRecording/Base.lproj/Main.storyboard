@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AL8-Y4-rS0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AL8-Y4-rS0">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -218,7 +220,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huK-9X-lza">
-                                            <rect key="frame" x="122.66666666666669" y="6.6666666666666679" width="75" height="38.333333333333329"/>
+                                            <rect key="frame" x="169.66666666666666" y="6.6666666666666679" width="75" height="38.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -391,11 +393,18 @@
                         <viewLayoutGuide key="safeArea" id="QiF-td-w1Z"/>
                     </view>
                     <navigationItem key="navigationItem" id="SVM-gu-eku">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="z2X-ut-8mG">
-                            <connections>
-                                <action selector="addNewTimeButton:" destination="f49-mY-Cmq" id="pq2-yx-dKP"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="z2X-ut-8mG">
+                                <connections>
+                                    <action selector="addNewTimeButton:" destination="f49-mY-Cmq" id="pq2-yx-dKP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Delete Course" id="U4a-00-Vhr">
+                                <connections>
+                                    <action selector="deleteCourseButton:" destination="f49-mY-Cmq" id="lIK-1y-6vj"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="addTimeSubView" destination="gXf-XU-sfL" id="q8Z-gI-bGF"/>

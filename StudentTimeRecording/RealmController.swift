@@ -113,6 +113,18 @@ class RealmController{
         }
     }
     
+    func deleteCourse(course: Course) {
+        let realm = try! Realm()
+        
+        do {
+            try realm.write {
+                realm.delete(course)
+            }
+        } catch {
+            print("realm error")
+        }
+    }
+    
     func deleteTime(time: myTime) {
         let realm = try! Realm()
         
