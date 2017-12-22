@@ -53,12 +53,13 @@ class RealmController{
         return nil
     }
     
-    func addCourse(name: String, nameShort: String, semester: Semester){
+    func addCourse(name: String, nameShort: String, semester: Semester, picId: Int){
         
         let realm = try! Realm()
         let course = Course()
         course.name = name
         course.nameShort = nameShort
+        course.picId = picId
         
         //var semester = getSemester(nameSemester: semesterName)
         try! realm.write {

@@ -89,9 +89,9 @@ import RealmSwift
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CoursesCollectionViewCell
         
         //cell.layer.cornerRadius = cell.frame.size.height / 2
-        cell.layer.cornerRadius = 0
+        cell.layer.cornerRadius = 20
         
-        cell.coursesCVCellImageView.image = UIImage(named: "\(images[Int(arc4random_uniform(UInt32(images.count)))]).jpg")
+        cell.coursesCVCellImageView.image = UIImage(named: "\(images[semesters[indexPath.section].courses[indexPath.row].picId]).jpg")
         
         let labelText: String
         if indexPath.section < semesters.count {

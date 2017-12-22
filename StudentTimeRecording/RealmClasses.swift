@@ -20,6 +20,7 @@ class Course: Object{
     
     @objc dynamic var name = ""
     @objc dynamic var nameShort = ""
+    @objc dynamic var picId = 0
     
     let timeAtUniversity = List<myTime>()
     let timeAtHome = List<myTime>()

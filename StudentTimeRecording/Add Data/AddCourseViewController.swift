@@ -73,7 +73,7 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             let courseName = addCourseTextField.text!
             let courseNameShort = abbreveationTextField.text!
             
-            realmController.addCourse(name: courseName, nameShort: courseNameShort, semester: selectedSemester!)
+            realmController.addCourse(name: courseName, nameShort: courseNameShort, semester: selectedSemester!, picId: Int(arc4random_uniform(UInt32(23))))
             
             // return to course list
             //navigationController?.popViewController(animated: true) // show
